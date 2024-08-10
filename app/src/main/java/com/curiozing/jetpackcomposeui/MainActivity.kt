@@ -8,7 +8,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Surface
@@ -18,6 +22,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -55,7 +61,9 @@ fun SideNavigationMenu() {
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
-            Surface(color = Color.White, modifier = Modifier.fillMaxHeight().width(width = screenWidth.minus(screenWidth.div(4)).dp)) {
+            Surface(color = Color.White, modifier = Modifier
+                .fillMaxHeight()
+                .width(width = screenWidth.minus(screenWidth.div(4)).dp)) {
                 Column {
                     Text(text = "Profile")
                     Text(text = "About")
@@ -64,12 +72,14 @@ fun SideNavigationMenu() {
 
         }, content = {
             Column {
-                Text(text = "Hello")
-                Text(text = "Open Drawer", modifier = Modifier.clickable(onClick = {
-                    scope.launch {
-                        drawerState.open()
-                    }
-                }))
+                IconButton(
+                    onClick = {
+                        scope.launch {
+                            drawerState.open()
+                        }
+                }) {
+                    Icon(imageVector = Icons.Default.Menu, contentDescription = "")
+                }
             }
         })
 }
