@@ -57,13 +57,15 @@ fun SideNavigationMenu() {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     val localConfiguration = LocalConfiguration
-    val  screenWidth = localConfiguration.current.screenWidthDp
+    val screenWidth = localConfiguration.current.screenWidthDp
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
-            Surface(color = Color.White, modifier = Modifier
-                .fillMaxHeight()
-                .width(width = screenWidth.minus(screenWidth.div(4)).dp)) {
+            Surface(
+                color = Color.White, modifier = Modifier
+                    .fillMaxHeight()
+                    .width(width = screenWidth.minus(screenWidth.div(4)).dp)
+            ) {
                 Column {
                     Text(text = "Profile")
                     Text(text = "About")
@@ -77,7 +79,7 @@ fun SideNavigationMenu() {
                         scope.launch {
                             drawerState.open()
                         }
-                }) {
+                    }) {
                     Icon(imageVector = Icons.Default.Menu, contentDescription = "")
                 }
             }
