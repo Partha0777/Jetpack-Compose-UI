@@ -83,18 +83,25 @@ fun SideNavigationMenu() {
         drawerState = drawerState,
         drawerContent = {
             Surface(
-                shape = RoundedCornerShape(topEndPercent = 20, bottomEndPercent = 20, bottomStartPercent = 20),
+                shape = RoundedCornerShape(
+                    topEndPercent = 20,
+                    bottomEndPercent = 20,
+                    bottomStartPercent = 20
+                ),
                 color = Color(0xFFffde01), modifier = Modifier
                     .height(height = screenHeight.minus(screenHeight.div(4)).dp)
                     .width(width = screenWidth.minus(screenWidth.div(2.25)).dp)
             ) {
 
-                Column(modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color(0xFFffde01))) {
-                    Column(modifier = Modifier
-                        .weight(0.91f)
+                Column(
+                    modifier = Modifier
                         .fillMaxSize()
+                        .background(Color(0xFFffde01))
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .weight(0.91f)
+                            .fillMaxSize()
                     ) {
                         Card(
                             modifier = Modifier
@@ -107,14 +114,18 @@ fun SideNavigationMenu() {
                                 .fillMaxSize()
                                 .padding(bottom = 6.dp),
                             colors = CardDefaults.cardColors(
-                                contentColor = Color.White
+                                containerColor = Color.White
                             ),
                             elevation = CardDefaults.cardElevation(
                                 defaultElevation = 2.dp // Apply elevation here
                             ),
-                            shape = RoundedCornerShape(topEndPercent = 20, bottomEndPercent = 20, bottomStartPercent = 20),
-                            ) {
-                            Column(modifier = Modifier.fillMaxSize().background(Color.White)) {
+                            shape = RoundedCornerShape(
+                                topEndPercent = 20,
+                                bottomEndPercent = 20,
+                                bottomStartPercent = 20
+                            ),
+                        ) {
+                            Column {
 
                             }
                         }
@@ -126,8 +137,15 @@ fun SideNavigationMenu() {
                         horizontalAlignment = Alignment.CenterHorizontally,
                         modifier = Modifier
                             .weight(0.09f)
-                            .fillMaxSize().padding(bottom = 6.dp)) {
-                        Text(text = "Log out", color =  Color.Black, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                            .fillMaxSize()
+                            .padding(bottom = 6.dp)
+                    ) {
+                        Text(
+                            text = "Log out",
+                            color = Color.Black,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold
+                        )
                     }
                 }
 
@@ -149,19 +167,21 @@ fun SideNavigationMenu() {
 
 @Composable
 fun BottomShadow(alpha: Float = 0.1f, height: Dp = 28.dp) {
-    Box(modifier = Modifier
-        .fillMaxWidth()
-        .height(height)
-        .background(
-            brush = Brush.verticalGradient(
-                colors = listOf(
-                    Color.Black.copy(alpha = alpha),
-                    Color.Transparent,
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(height)
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        Color.Black.copy(alpha = alpha),
+                        Color.Transparent,
+                    )
                 )
             )
-        )
     )
 }
+
 @Preview
 @Composable
 fun GreetingPreview() {
