@@ -4,16 +4,20 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ModalDrawerSheet
+
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -58,18 +62,17 @@ fun SideNavigationMenu() {
     val scope = rememberCoroutineScope()
     val localConfiguration = LocalConfiguration
     val screenWidth = localConfiguration.current.screenWidthDp
+    val screenHeight = localConfiguration.current.screenHeightDp
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
             Surface(
+                shape = RoundedCornerShape(topEndPercent = 20, bottomEndPercent = 20, bottomStartPercent = 20),
                 color = Color.White, modifier = Modifier
-                    .fillMaxHeight()
-                    .width(width = screenWidth.minus(screenWidth.div(4)).dp)
+                    .height(height = screenHeight.minus(screenHeight.div(4)).dp)
+                    .width(width = screenWidth.minus(screenWidth.div(2.25)).dp)
             ) {
-                Column {
-                    Text(text = "Profile")
-                    Text(text = "About")
-                }
+
             }
 
         }, content = {
