@@ -89,18 +89,17 @@ fun SideNavigationMenu() {
                     bottomStartPercent = 20
                 ),
                 color = Color(0xFFffde01), modifier = Modifier
-                    .height(height = screenHeight.minus(screenHeight.div(4)).dp)
+                    .height(height = screenHeight.minus(screenHeight.div(5)).dp)
                     .width(width = screenWidth.minus(screenWidth.div(2.25)).dp)
             ) {
 
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Color(0xFFffde01))
                 ) {
                     Column(
                         modifier = Modifier
-                            .weight(0.91f)
+                            .weight(0.93f)
                             .fillMaxSize()
                     ) {
                         Card(
@@ -136,7 +135,7 @@ fun SideNavigationMenu() {
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally,
                         modifier = Modifier
-                            .weight(0.09f)
+                            .weight(0.07f)
                             .fillMaxSize()
                             .padding(bottom = 6.dp)
                     ) {
