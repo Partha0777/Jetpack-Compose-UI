@@ -167,7 +167,8 @@ fun SideNavigationMenu() {
                                                imageVector = ImageVector.vectorResource(id =  R.drawable.wallet),
                                                contentDescription = "wallet"
                                            )
-                                           Text(
+                                            Spacer(modifier = Modifier.height(4.dp))
+                                            Text(
                                                modifier = Modifier.padding(top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp),
                                                text = "Wallet",
                                                color = Color.DarkGray,
@@ -181,6 +182,7 @@ fun SideNavigationMenu() {
                                                imageVector = ImageVector.vectorResource(id =  R.drawable.home),
                                                contentDescription = "home"
                                            )
+                                           Spacer(modifier = Modifier.height(4.dp))
                                            Text(
                                                modifier = Modifier.padding(top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp),
                                                text = "Home",
@@ -195,9 +197,10 @@ fun SideNavigationMenu() {
                                         Column (horizontalAlignment = Alignment.CenterHorizontally){
                                             Image(
                                                 modifier = Modifier.size(30.dp),
-                                                imageVector = ImageVector.vectorResource(id =  R.drawable.wishlist),
-                                                contentDescription = "wallet"
+                                                imageVector = ImageVector.vectorResource(id =  R.drawable.wishlist2),
+                                                contentDescription = "wishlist"
                                             )
+                                            Spacer(modifier = Modifier.height(4.dp))
                                             Text(
                                                 modifier = Modifier.padding(top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp),
                                                 text = "Favourite",
@@ -210,8 +213,9 @@ fun SideNavigationMenu() {
                                             Image(
                                                 modifier = Modifier.size(30.dp),
                                                 imageVector = ImageVector.vectorResource(id =  R.drawable.config),
-                                                contentDescription = "home"
+                                                contentDescription = "config"
                                             )
+                                            Spacer(modifier = Modifier.height(4.dp))
                                             Text(
                                                 modifier = Modifier.padding(top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp),
                                                 text = "Settings",
