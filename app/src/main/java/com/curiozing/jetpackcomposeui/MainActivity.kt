@@ -1,5 +1,6 @@
 package com.curiozing.jetpackcomposeui
 
+import android.media.Image
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,6 +9,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -36,8 +38,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -135,6 +139,87 @@ fun SideNavigationMenu() {
                                         .clip(shape = CircleShape)
                                         .background(color = Color(0xFFffde01))) {
                                         Image(painter = painterResource(id = R.drawable.profile_female), contentDescription = "")
+                                    }
+                                    Text(
+                                        modifier = Modifier.padding(16.dp),
+                                        text = "Clara Mia",
+                                        color = Color.Black,
+                                        fontSize = 16.sp,
+                                        fontWeight = FontWeight.Bold
+                                    )
+
+                                    Box(modifier = Modifier
+                                        .clip(shape = RoundedCornerShape(50))
+                                        .background(color = Color(0xFFffde01))) {
+                                        Text(
+                                            modifier = Modifier.padding(top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp),
+                                            text = "My Orders",
+                                            color = Color.Black,
+                                            fontSize = 12.sp,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    }
+                                    Spacer(modifier = Modifier.height(50.dp))
+                                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+                                        Column (horizontalAlignment = Alignment.CenterHorizontally){
+                                           Image(
+                                               modifier = Modifier.size(30.dp),
+                                               imageVector = ImageVector.vectorResource(id =  R.drawable.wallet),
+                                               contentDescription = "wallet"
+                                           )
+                                           Text(
+                                               modifier = Modifier.padding(top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp),
+                                               text = "Wallet",
+                                               color = Color.DarkGray,
+                                               fontSize = 12.sp,
+                                               fontWeight = FontWeight.Bold
+                                           )
+                                       }
+                                       Column (horizontalAlignment = Alignment.CenterHorizontally){
+                                           Image(
+                                               modifier = Modifier.size(30.dp),
+                                               imageVector = ImageVector.vectorResource(id =  R.drawable.home),
+                                               contentDescription = "home"
+                                           )
+                                           Text(
+                                               modifier = Modifier.padding(top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp),
+                                               text = "Home",
+                                               color = Color.DarkGray,
+                                               fontSize = 12.sp,
+                                               fontWeight = FontWeight.Bold
+                                           )
+                                       }
+                                    }
+                                    Spacer(modifier = Modifier.height(40.dp))
+                                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+                                        Column (horizontalAlignment = Alignment.CenterHorizontally){
+                                            Image(
+                                                modifier = Modifier.size(30.dp),
+                                                imageVector = ImageVector.vectorResource(id =  R.drawable.wishlist),
+                                                contentDescription = "wallet"
+                                            )
+                                            Text(
+                                                modifier = Modifier.padding(top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp),
+                                                text = "Favourite",
+                                                color = Color.DarkGray,
+                                                fontSize = 12.sp,
+                                                fontWeight = FontWeight.Bold
+                                            )
+                                        }
+                                        Column (horizontalAlignment = Alignment.CenterHorizontally){
+                                            Image(
+                                                modifier = Modifier.size(30.dp),
+                                                imageVector = ImageVector.vectorResource(id =  R.drawable.config),
+                                                contentDescription = "home"
+                                            )
+                                            Text(
+                                                modifier = Modifier.padding(top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp),
+                                                text = "Settings",
+                                                color = Color.DarkGray,
+                                                fontSize = 12.sp,
+                                                fontWeight = FontWeight.Bold
+                                            )
+                                        }
 
                                     }
                                 }
