@@ -4,17 +4,21 @@ import android.os.Bundle
 import android.provider.CalendarContract.Colors
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -125,7 +129,23 @@ fun SideNavigationMenu() {
                             ),
                         ) {
                             Column {
+                                Text(
+                                    modifier = Modifier.padding(16.dp),
+                                    text = "FOODIES",
+                                    color = Color.Black,
+                                    fontSize = 16.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Spacer(modifier = Modifier.height(50.dp))
+                                Column(modifier = Modifier.fillMaxWidth(),horizontalAlignment = Alignment.CenterHorizontally) {
+                                    Box(modifier = Modifier
+                                        .size(70.dp)
+                                        .clip(shape = CircleShape)
+                                        .background(color = Color(0xFFffde01))) {
+                                        //Image(painter = Painter(), contentDescription = "")
 
+                                    }
+                                }
                             }
                         }
 
