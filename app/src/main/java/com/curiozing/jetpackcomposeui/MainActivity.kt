@@ -133,12 +133,20 @@ fun SideNavigationMenu() {
                                     fontWeight = FontWeight.Bold
                                 )
                                 Spacer(modifier = Modifier.height(50.dp))
-                                Column(modifier = Modifier.fillMaxWidth(),horizontalAlignment = Alignment.CenterHorizontally) {
-                                    Box(modifier = Modifier
-                                        .size(70.dp)
-                                        .clip(shape = CircleShape)
-                                        .background(color = Color(0xFFffde01))) {
-                                        Image(painter = painterResource(id = R.drawable.profile_female), contentDescription = "")
+                                Column(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(70.dp)
+                                            .clip(shape = CircleShape)
+                                            .background(color = Color(0xFFffde01))
+                                    ) {
+                                        Image(
+                                            painter = painterResource(id = R.drawable.profile_female),
+                                            contentDescription = ""
+                                        )
                                     }
                                     Text(
                                         modifier = Modifier.padding(16.dp),
@@ -148,11 +156,18 @@ fun SideNavigationMenu() {
                                         fontWeight = FontWeight.Bold
                                     )
 
-                                    Box(modifier = Modifier
-                                        .clip(shape = RoundedCornerShape(50))
-                                        .background(color = Color(0xFFffde01))) {
+                                    Box(
+                                        modifier = Modifier
+                                            .clip(shape = RoundedCornerShape(50))
+                                            .background(color = Color(0xFFffde01))
+                                    ) {
                                         Text(
-                                            modifier = Modifier.padding(top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp),
+                                            modifier = Modifier.padding(
+                                                top = 4.dp,
+                                                bottom = 4.dp,
+                                                start = 12.dp,
+                                                end = 12.dp
+                                            ),
                                             text = "My Orders",
                                             color = Color.Black,
                                             fontSize = 12.sp,
@@ -160,64 +175,90 @@ fun SideNavigationMenu() {
                                         )
                                     }
                                     Spacer(modifier = Modifier.height(50.dp))
-                                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-                                        Column (horizontalAlignment = Alignment.CenterHorizontally){
-                                           Image(
-                                               modifier = Modifier.size(30.dp),
-                                               imageVector = ImageVector.vectorResource(id =  R.drawable.wallet),
-                                               contentDescription = "wallet"
-                                           )
-                                            Spacer(modifier = Modifier.height(4.dp))
-                                            Text(
-                                               modifier = Modifier.padding(top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp),
-                                               text = "Wallet",
-                                               color = Color.DarkGray,
-                                               fontSize = 12.sp,
-                                               fontWeight = FontWeight.Bold
-                                           )
-                                       }
-                                       Column (horizontalAlignment = Alignment.CenterHorizontally){
-                                           Image(
-                                               modifier = Modifier.size(30.dp),
-                                               imageVector = ImageVector.vectorResource(id =  R.drawable.home),
-                                               contentDescription = "home"
-                                           )
-                                           Spacer(modifier = Modifier.height(4.dp))
-                                           Text(
-                                               modifier = Modifier.padding(top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp),
-                                               text = "Home",
-                                               color = Color.DarkGray,
-                                               fontSize = 12.sp,
-                                               fontWeight = FontWeight.Bold
-                                           )
-                                       }
-                                    }
-                                    Spacer(modifier = Modifier.height(40.dp))
-                                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-                                        Column (horizontalAlignment = Alignment.CenterHorizontally){
+                                    Row(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.SpaceEvenly
+                                    ) {
+                                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
                                             Image(
                                                 modifier = Modifier.size(30.dp),
-                                                imageVector = ImageVector.vectorResource(id =  R.drawable.wishlist2),
+                                                imageVector = ImageVector.vectorResource(id = R.drawable.wallet),
+                                                contentDescription = "wallet"
+                                            )
+                                            Spacer(modifier = Modifier.height(4.dp))
+                                            Text(
+                                                modifier = Modifier.padding(
+                                                    top = 4.dp,
+                                                    bottom = 4.dp,
+                                                    start = 12.dp,
+                                                    end = 12.dp
+                                                ),
+                                                text = "Wallet",
+                                                color = Color.DarkGray,
+                                                fontSize = 12.sp,
+                                                fontWeight = FontWeight.Bold
+                                            )
+                                        }
+                                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                            Image(
+                                                modifier = Modifier.size(30.dp),
+                                                imageVector = ImageVector.vectorResource(id = R.drawable.home),
+                                                contentDescription = "home"
+                                            )
+                                            Spacer(modifier = Modifier.height(4.dp))
+                                            Text(
+                                                modifier = Modifier.padding(
+                                                    top = 4.dp,
+                                                    bottom = 4.dp,
+                                                    start = 12.dp,
+                                                    end = 12.dp
+                                                ),
+                                                text = "Home",
+                                                color = Color.DarkGray,
+                                                fontSize = 12.sp,
+                                                fontWeight = FontWeight.Bold
+                                            )
+                                        }
+                                    }
+                                    Spacer(modifier = Modifier.height(40.dp))
+                                    Row(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.SpaceEvenly
+                                    ) {
+                                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                            Image(
+                                                modifier = Modifier.size(30.dp),
+                                                imageVector = ImageVector.vectorResource(id = R.drawable.wishlist2),
                                                 contentDescription = "wishlist"
                                             )
                                             Spacer(modifier = Modifier.height(4.dp))
                                             Text(
-                                                modifier = Modifier.padding(top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp),
+                                                modifier = Modifier.padding(
+                                                    top = 4.dp,
+                                                    bottom = 4.dp,
+                                                    start = 12.dp,
+                                                    end = 12.dp
+                                                ),
                                                 text = "Favourite",
                                                 color = Color.DarkGray,
                                                 fontSize = 12.sp,
                                                 fontWeight = FontWeight.Bold
                                             )
                                         }
-                                        Column (horizontalAlignment = Alignment.CenterHorizontally){
+                                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
                                             Image(
                                                 modifier = Modifier.size(30.dp),
-                                                imageVector = ImageVector.vectorResource(id =  R.drawable.config),
+                                                imageVector = ImageVector.vectorResource(id = R.drawable.config),
                                                 contentDescription = "config"
                                             )
                                             Spacer(modifier = Modifier.height(4.dp))
                                             Text(
-                                                modifier = Modifier.padding(top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp),
+                                                modifier = Modifier.padding(
+                                                    top = 4.dp,
+                                                    bottom = 4.dp,
+                                                    start = 12.dp,
+                                                    end = 12.dp
+                                                ),
                                                 text = "Settings",
                                                 color = Color.DarkGray,
                                                 fontSize = 12.sp,
