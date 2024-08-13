@@ -132,14 +132,14 @@ fun SideNavigationMenu() {
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.Bold
                                 )
-                                Spacer(modifier = Modifier.height(50.dp))
+                                Spacer(modifier = Modifier.height(40.dp))
                                 Column(
                                     modifier = Modifier.fillMaxWidth(),
                                     horizontalAlignment = Alignment.CenterHorizontally
                                 ) {
                                     Box(
                                         modifier = Modifier
-                                            .size(70.dp)
+                                            .size(80.dp)
                                             .clip(shape = CircleShape)
                                             .background(color = Color(0xFFffde01))
                                     ) {
