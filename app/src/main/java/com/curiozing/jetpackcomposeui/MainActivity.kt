@@ -329,7 +329,32 @@ fun SideNavigationMenu() {
                         ) {
                             Row(modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(12.dp)) {
+                                .padding(12.dp),
+                                horizontalArrangement = Arrangement.SpaceEvenly
+                            ) {
+                                Image(
+                                    modifier = Modifier.size(60.dp),
+                                    imageVector = ImageVector.vectorResource(id = R.drawable.config),
+                                    contentDescription = "config"
+                                )
+
+                                Image(
+                                    modifier = Modifier.size(60.dp),
+                                    imageVector = ImageVector.vectorResource(id = R.drawable.config),
+                                    contentDescription = "config"
+                                )
+
+                                Image(
+                                    modifier = Modifier.size(60.dp),
+                                    imageVector = ImageVector.vectorResource(id = R.drawable.config),
+                                    contentDescription = "config"
+                                )
+
+                                Image(
+                                    modifier = Modifier.size(60.dp),
+                                    imageVector = ImageVector.vectorResource(id = R.drawable.config),
+                                    contentDescription = "config"
+                                )
 
                             }
                         }
