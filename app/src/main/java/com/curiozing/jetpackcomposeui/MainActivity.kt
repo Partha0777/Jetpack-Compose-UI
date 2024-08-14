@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -23,6 +24,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CardElevation
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -30,6 +32,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.contentColorFor
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -294,24 +297,64 @@ fun SideNavigationMenu() {
 
         }, content = {
             Column {
-                IconButton(
-                    onClick = {
-                        scope.launch {
-                            drawerState.open()
-                        }
-                    }) {
-                    Icon(imageVector = Icons.Default.Menu, contentDescription = "")
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    IconButton(
+                        onClick = {
+                            scope.launch {
+                                drawerState.open()
+                            }
+                        }) {
+                        Icon(imageVector = Icons.Default.Menu, contentDescription = "")
+                    }
+                    Text(text = "FOODIES", fontSize = 18.sp, fontWeight = FontWeight.Bold)
                 }
+
+
+                Column {
+                    Box{
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(screenHeight.div(6).plus(2).dp)
+                                .background(
+                                    color = Color.Gray.copy(alpha = 0.14f), // Adjust color and alpha for desired shadow
+                                    shape = RoundedCornerShape(bottomStart = 50.dp, bottomEnd = 50.dp)
+                                )
+                        )
+                        Card(
+                            modifier = Modifier.fillMaxWidth().height(screenHeight.div(6).dp),
+                            shape = RoundedCornerShape(topStart = 0.dp, topEnd = 0.dp, bottomEnd = 50.dp, bottomStart = 50.dp),
+                            colors = CardDefaults.cardColors(containerColor = Color.White),
+                            elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+                        ) {
+                            Row(modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(12.dp)) {
+
+                            }
+                        }
+                    }
+
+
+                }
+
+
             }
         })
 }
 
 @Composable
-fun BottomShadow(alpha: Float = 0.1f, height: Dp = 28.dp) {
+fun BottomShadow(alpha: Float = 0.1f, height: Dp = 5.dp) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(height)
+            .height(100.dp)
+            .clip(
+                RoundedCornerShape(
+                    bottomEnd = 20.dp,
+                    bottomStart = 20.dp
+                )
+            ) // Apply corner radius here
             .background(
                 brush = Brush.verticalGradient(
                     colors = listOf(
@@ -319,8 +362,9 @@ fun BottomShadow(alpha: Float = 0.1f, height: Dp = 28.dp) {
                         Color.Transparent,
                     )
                 )
-            )
+            ) // Background color to visualize the Box
     )
+
 }
 
 @Preview
