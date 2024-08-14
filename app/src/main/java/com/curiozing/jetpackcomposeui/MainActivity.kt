@@ -315,14 +315,14 @@ fun SideNavigationMenu() {
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(screenHeight.div(6).plus(2).dp)
+                                .height(screenHeight.div(8).plus(2).dp)
                                 .background(
                                     color = Color.Gray.copy(alpha = 0.14f), // Adjust color and alpha for desired shadow
                                     shape = RoundedCornerShape(bottomStart = 50.dp, bottomEnd = 50.dp)
                                 )
                         )
                         Card(
-                            modifier = Modifier.fillMaxWidth().height(screenHeight.div(6).dp),
+                            modifier = Modifier.fillMaxWidth().height(screenHeight.div(8).dp),
                             shape = RoundedCornerShape(topStart = 0.dp, topEnd = 0.dp, bottomEnd = 50.dp, bottomStart = 50.dp),
                             colors = CardDefaults.cardColors(containerColor = Color.White),
                             elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
@@ -334,7 +334,6 @@ fun SideNavigationMenu() {
                             }
                         }
                     }
-
 
                 }
 
