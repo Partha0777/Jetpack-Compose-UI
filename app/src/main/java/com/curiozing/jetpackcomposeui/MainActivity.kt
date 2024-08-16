@@ -85,7 +85,7 @@ fun SideNavigationMenu() {
     val screenWidth = localConfiguration.current.screenWidthDp
     val screenHeight = localConfiguration.current.screenHeightDp
     var selectedTopBarIndex = remember {
-        mutableIntStateOf( 0)
+        mutableIntStateOf(0)
     }
 
     val topBarImageList = remember {
@@ -325,7 +325,7 @@ fun SideNavigationMenu() {
 
 
                 Column {
-                    Box{
+                    Box {
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -346,16 +346,22 @@ fun SideNavigationMenu() {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(screenHeight.div(10).dp),
-                            shape = RoundedCornerShape(topStart = 0.dp, topEnd = 0.dp, bottomEnd = 50.dp, bottomStart = 50.dp),
+                            shape = RoundedCornerShape(
+                                topStart = 0.dp,
+                                topEnd = 0.dp,
+                                bottomEnd = 50.dp,
+                                bottomStart = 50.dp
+                            ),
                             colors = CardDefaults.cardColors(containerColor = Color.White),
                             elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
                         ) {
-                            Row(modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(12.dp),
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(12.dp),
                                 horizontalArrangement = Arrangement.SpaceEvenly
                             ) {
-                                topBarImageList.forEachIndexed{ index, topbarItem ->
+                                topBarImageList.forEachIndexed { index, topbarItem ->
                                     Image(
                                         colorFilter = ColorFilter.tint(if (selectedTopBarIndex.intValue == index) Color.DarkGray else Color.Gray),
                                         modifier = Modifier
@@ -376,7 +382,7 @@ fun SideNavigationMenu() {
 }
 
 data class TopBar(
-    var image:Int,
+    var image: Int,
     var tintColor: Color
 )
 
