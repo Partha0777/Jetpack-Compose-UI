@@ -365,7 +365,7 @@ fun SideNavigationMenu() {
                                     Image(
                                         colorFilter = ColorFilter.tint(if (selectedTopBarIndex.intValue == index) Color.DarkGray else Color.Gray),
                                         modifier = Modifier
-                                            .size(40.dp)
+                                            .size(42.dp)
                                             .clickable {
                                                 selectedTopBarIndex.intValue = index
                                             },
