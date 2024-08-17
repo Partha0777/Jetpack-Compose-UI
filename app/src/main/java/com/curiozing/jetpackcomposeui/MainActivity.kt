@@ -329,8 +329,11 @@ fun SideNavigationMenu() {
                         Text(text = "FOODIES", fontSize = 18.sp, fontWeight = FontWeight.Bold)
                     }
                     IconButton(onClick = { /*TODO*/ }) {
-                        Icon(imageVector = Icons.Default.Search, contentDescription = "search")
+                        Box(Modifier.clip(shape = CircleShape).background(Color(0xFFffde01)).padding(all = 8.dp)) {
+                            Icon(imageVector = Icons.Default.Search, contentDescription = "search",Modifier.size(16.dp))
+                        }
                     }
+
                 }
 
 
