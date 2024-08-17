@@ -312,8 +312,11 @@ fun SideNavigationMenu() {
 
         }, content = {
             Column {
-                Row(modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         IconButton(
                             onClick = {
@@ -325,9 +328,9 @@ fun SideNavigationMenu() {
                         }
                         Text(text = "FOODIES", fontSize = 18.sp, fontWeight = FontWeight.Bold)
                     }
-                   IconButton(onClick = { /*TODO*/ }) {
-                       Icon(imageVector = Icons.Default.Search, contentDescription = "search")
-                   }
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(imageVector = Icons.Default.Search, contentDescription = "search")
+                    }
                 }
 
 
