@@ -21,6 +21,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DrawerValue
@@ -311,16 +312,22 @@ fun SideNavigationMenu() {
 
         }, content = {
             Column {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    IconButton(
-                        onClick = {
-                            scope.launch {
-                                drawerState.open()
-                            }
-                        }) {
-                        Icon(imageVector = Icons.Default.Menu, contentDescription = "")
+                Row(modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        IconButton(
+                            onClick = {
+                                scope.launch {
+                                    drawerState.open()
+                                }
+                            }) {
+                            Icon(imageVector = Icons.Default.Menu, contentDescription = "")
+                        }
+                        Text(text = "FOODIES", fontSize = 18.sp, fontWeight = FontWeight.Bold)
                     }
-                    Text(text = "FOODIES", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                   IconButton(onClick = { /*TODO*/ }) {
+                       Icon(imageVector = Icons.Default.Search, contentDescription = "search")
+                   }
                 }
 
 
@@ -365,7 +372,7 @@ fun SideNavigationMenu() {
                                     Image(
                                         colorFilter = ColorFilter.tint(if (selectedTopBarIndex.intValue == index) Color.DarkGray else Color.Gray),
                                         modifier = Modifier
-                                            .size(42.dp)
+                                            .size(40.dp)
                                             .clickable {
                                                 selectedTopBarIndex.intValue = index
                                             },
