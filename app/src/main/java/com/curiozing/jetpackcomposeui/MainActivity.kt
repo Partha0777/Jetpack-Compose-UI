@@ -454,7 +454,7 @@ fun SideNavigationMenu() {
                                             Icon(
                                                 imageVector = Icons.Default.LocationOn,
                                                 contentDescription = "deliver",
-                                                modifier = Modifier.padding(all = 12.dp)
+                                                modifier = Modifier.padding(all = 14.dp)
                                             )
                                             Text(text = "Home", fontWeight = FontWeight.Bold)
                                             Spacer(modifier = Modifier.width(8.dp))
