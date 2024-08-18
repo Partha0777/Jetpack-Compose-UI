@@ -20,6 +20,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
@@ -329,67 +331,132 @@ fun SideNavigationMenu() {
                         Text(text = "FOODIES", fontSize = 18.sp, fontWeight = FontWeight.Bold)
                     }
                     IconButton(onClick = { /*TODO*/ }) {
-                        Box(Modifier.clip(shape = CircleShape).background(Color(0xFFffde01)).padding(all = 8.dp)) {
+                        Box(
+                            Modifier
+                                .clip(shape = CircleShape)
+                                .background(Color(0xFFffde01))
+                                .padding(all = 8.dp)) {
                             Icon(imageVector = Icons.Default.Search, contentDescription = "search",Modifier.size(16.dp))
                         }
                     }
 
                 }
 
+                Box {
 
-                Column {
-                    Box {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(
-                                    screenHeight
-                                        .div(10)
-                                        .plus(2).dp
-                                )
-                                .background(
-                                    color = Color.Gray.copy(alpha = 0.14f), // Adjust color and alpha for desired shadow
-                                    shape = RoundedCornerShape(
-                                        bottomStart = 50.dp,
-                                        bottomEnd = 50.dp
-                                    )
-                                )
-                        )
-                        Card(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(screenHeight.div(10).dp),
-                            shape = RoundedCornerShape(
-                                topStart = 0.dp,
-                                topEnd = 0.dp,
-                                bottomEnd = 50.dp,
-                                bottomStart = 50.dp
-                            ),
-                            colors = CardDefaults.cardColors(containerColor = Color.White),
-                            elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
-                        ) {
-                            Row(
+                    Column {
+                        Box {
+                            Box(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(12.dp),
-                                horizontalArrangement = Arrangement.SpaceEvenly
-                            ) {
-                                topBarImageList.forEachIndexed { index, topbarItem ->
-                                    Image(
-                                        colorFilter = ColorFilter.tint(if (selectedTopBarIndex.intValue == index) Color.DarkGray else Color.Gray),
-                                        modifier = Modifier
-                                            .size(40.dp)
-                                            .clickable {
-                                                selectedTopBarIndex.intValue = index
-                                            },
-                                        imageVector = ImageVector.vectorResource(id = topbarItem.image),
-                                        contentDescription = "config"
+                                    .height(
+                                        screenHeight
+                                            .div(3.8)
+                                            .plus(2).dp
                                     )
+                                    .background(
+                                        color = Color.Gray.copy(alpha = 0.14f), // Adjust color and alpha for desired shadow
+                                        shape = RoundedCornerShape(
+                                            bottomStart = 50.dp,
+                                            bottomEnd = 50.dp
+                                        )
+                                    )
+                            )
+                            Card(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(screenHeight.div(3.8).dp),
+                                shape = RoundedCornerShape(
+                                    topStart = 0.dp,
+                                    topEnd = 0.dp,
+                                    bottomEnd = 50.dp,
+                                    bottomStart = 50.dp
+                                ),
+                                colors = CardDefaults.cardColors(containerColor = Color(0xFFffde01)),
+                                elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+                            ) {
+                                Column {
+                                    Box {
+                                        Box(
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .height(
+                                                    screenHeight
+                                                        .div(10)
+                                                        .plus(2).dp
+                                                )
+                                                .background(
+                                                    color = Color.Gray.copy(alpha = 0.14f), // Adjust color and alpha for desired shadow
+                                                    shape = RoundedCornerShape(
+                                                        bottomStart = 50.dp,
+                                                        bottomEnd = 50.dp
+                                                    )
+                                                )
+                                        )
+                                        Card(
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .height(screenHeight.div(10).dp),
+                                            shape = RoundedCornerShape(
+                                                topStart = 0.dp,
+                                                topEnd = 0.dp,
+                                                bottomEnd = 50.dp,
+                                                bottomStart = 50.dp
+                                            ),
+                                            colors = CardDefaults.cardColors(containerColor = Color.White),
+                                            elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+                                        ) {
+                                            Row(
+                                                modifier = Modifier
+                                                    .fillMaxWidth()
+                                                    .padding(12.dp),
+                                                horizontalArrangement = Arrangement.SpaceEvenly
+                                            ) {
+                                                topBarImageList.forEachIndexed { index, topbarItem ->
+                                                    Image(
+                                                        colorFilter = ColorFilter.tint(if (selectedTopBarIndex.intValue == index) Color.DarkGray else Color.Gray),
+                                                        modifier = Modifier
+                                                            .size(40.dp)
+                                                            .clickable {
+                                                                selectedTopBarIndex.intValue = index
+                                                            },
+                                                        imageVector = ImageVector.vectorResource(id = topbarItem.image),
+                                                        contentDescription = "config"
+                                                    )
+                                                }
+                                            }
+                                        }
+                                    }
+                                    Spacer(Modifier.height(20.dp))
+                                    Text(text = "Deliver To", fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 18.dp))
+                                    Spacer(modifier = Modifier.height(12.dp))
+                                    Box(modifier = Modifier
+                                        .padding(horizontal = 18.dp)
+                                        .fillMaxWidth(
+                                        )
+                                        .clip(shape = RoundedCornerShape(50))
+                                        .background(color = Color.White)){
+                                        Row(modifier = Modifier.fillMaxWidth(),
+                                            verticalAlignment = Alignment.CenterVertically,) {
+                                            Icon(
+                                                imageVector = Icons.Default.LocationOn,
+                                                contentDescription = "deliver",
+                                                modifier = Modifier.padding(all = 12.dp)
+                                            )
+                                            Text(text = "Home", fontWeight = FontWeight.Bold)
+                                            Spacer(modifier = Modifier.width(8.dp))
+                                            Text(text = "4078 David Cross CA", color = Color.Gray, fontSize = 14.sp)
+                                        }
+                                    }
                                 }
+
                             }
                         }
                     }
+
                 }
+
+
             }
         })
 }
