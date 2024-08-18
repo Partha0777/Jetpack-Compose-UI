@@ -335,8 +335,13 @@ fun SideNavigationMenu() {
                             Modifier
                                 .clip(shape = CircleShape)
                                 .background(Color(0xFFffde01))
-                                .padding(all = 8.dp)) {
-                            Icon(imageVector = Icons.Default.Search, contentDescription = "search",Modifier.size(16.dp))
+                                .padding(all = 8.dp)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Search,
+                                contentDescription = "search",
+                                Modifier.size(16.dp)
+                            )
                         }
                     }
 
@@ -428,16 +433,24 @@ fun SideNavigationMenu() {
                                         }
                                     }
                                     Spacer(Modifier.height(20.dp))
-                                    Text(text = "Deliver To", fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 18.dp))
+                                    Text(
+                                        text = "Deliver To",
+                                        fontWeight = FontWeight.Bold,
+                                        modifier = Modifier.padding(start = 18.dp)
+                                    )
                                     Spacer(modifier = Modifier.height(12.dp))
-                                    Box(modifier = Modifier
-                                        .padding(horizontal = 18.dp)
-                                        .fillMaxWidth(
-                                        )
-                                        .clip(shape = RoundedCornerShape(50))
-                                        .background(color = Color.White)){
-                                        Row(modifier = Modifier.fillMaxWidth(),
-                                            verticalAlignment = Alignment.CenterVertically,) {
+                                    Box(
+                                        modifier = Modifier
+                                            .padding(horizontal = 18.dp)
+                                            .fillMaxWidth(
+                                            )
+                                            .clip(shape = RoundedCornerShape(50))
+                                            .background(color = Color.White)
+                                    ) {
+                                        Row(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            verticalAlignment = Alignment.CenterVertically,
+                                        ) {
                                             Icon(
                                                 imageVector = Icons.Default.LocationOn,
                                                 contentDescription = "deliver",
@@ -445,7 +458,11 @@ fun SideNavigationMenu() {
                                             )
                                             Text(text = "Home", fontWeight = FontWeight.Bold)
                                             Spacer(modifier = Modifier.width(8.dp))
-                                            Text(text = "4078 David Cross CA", color = Color.Gray, fontSize = 14.sp)
+                                            Text(
+                                                text = "4078 David Cross CA",
+                                                color = Color.Gray,
+                                                fontSize = 14.sp
+                                            )
                                         }
                                     }
                                 }
