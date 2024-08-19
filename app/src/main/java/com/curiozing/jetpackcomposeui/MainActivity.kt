@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -37,6 +38,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -49,6 +51,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
@@ -89,9 +92,15 @@ fun SideNavigationMenu() {
     val localConfiguration = LocalConfiguration
     val screenWidth = localConfiguration.current.screenWidthDp
     val screenHeight = localConfiguration.current.screenHeightDp
-    var selectedTopBarIndex = remember {
+    var homeFilterList = listOf("Delivered By 15 Min", "Free Delivery", "Special Offers")
+    val selectedTopBarIndex = remember {
         mutableIntStateOf(0)
     }
+
+    var maxHeight  = remember {
+        mutableStateOf(0)
+    }
+
 
     val topBarImageList = remember {
         mutableStateListOf(
@@ -420,12 +429,16 @@ fun SideNavigationMenu() {
                                                 horizontalArrangement = Arrangement.SpaceEvenly
                                             ) {
                                                 topBarImageList.forEachIndexed { index, topbarItem ->
-                                                    Box(modifier = Modifier.clip(shape = CircleShape).clickable{
-                                                        selectedTopBarIndex.intValue = index
-                                                    }){
+                                                    Box(modifier = Modifier
+                                                        .clip(shape = CircleShape)
+                                                        .clickable {
+                                                            selectedTopBarIndex.intValue = index
+                                                        }){
                                                         Image(
                                                             colorFilter = ColorFilter.tint(if (selectedTopBarIndex.intValue == index) Color.DarkGray else Color.Gray),
-                                                            modifier = Modifier.size(50.dp).padding(all = 8.dp),
+                                                            modifier = Modifier
+                                                                .size(50.dp)
+                                                                .padding(all = 8.dp),
                                                             imageVector = ImageVector.vectorResource(id = topbarItem.image),
                                                             contentDescription = "config"
                                                         )
@@ -472,6 +485,26 @@ fun SideNavigationMenu() {
 
                             }
                         }
+                        Spacer(modifier = Modifier.height(20.dp))
+                        LazyRow(content = {
+                            for(i in homeFilterList){
+                                item {
+                                    Card(
+                                        shape = RoundedCornerShape(12.dp),
+                                        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+                                        colors = CardDefaults.cardColors(containerColor = Color.White),
+                                        modifier = Modifier
+                                            .padding(start = 20.dp)
+                                            .height(64.dp)
+                                            .width(screenWidth.div(3).dp)) {
+
+                                        Row(modifier = Modifier.padding(all = 8.dp).fillMaxSize(), verticalAlignment = Alignment.CenterVertically) {
+                                            Text(text = i)
+                                        }
+                                    }
+                                }
+                            }
+                        })
                     }
 
                 }
