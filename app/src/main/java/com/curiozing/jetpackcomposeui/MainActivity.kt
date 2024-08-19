@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.Indication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -24,6 +25,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DrawerValue
@@ -418,16 +420,17 @@ fun SideNavigationMenu() {
                                                 horizontalArrangement = Arrangement.SpaceEvenly
                                             ) {
                                                 topBarImageList.forEachIndexed { index, topbarItem ->
-                                                    Image(
-                                                        colorFilter = ColorFilter.tint(if (selectedTopBarIndex.intValue == index) Color.DarkGray else Color.Gray),
-                                                        modifier = Modifier
-                                                            .size(40.dp)
-                                                            .clickable {
-                                                                selectedTopBarIndex.intValue = index
-                                                            },
-                                                        imageVector = ImageVector.vectorResource(id = topbarItem.image),
-                                                        contentDescription = "config"
-                                                    )
+                                                    Box(modifier = Modifier.clip(shape = CircleShape).clickable{
+                                                        selectedTopBarIndex.intValue = index
+                                                    }){
+                                                        Image(
+                                                            colorFilter = ColorFilter.tint(if (selectedTopBarIndex.intValue == index) Color.DarkGray else Color.Gray),
+                                                            modifier = Modifier.size(50.dp).padding(all = 8.dp),
+                                                            imageVector = ImageVector.vectorResource(id = topbarItem.image),
+                                                            contentDescription = "config"
+                                                        )
+                                                    }
+
                                                 }
                                             }
                                         }
