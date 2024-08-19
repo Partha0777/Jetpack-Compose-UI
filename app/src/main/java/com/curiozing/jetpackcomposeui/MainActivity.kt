@@ -25,6 +25,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Card
@@ -494,12 +495,19 @@ fun SideNavigationMenu() {
                                         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                                         colors = CardDefaults.cardColors(containerColor = Color.White),
                                         modifier = Modifier
-                                            .padding(start = 20.dp)
-                                            .height(64.dp)
+                                            .padding(start = 20.dp, end = 2.dp)
+                                            .height(68.dp)
                                             .width(screenWidth.div(3).dp)) {
 
-                                        Row(modifier = Modifier.padding(all = 8.dp).fillMaxSize(), verticalAlignment = Alignment.CenterVertically) {
-                                            Text(text = i)
+                                        Row(modifier = Modifier
+                                            .padding(all = 16.dp)
+                                            .fillMaxSize(), verticalAlignment = Alignment.CenterVertically) {
+                                            Icon(
+                                                imageVector = Icons.Default.Notifications,
+                                                contentDescription = "icon"
+                                            )
+                                            Spacer(modifier = Modifier.width(12.dp))
+                                            Text(text = i, fontSize = 12.sp, lineHeight = 18.sp, color = Color.DarkGray)
                                         }
                                     }
                                 }
