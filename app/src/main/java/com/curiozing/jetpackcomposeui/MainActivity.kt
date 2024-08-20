@@ -86,6 +86,11 @@ fun Home() {
 
 }
 
+data class HomeFilter(
+    val icon:Int,
+    val title:String
+)
+
 @Composable
 fun SideNavigationMenu() {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -93,7 +98,7 @@ fun SideNavigationMenu() {
     val localConfiguration = LocalConfiguration
     val screenWidth = localConfiguration.current.screenWidthDp
     val screenHeight = localConfiguration.current.screenHeightDp
-    var homeFilterList = listOf("Delivered By 15 Min", "Free Delivery", "Special Offers")
+    val homeFilterList = listOf(HomeFilter(R.drawable.delivery_in_15_min_icon,"Delivered By 15 Min"),HomeFilter(R.drawable.delivery_icon,"Free Delivery") , HomeFilter(R.drawable.offer_icon,"Special Offers"))
     val selectedTopBarIndex = remember {
         mutableIntStateOf(0)
     }
@@ -492,7 +497,7 @@ fun SideNavigationMenu() {
                                 item {
                                     Card(
                                         shape = RoundedCornerShape(12.dp),
-                                        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+                                        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
                                         colors = CardDefaults.cardColors(containerColor = Color.White),
                                         modifier = Modifier
                                             .padding(start = 20.dp, end = 2.dp)
@@ -503,11 +508,12 @@ fun SideNavigationMenu() {
                                             .padding(all = 16.dp)
                                             .fillMaxSize(), verticalAlignment = Alignment.CenterVertically) {
                                             Icon(
-                                                imageVector = Icons.Default.Notifications,
-                                                contentDescription = "icon"
+                                                imageVector = ImageVector.vectorResource(i.icon),
+                                                contentDescription = "icon",
+                                                Modifier.size(28.dp)
                                             )
                                             Spacer(modifier = Modifier.width(12.dp))
-                                            Text(text = i, fontSize = 12.sp, lineHeight = 18.sp, color = Color.DarkGray)
+                                            Text(text = i.title, fontSize = 12.sp, lineHeight = 18.sp, color = Color.DarkGray)
                                         }
                                     }
                                 }
