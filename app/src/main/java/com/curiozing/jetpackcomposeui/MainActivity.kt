@@ -7,6 +7,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.Indication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,6 +32,7 @@ import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 
@@ -91,6 +93,7 @@ data class HomeFilter(
     val title: String
 )
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SideNavigationMenu() {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -502,13 +505,15 @@ fun SideNavigationMenu() {
                             for (i in homeFilterList) {
                                 item {
                                     Card(
+
                                         shape = RoundedCornerShape(12.dp),
                                         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
                                         colors = CardDefaults.cardColors(containerColor = Color.White),
                                         modifier = Modifier
                                             .padding(start = 20.dp, end = 2.dp)
                                             .height(68.dp)
-                                            .width(screenWidth.div(3).dp)
+                                            .width(screenWidth.div(3).dp),
+                                        onClick = {}
                                     ) {
 
                                         Row(
