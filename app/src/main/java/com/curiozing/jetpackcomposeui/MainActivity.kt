@@ -87,8 +87,8 @@ fun Home() {
 }
 
 data class HomeFilter(
-    val icon:Int,
-    val title:String
+    val icon: Int,
+    val title: String
 )
 
 @Composable
@@ -98,12 +98,16 @@ fun SideNavigationMenu() {
     val localConfiguration = LocalConfiguration
     val screenWidth = localConfiguration.current.screenWidthDp
     val screenHeight = localConfiguration.current.screenHeightDp
-    val homeFilterList = listOf(HomeFilter(R.drawable.delivery_in_15_min_icon,"Delivered By 15 Min"),HomeFilter(R.drawable.delivery_icon,"Free Delivery") , HomeFilter(R.drawable.offer_icon,"Special Offers"))
+    val homeFilterList = listOf(
+        HomeFilter(R.drawable.delivery_in_15_min_icon, "Delivered By 15 Min"),
+        HomeFilter(R.drawable.delivery_icon, "Free Delivery"),
+        HomeFilter(R.drawable.offer_icon, "Special Offers")
+    )
     val selectedTopBarIndex = remember {
         mutableIntStateOf(0)
     }
 
-    var maxHeight  = remember {
+    var maxHeight = remember {
         mutableStateOf(0)
     }
 
@@ -439,13 +443,15 @@ fun SideNavigationMenu() {
                                                         .clip(shape = CircleShape)
                                                         .clickable {
                                                             selectedTopBarIndex.intValue = index
-                                                        }){
+                                                        }) {
                                                         Image(
                                                             colorFilter = ColorFilter.tint(if (selectedTopBarIndex.intValue == index) Color.DarkGray else Color.Gray),
                                                             modifier = Modifier
                                                                 .size(50.dp)
                                                                 .padding(all = 8.dp),
-                                                            imageVector = ImageVector.vectorResource(id = topbarItem.image),
+                                                            imageVector = ImageVector.vectorResource(
+                                                                id = topbarItem.image
+                                                            ),
                                                             contentDescription = "config"
                                                         )
                                                     }
@@ -493,7 +499,7 @@ fun SideNavigationMenu() {
                         }
                         Spacer(modifier = Modifier.height(20.dp))
                         LazyRow(content = {
-                            for(i in homeFilterList){
+                            for (i in homeFilterList) {
                                 item {
                                     Card(
                                         shape = RoundedCornerShape(12.dp),
@@ -502,18 +508,27 @@ fun SideNavigationMenu() {
                                         modifier = Modifier
                                             .padding(start = 20.dp, end = 2.dp)
                                             .height(68.dp)
-                                            .width(screenWidth.div(3).dp)) {
+                                            .width(screenWidth.div(3).dp)
+                                    ) {
 
-                                        Row(modifier = Modifier
-                                            .padding(all = 16.dp)
-                                            .fillMaxSize(), verticalAlignment = Alignment.CenterVertically) {
+                                        Row(
+                                            modifier = Modifier
+                                                .padding(all = 16.dp)
+                                                .fillMaxSize(),
+                                            verticalAlignment = Alignment.CenterVertically
+                                        ) {
                                             Icon(
                                                 imageVector = ImageVector.vectorResource(i.icon),
                                                 contentDescription = "icon",
                                                 Modifier.size(28.dp)
                                             )
                                             Spacer(modifier = Modifier.width(12.dp))
-                                            Text(text = i.title, fontSize = 12.sp, lineHeight = 18.sp, color = Color.DarkGray)
+                                            Text(
+                                                text = i.title,
+                                                fontSize = 12.sp,
+                                                lineHeight = 18.sp,
+                                                color = Color.DarkGray
+                                            )
                                         }
                                     }
                                 }
