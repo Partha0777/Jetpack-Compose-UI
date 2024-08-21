@@ -540,8 +540,6 @@ fun SideNavigationMenu() {
                     }
 
                 }
-
-
             }
         })
 }
