@@ -113,8 +113,6 @@ fun SideNavigationMenu() {
     var maxHeight = remember {
         mutableStateOf(0)
     }
-
-
     val topBarImageList = remember {
         mutableStateListOf(
             TopBar(R.drawable.veg_icon, Color.DarkGray),
