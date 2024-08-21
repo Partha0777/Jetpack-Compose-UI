@@ -549,30 +549,6 @@ data class TopBar(
     var tintColor: Color
 )
 
-@Composable
-fun BottomShadow(alpha: Float = 0.1f, height: Dp = 5.dp) {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(100.dp)
-            .clip(
-                RoundedCornerShape(
-                    bottomEnd = 20.dp,
-                    bottomStart = 20.dp
-                )
-            ) // Apply corner radius here
-            .background(
-                brush = Brush.verticalGradient(
-                    colors = listOf(
-                        Color.Black.copy(alpha = alpha),
-                        Color.Transparent,
-                    )
-                )
-            ) // Background color to visualize the Box
-    )
-
-}
-
 @Preview
 @Composable
 fun GreetingPreview() {
