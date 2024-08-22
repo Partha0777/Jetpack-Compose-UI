@@ -503,7 +503,7 @@ fun SideNavigationMenu() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
- fun homeFilter(){
+fun homeFilter() {
     val screenWidth = LocalConfiguration.current.screenWidthDp
     val homeFilterList = listOf(
         HomeFilter(R.drawable.delivery_in_15_min_icon, "Delivered By 15 Min"),
@@ -549,6 +549,7 @@ fun SideNavigationMenu() {
     })
 
 }
+
 data class TopBar(
     var image: Int,
     var tintColor: Color
