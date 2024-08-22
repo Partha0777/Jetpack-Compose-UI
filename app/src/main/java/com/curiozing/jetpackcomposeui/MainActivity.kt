@@ -101,11 +101,7 @@ fun SideNavigationMenu() {
     val localConfiguration = LocalConfiguration
     val screenWidth = localConfiguration.current.screenWidthDp
     val screenHeight = localConfiguration.current.screenHeightDp
-    val homeFilterList = listOf(
-        HomeFilter(R.drawable.delivery_in_15_min_icon, "Delivered By 15 Min"),
-        HomeFilter(R.drawable.delivery_icon, "Free Delivery"),
-        HomeFilter(R.drawable.offer_icon, "Special Offers")
-    )
+
     val selectedTopBarIndex = remember {
         mutableIntStateOf(0)
     }
@@ -496,44 +492,7 @@ fun SideNavigationMenu() {
                             }
                         }
                         Spacer(modifier = Modifier.height(20.dp))
-                        LazyRow(content = {
-                            for (i in homeFilterList) {
-                                item {
-                                    Card(
-
-                                        shape = RoundedCornerShape(12.dp),
-                                        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
-                                        colors = CardDefaults.cardColors(containerColor = Color.White),
-                                        modifier = Modifier
-                                            .padding(start = 20.dp, end = 2.dp)
-                                            .height(68.dp)
-                                            .width(screenWidth.div(3).dp),
-                                        onClick = {}
-                                    ) {
-
-                                        Row(
-                                            modifier = Modifier
-                                                .padding(all = 16.dp)
-                                                .fillMaxSize(),
-                                            verticalAlignment = Alignment.CenterVertically
-                                        ) {
-                                            Icon(
-                                                imageVector = ImageVector.vectorResource(i.icon),
-                                                contentDescription = "icon",
-                                                Modifier.size(28.dp)
-                                            )
-                                            Spacer(modifier = Modifier.width(12.dp))
-                                            Text(
-                                                text = i.title,
-                                                fontSize = 12.sp,
-                                                lineHeight = 18.sp,
-                                                color = Color.DarkGray
-                                            )
-                                        }
-                                    }
-                                }
-                            }
-                        })
+                        homeFilter()
                     }
 
                 }
@@ -541,6 +500,55 @@ fun SideNavigationMenu() {
         })
 }
 
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+ fun homeFilter(){
+    val screenWidth = LocalConfiguration.current.screenWidthDp
+    val homeFilterList = listOf(
+        HomeFilter(R.drawable.delivery_in_15_min_icon, "Delivered By 15 Min"),
+        HomeFilter(R.drawable.delivery_icon, "Free Delivery"),
+        HomeFilter(R.drawable.offer_icon, "Special Offers")
+    )
+    LazyRow(content = {
+        for (i in homeFilterList) {
+            item {
+                Card(
+                    shape = RoundedCornerShape(12.dp),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+                    colors = CardDefaults.cardColors(containerColor = Color.White),
+                    modifier = Modifier
+                        .padding(start = 20.dp, end = 2.dp)
+                        .height(68.dp)
+                        .width(screenWidth.div(3).dp),
+                    onClick = {}
+                ) {
+
+                    Row(
+                        modifier = Modifier
+                            .padding(all = 16.dp)
+                            .fillMaxSize(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            imageVector = ImageVector.vectorResource(i.icon),
+                            contentDescription = "icon",
+                            Modifier.size(28.dp)
+                        )
+                        Spacer(modifier = Modifier.width(12.dp))
+                        Text(
+                            text = i.title,
+                            fontSize = 12.sp,
+                            lineHeight = 18.sp,
+                            color = Color.DarkGray
+                        )
+                    }
+                }
+            }
+        }
+    })
+
+}
 data class TopBar(
     var image: Int,
     var tintColor: Color
