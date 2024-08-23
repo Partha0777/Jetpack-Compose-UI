@@ -420,7 +420,7 @@ fun SideNavigationMenu() {
 }
 
 @Composable
-fun TabBarContent(){
+fun TabBarContent() {
     val screenHeight = LocalConfiguration.current.screenHeightDp
 
     val selectedTopBarIndex = remember {
@@ -481,7 +481,7 @@ fun TabBarContent(){
 
 
 @Composable
-fun DeliveryLocationUI(){
+fun DeliveryLocationUI() {
     Text(
         text = "Deliver To",
         fontWeight = FontWeight.Bold,
