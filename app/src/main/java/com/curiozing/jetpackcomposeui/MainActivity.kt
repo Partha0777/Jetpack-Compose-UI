@@ -102,18 +102,7 @@ fun SideNavigationMenu() {
     val screenWidth = localConfiguration.current.screenWidthDp
     val screenHeight = localConfiguration.current.screenHeightDp
 
-    val selectedTopBarIndex = remember {
-        mutableIntStateOf(0)
-    }
 
-    val topBarImageList = remember {
-        mutableStateListOf(
-            TopBar(R.drawable.veg_icon, Color.DarkGray),
-            TopBar(R.drawable.sea_food_icon, Color.DarkGray),
-            TopBar(R.drawable.western_food_icon, Color.DarkGray),
-            TopBar(R.drawable.noodles_icon, Color.DarkGray)
-        )
-    }
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
@@ -413,46 +402,7 @@ fun SideNavigationMenu() {
                                                     )
                                                 )
                                         )
-                                        Card(
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .height(screenHeight.div(10).dp),
-                                            shape = RoundedCornerShape(
-                                                topStart = 0.dp,
-                                                topEnd = 0.dp,
-                                                bottomEnd = 50.dp,
-                                                bottomStart = 50.dp
-                                            ),
-                                            colors = CardDefaults.cardColors(containerColor = Color.White),
-                                            elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
-                                        ) {
-                                            Row(
-                                                modifier = Modifier
-                                                    .fillMaxWidth()
-                                                    .padding(12.dp),
-                                                horizontalArrangement = Arrangement.SpaceEvenly
-                                            ) {
-                                                topBarImageList.forEachIndexed { index, topbarItem ->
-                                                    Box(modifier = Modifier
-                                                        .clip(shape = CircleShape)
-                                                        .clickable {
-                                                            selectedTopBarIndex.intValue = index
-                                                        }) {
-                                                        Image(
-                                                            colorFilter = ColorFilter.tint(if (selectedTopBarIndex.intValue == index) Color.DarkGray else Color.Gray),
-                                                            modifier = Modifier
-                                                                .size(50.dp)
-                                                                .padding(all = 8.dp),
-                                                            imageVector = ImageVector.vectorResource(
-                                                                id = topbarItem.image
-                                                            ),
-                                                            contentDescription = "config"
-                                                        )
-                                                    }
-
-                                                }
-                                            }
-                                        }
+                                        TabBarContent()
                                     }
                                     Spacer(Modifier.height(20.dp))
                                     DeliveryLocationUI()
@@ -467,6 +417,66 @@ fun SideNavigationMenu() {
                 }
             }
         })
+}
+
+@Composable
+fun TabBarContent(){
+    val screenHeight = LocalConfiguration.current.screenHeightDp
+
+    val selectedTopBarIndex = remember {
+        mutableIntStateOf(0)
+    }
+
+    val topBarImageList = remember {
+        mutableStateListOf(
+            TopBar(R.drawable.veg_icon, Color.DarkGray),
+            TopBar(R.drawable.sea_food_icon, Color.DarkGray),
+            TopBar(R.drawable.western_food_icon, Color.DarkGray),
+            TopBar(R.drawable.noodles_icon, Color.DarkGray)
+        )
+    }
+
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(screenHeight.div(10).dp),
+        shape = RoundedCornerShape(
+            topStart = 0.dp,
+            topEnd = 0.dp,
+            bottomEnd = 50.dp,
+            bottomStart = 50.dp
+        ),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            topBarImageList.forEachIndexed { index, topbarItem ->
+                Box(modifier = Modifier
+                    .clip(shape = CircleShape)
+                    .clickable {
+                        selectedTopBarIndex.intValue = index
+                    }) {
+                    Image(
+                        colorFilter = ColorFilter.tint(if (selectedTopBarIndex.intValue == index) Color.DarkGray else Color.Gray),
+                        modifier = Modifier
+                            .size(50.dp)
+                            .padding(all = 8.dp),
+                        imageVector = ImageVector.vectorResource(
+                            id = topbarItem.image
+                        ),
+                        contentDescription = "config"
+                    )
+                }
+
+            }
+        }
+    }
+
 }
 
 
