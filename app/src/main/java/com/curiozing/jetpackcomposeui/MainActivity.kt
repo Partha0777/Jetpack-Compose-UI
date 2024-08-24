@@ -317,106 +317,120 @@ fun SideNavigationMenu() {
             }
 
         }, content = {
-            Column {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        IconButton(
-                            onClick = {
-                                scope.launch {
-                                    drawerState.open()
-                                }
-                            }) {
-                            Icon(imageVector = Icons.Default.Menu, contentDescription = "")
-                        }
-                        Text(text = "FOODIES", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-                    }
-                    IconButton(onClick = { /*TODO*/ }) {
-                        Box(
-                            Modifier
-                                .clip(shape = CircleShape)
-                                .background(Color(0xFFffde01))
-                                .padding(all = 8.dp)
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Search,
-                                contentDescription = "search",
-                                Modifier.size(16.dp)
-                            )
-                        }
-                    }
-
-                }
-
-                Box {
-
-                    Column {
-                        Box {
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(
-                                        screenHeight
-                                            .div(3.8)
-                                            .plus(2).dp
-                                    )
-                                    .background(
-                                        color = Color.Gray.copy(alpha = 0.14f), // Adjust color and alpha for desired shadow
-                                        shape = RoundedCornerShape(
-                                            bottomStart = 50.dp,
-                                            bottomEnd = 50.dp
-                                        )
-                                    )
-                            )
-                            Card(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(screenHeight.div(3.8).dp),
-                                shape = RoundedCornerShape(
-                                    topStart = 0.dp,
-                                    topEnd = 0.dp,
-                                    bottomEnd = 50.dp,
-                                    bottomStart = 50.dp
-                                ),
-                                colors = CardDefaults.cardColors(containerColor = Color(0xFFffde01)),
-                                elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
-                            ) {
-                                Column {
-                                    Box {
-                                        Box(
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .height(
-                                                    screenHeight
-                                                        .div(10)
-                                                        .plus(2).dp
-                                                )
-                                                .background(
-                                                    color = Color.Gray.copy(alpha = 0.14f), // Adjust color and alpha for desired shadow
-                                                    shape = RoundedCornerShape(
-                                                        bottomStart = 50.dp,
-                                                        bottomEnd = 50.dp
-                                                    )
-                                                )
-                                        )
-                                        TabBarContent()
-                                    }
-                                    Spacer(Modifier.height(20.dp))
-                                    DeliveryLocationUI()
-                                }
-
-                            }
-                        }
-                        Spacer(modifier = Modifier.height(20.dp))
-                        HomeFilter()
-                    }
-
+            HomeContent {
+                scope.launch {
+                    drawerState.open()
                 }
             }
         })
+}
+
+@Composable
+fun HomeContent(func: () -> Unit){
+
+    val scope = rememberCoroutineScope()
+    val localConfiguration = LocalConfiguration
+    val screenWidth = localConfiguration.current.screenWidthDp
+    val screenHeight = localConfiguration.current.screenHeightDp
+
+    Column {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                IconButton(
+                    onClick = {
+                        func.invoke()
+                    }) {
+                    Icon(imageVector = Icons.Default.Menu, contentDescription = "")
+                }
+                Text(text = "FOODIES", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+            }
+            IconButton(onClick = { /*TODO*/ }) {
+                Box(
+                    Modifier
+                        .clip(shape = CircleShape)
+                        .background(Color(0xFFffde01))
+                        .padding(all = 8.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = "search",
+                        Modifier.size(16.dp)
+                    )
+                }
+            }
+
+        }
+
+        Box {
+
+            Column {
+                Box {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(
+                                screenHeight
+                                    .div(3.8)
+                                    .plus(2).dp
+                            )
+                            .background(
+                                color = Color.Gray.copy(alpha = 0.14f), // Adjust color and alpha for desired shadow
+                                shape = RoundedCornerShape(
+                                    bottomStart = 50.dp,
+                                    bottomEnd = 50.dp
+                                )
+                            )
+                    )
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(screenHeight.div(3.8).dp),
+                        shape = RoundedCornerShape(
+                            topStart = 0.dp,
+                            topEnd = 0.dp,
+                            bottomEnd = 50.dp,
+                            bottomStart = 50.dp
+                        ),
+                        colors = CardDefaults.cardColors(containerColor = Color(0xFFffde01)),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+                    ) {
+                        Column {
+                            Box {
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(
+                                            screenHeight
+                                                .div(10)
+                                                .plus(2).dp
+                                        )
+                                        .background(
+                                            color = Color.Gray.copy(alpha = 0.14f), // Adjust color and alpha for desired shadow
+                                            shape = RoundedCornerShape(
+                                                bottomStart = 50.dp,
+                                                bottomEnd = 50.dp
+                                            )
+                                        )
+                                )
+                                TabBarContent()
+                            }
+                            Spacer(Modifier.height(20.dp))
+                            DeliveryLocationUI()
+                        }
+
+                    }
+                }
+                Spacer(modifier = Modifier.height(20.dp))
+                HomeFilter()
+            }
+
+        }
+    }
+
 }
 
 @Composable
