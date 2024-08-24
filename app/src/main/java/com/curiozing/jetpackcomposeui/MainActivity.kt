@@ -326,7 +326,7 @@ fun SideNavigationMenu() {
 }
 
 @Composable
-fun HomeContent(func: () -> Unit){
+fun HomeContent(func: () -> Unit) {
 
     val scope = rememberCoroutineScope()
     val localConfiguration = LocalConfiguration
