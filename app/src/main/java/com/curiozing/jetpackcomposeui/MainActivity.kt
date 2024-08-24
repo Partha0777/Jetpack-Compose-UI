@@ -327,10 +327,7 @@ fun SideNavigationMenu() {
 
 @Composable
 fun HomeContent(func: () -> Unit) {
-
-    val scope = rememberCoroutineScope()
     val localConfiguration = LocalConfiguration
-    val screenWidth = localConfiguration.current.screenWidthDp
     val screenHeight = localConfiguration.current.screenHeightDp
 
     Column {
