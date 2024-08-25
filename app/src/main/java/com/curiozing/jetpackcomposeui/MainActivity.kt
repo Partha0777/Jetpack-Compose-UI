@@ -1,6 +1,7 @@
 package com.curiozing.jetpackcomposeui
 
 import android.os.Bundle
+import android.widget.Toolbar
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -331,37 +332,9 @@ fun HomeContent(func: () -> Unit) {
     val screenHeight = localConfiguration.current.screenHeightDp
 
     Column {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                IconButton(
-                    onClick = {
-                        func.invoke()
-                    }) {
-                    Icon(imageVector = Icons.Default.Menu, contentDescription = "")
-                }
-                Text(text = "FOODIES", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-            }
-            IconButton(onClick = { /*TODO*/ }) {
-                Box(
-                    Modifier
-                        .clip(shape = CircleShape)
-                        .background(Color(0xFFffde01))
-                        .padding(all = 8.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Search,
-                        contentDescription = "search",
-                        Modifier.size(16.dp)
-                    )
-                }
-            }
-
+        Toolbar{
+            func.invoke()
         }
-
         Box {
 
             Column {
@@ -428,6 +401,41 @@ fun HomeContent(func: () -> Unit) {
         }
     }
 
+}
+
+@Composable
+fun Toolbar(func: () -> Unit){
+
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            IconButton(
+                onClick = {
+                    func.invoke()
+                }) {
+                Icon(imageVector = Icons.Default.Menu, contentDescription = "")
+            }
+            Text(text = "FOODIES", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+        }
+        IconButton(onClick = { /*TODO*/ }) {
+            Box(
+                Modifier
+                    .clip(shape = CircleShape)
+                    .background(Color(0xFFffde01))
+                    .padding(all = 8.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = "search",
+                    Modifier.size(16.dp)
+                )
+            }
+        }
+
+    }
 }
 
 @Composable
