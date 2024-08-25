@@ -332,7 +332,7 @@ fun HomeContent(func: () -> Unit) {
     val screenHeight = localConfiguration.current.screenHeightDp
 
     Column {
-        Toolbar{
+        Toolbar {
             func.invoke()
         }
         Box {
@@ -404,7 +404,7 @@ fun HomeContent(func: () -> Unit) {
 }
 
 @Composable
-fun Toolbar(func: () -> Unit){
+fun Toolbar(func: () -> Unit) {
 
     Row(
         modifier = Modifier.fillMaxWidth(),
