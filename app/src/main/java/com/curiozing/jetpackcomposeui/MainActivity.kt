@@ -333,7 +333,7 @@ fun HomeContent(func: () -> Unit) {
 
     Column {
         Toolbar {
-            func.invoke()
+            func()
         }
         Box {
 
