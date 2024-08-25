@@ -336,7 +336,6 @@ fun HomeContent(func: () -> Unit) {
             func()
         }
         Box {
-
             Column {
                 Box {
                     Box(
