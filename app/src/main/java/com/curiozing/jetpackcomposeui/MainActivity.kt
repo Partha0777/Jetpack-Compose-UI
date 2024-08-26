@@ -94,7 +94,6 @@ data class HomeFilter(
     val title: String
 )
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SideNavigationMenu() {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
