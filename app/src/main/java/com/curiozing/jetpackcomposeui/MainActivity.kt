@@ -115,7 +115,7 @@ fun SideNavigationMenu() {
 
 
 @Composable
-fun SideNavContent(){
+fun SideNavContent() {
     val localConfiguration = LocalConfiguration
     val screenWidth = localConfiguration.current.screenWidthDp
     val screenHeight = localConfiguration.current.screenHeightDp
