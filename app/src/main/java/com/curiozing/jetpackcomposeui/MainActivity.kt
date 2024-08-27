@@ -403,11 +403,13 @@ fun HomeContent(func: () -> Unit) {
                 Spacer(modifier = Modifier.height(20.dp))
                 HomeFilter()
                 Spacer(modifier = Modifier.height(20.dp))
-                Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .fillMaxWidth()) {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .fillMaxWidth()
+                ) {
                     Row {
-                        Icon(imageVector = Icons.Default.Refresh,"", Modifier.size(20.dp))
+                        Icon(imageVector = Icons.Default.Refresh, "", Modifier.size(20.dp))
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(text = "Recent Orders", fontSize = 14.sp)
                     }
