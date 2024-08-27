@@ -407,11 +407,11 @@ fun HomeContent(func: () -> Unit) {
                     .padding(horizontal = 16.dp)
                     .fillMaxWidth()) {
                     Row {
-                        Icon(imageVector = Icons.Default.Refresh,"")
+                        Icon(imageVector = Icons.Default.Refresh,"", Modifier.size(20.dp))
                         Spacer(modifier = Modifier.width(4.dp))
-                        Text(text = "Recent Orders")
+                        Text(text = "Recent Orders", fontSize = 14.sp)
                     }
-                    Text(text = "View All")
+                    Text(text = "View All", fontSize = 14.sp)
                 }
 
             }
