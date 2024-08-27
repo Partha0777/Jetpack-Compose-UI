@@ -1,5 +1,6 @@
 package com.curiozing.jetpackcomposeui
 
+import android.graphics.drawable.VectorDrawable
 import android.os.Bundle
 import android.widget.Toolbar
 import androidx.activity.ComponentActivity
@@ -28,6 +29,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Card
@@ -400,6 +402,18 @@ fun HomeContent(func: () -> Unit) {
                 }
                 Spacer(modifier = Modifier.height(20.dp))
                 HomeFilter()
+                Spacer(modifier = Modifier.height(20.dp))
+                Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .fillMaxWidth()) {
+                    Row {
+                        Icon(imageVector = Icons.Default.Refresh,"")
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text(text = "Recent Orders")
+                    }
+                    Text(text = "View All")
+                }
+
             }
 
         }
