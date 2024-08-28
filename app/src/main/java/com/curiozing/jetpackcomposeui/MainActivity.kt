@@ -424,6 +424,8 @@ fun HomeHeaderContent(){
 @Composable
 fun RecentOrder(){
 
+    var screenWidth = LocalConfiguration.current.screenWidthDp
+
     var recentOrders = listOf(Orders(
         orderId = 1,
         products = "Chicken Pizza x 2",
@@ -468,7 +470,8 @@ fun RecentOrder(){
         LazyRow(content = {
             recentOrders.forEachIndexed { index, orders ->
                item {
-
+                   Card(modifier = Modifier.width(screenWidth.minus(40).dp)) {
+                   }
                }
             }
         })
