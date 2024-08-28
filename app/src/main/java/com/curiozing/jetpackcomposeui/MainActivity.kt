@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -422,18 +423,31 @@ fun HomeHeaderContent(){
 
 @Composable
 fun RecentOrder(){
-    Row(
-        horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .fillMaxWidth()
-    ) {
-        Row {
-            Icon(imageVector = Icons.Default.Refresh, "", Modifier.size(20.dp))
-            Spacer(modifier = Modifier.width(4.dp))
-            Text(text = "Recent Orders", fontSize = 14.sp)
+
+    Column {
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .fillMaxWidth()
+        ) {
+            Row {
+                Icon(imageVector = Icons.Default.Refresh, "", Modifier.size(20.dp))
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(text = "Recent Orders", fontSize = 14.sp)
+            }
+            Text(text = "View All", fontSize = 14.sp)
         }
-        Text(text = "View All", fontSize = 14.sp)
+        Spacer(modifier = Modifier.height(20.dp))
+        LazyRow(content = {
+            repeat(3){
+
+            }
+            item {
+
+            }
+        })
     }
+
 }
 
 @Composable
@@ -577,6 +591,8 @@ fun HomeFilter() {
         HomeFilter(R.drawable.delivery_icon, "Free Delivery"),
         HomeFilter(R.drawable.offer_icon, "Special Offers")
     )
+
+
     LazyRow(content = {
         for (i in homeFilterList) {
             item {
@@ -620,6 +636,15 @@ fun HomeFilter() {
 data class TopBar(
     var image: Int,
     var tintColor: Color
+)
+
+data class Orders(
+    val orderId: Long,
+    val products: String,
+    val totalPrice: Double,
+    val outLetName: String,
+    val rating:Double,
+    val image:String
 )
 
 @Preview
