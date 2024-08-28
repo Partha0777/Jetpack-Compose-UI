@@ -335,8 +335,7 @@ fun SideNavContent() {
 
 @Composable
 fun HomeContent(func: () -> Unit) {
-    val localConfiguration = LocalConfiguration
-    val screenHeight = localConfiguration.current.screenHeightDp
+
 
     Column {
         Toolbar {
@@ -344,13 +343,61 @@ fun HomeContent(func: () -> Unit) {
         }
         Box {
             Column {
+                HomeHeaderContent()
+                Spacer(modifier = Modifier.height(20.dp))
+                HomeFilter()
+                Spacer(modifier = Modifier.height(20.dp))
+                RecentOrder()
+            }
+
+        }
+    }
+
+}
+
+
+@Composable
+fun HomeHeaderContent(){
+    val localConfiguration = LocalConfiguration
+    val screenHeight = localConfiguration.current.screenHeightDp
+    Box {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(
+                    screenHeight
+                        .div(3.8)
+                        .plus(2).dp
+                )
+                .background(
+                    color = Color.Gray.copy(alpha = 0.14f), // Adjust color and alpha for desired shadow
+                    shape = RoundedCornerShape(
+                        bottomStart = 50.dp,
+                        bottomEnd = 50.dp
+                    )
+                )
+        )
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(screenHeight.div(3.8).dp),
+            shape = RoundedCornerShape(
+                topStart = 0.dp,
+                topEnd = 0.dp,
+                bottomEnd = 50.dp,
+                bottomStart = 50.dp
+            ),
+            colors = CardDefaults.cardColors(containerColor = Color(0xFFffde01)),
+            elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+        ) {
+            Column {
                 Box {
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(
                                 screenHeight
-                                    .div(3.8)
+                                    .div(10)
                                     .plus(2).dp
                             )
                             .background(
@@ -361,66 +408,32 @@ fun HomeContent(func: () -> Unit) {
                                 )
                             )
                     )
-                    Card(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(screenHeight.div(3.8).dp),
-                        shape = RoundedCornerShape(
-                            topStart = 0.dp,
-                            topEnd = 0.dp,
-                            bottomEnd = 50.dp,
-                            bottomStart = 50.dp
-                        ),
-                        colors = CardDefaults.cardColors(containerColor = Color(0xFFffde01)),
-                        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
-                    ) {
-                        Column {
-                            Box {
-                                Box(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .height(
-                                            screenHeight
-                                                .div(10)
-                                                .plus(2).dp
-                                        )
-                                        .background(
-                                            color = Color.Gray.copy(alpha = 0.14f), // Adjust color and alpha for desired shadow
-                                            shape = RoundedCornerShape(
-                                                bottomStart = 50.dp,
-                                                bottomEnd = 50.dp
-                                            )
-                                        )
-                                )
-                                TabBarContent()
-                            }
-                            Spacer(Modifier.height(20.dp))
-                            DeliveryLocationUI()
-                        }
-
-                    }
+                    TabBarContent()
                 }
-                Spacer(modifier = Modifier.height(20.dp))
-                HomeFilter()
-                Spacer(modifier = Modifier.height(20.dp))
-                Row(
-                    horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier
-                        .padding(horizontal = 16.dp)
-                        .fillMaxWidth()
-                ) {
-                    Row {
-                        Icon(imageVector = Icons.Default.Refresh, "", Modifier.size(20.dp))
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text(text = "Recent Orders", fontSize = 14.sp)
-                    }
-                    Text(text = "View All", fontSize = 14.sp)
-                }
-
+                Spacer(Modifier.height(20.dp))
+                DeliveryLocationUI()
             }
 
         }
     }
 
+}
+
+
+@Composable
+fun RecentOrder(){
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .fillMaxWidth()
+    ) {
+        Row {
+            Icon(imageVector = Icons.Default.Refresh, "", Modifier.size(20.dp))
+            Spacer(modifier = Modifier.width(4.dp))
+            Text(text = "Recent Orders", fontSize = 14.sp)
+        }
+        Text(text = "View All", fontSize = 14.sp)
+    }
 }
 
 @Composable
