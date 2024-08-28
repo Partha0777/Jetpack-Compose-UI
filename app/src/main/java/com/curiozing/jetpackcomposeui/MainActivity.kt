@@ -58,6 +58,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
@@ -67,6 +68,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberAsyncImagePainter
+import coil.compose.rememberImagePainter
 import com.curiozing.jetpackcomposeui.ui.theme.JetpackComposeUITheme
 import kotlinx.coroutines.launch
 
@@ -470,7 +473,12 @@ fun RecentOrder(){
         LazyRow(content = {
             recentOrders.forEachIndexed { index, orders ->
                item {
-                   Card(modifier = Modifier.width(screenWidth.minus(40).dp)) {
+                   Card(modifier = Modifier
+                       .width(screenWidth.minus(40).dp)
+                       .padding(start = 20.dp)) {
+                       Column(modifier = Modifier.height(150.dp)) {
+                           Image(painter = rememberAsyncImagePainter(orders.image),"orderImage",modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.FillWidth)
+                       }
                    }
                }
             }
