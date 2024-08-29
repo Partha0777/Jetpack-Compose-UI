@@ -427,7 +427,6 @@ fun HomeHeaderContent(){
 @Composable
 fun RecentOrder(){
 
-    var screenWidth = LocalConfiguration.current.screenWidthDp
 
     var recentOrders = listOf(Orders(
         orderId = 1,
@@ -472,32 +471,40 @@ fun RecentOrder(){
         Spacer(modifier = Modifier.height(20.dp))
         LazyRow(content = {
             recentOrders.forEachIndexed { index, orders ->
-               item {
-                   Card(
-                       colors = CardDefaults.cardColors(
-                           containerColor = Color.White
-                       ),
-                       elevation = CardDefaults.cardElevation(
-                           2.dp
-                       ),
-                       modifier = Modifier
-                           .width(screenWidth.minus(40).dp)
-                           .padding(start = 20.dp)) {
-                       Column(modifier = Modifier.height(120.dp)) {
-                           Image(painter = rememberAsyncImagePainter(orders.image),"orderImage",modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.FillWidth)
-                       }
-                       Column(modifier = Modifier.padding(horizontal = 12.dp)) {
-                           Spacer(modifier = Modifier.height(12.dp))
-                           Text(text = orders.products,fontSize = 14.sp)
-                           Spacer(modifier = Modifier.height(4.dp))
-                           Text(text = "$${orders.totalPrice}", fontSize = 14.sp, fontWeight = FontWeight.Bold)
-                           Spacer(modifier = Modifier.height(12.dp))
-                       }
-
-                   }
-               }
+                item {
+                    RecentOrderItem(orders)
+                }
             }
         })
+    }
+
+}
+
+@Composable
+fun RecentOrderItem(orders: Orders){
+    var screenWidth = LocalConfiguration.current.screenWidthDp
+
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        ),
+        elevation = CardDefaults.cardElevation(
+            2.dp
+        ),
+        modifier = Modifier
+            .width(screenWidth.minus(40).dp)
+            .padding(start = 20.dp)) {
+        Column(modifier = Modifier.height(120.dp)) {
+            Image(painter = rememberAsyncImagePainter(orders.image),"orderImage",modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.FillWidth)
+        }
+        Column(modifier = Modifier.padding(horizontal = 12.dp)) {
+            Spacer(modifier = Modifier.height(12.dp))
+            Text(text = orders.products,fontSize = 14.sp)
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(text = "$${orders.totalPrice}", fontSize = 14.sp, fontWeight = FontWeight.Bold)
+            Spacer(modifier = Modifier.height(12.dp))
+        }
+
     }
 
 }
