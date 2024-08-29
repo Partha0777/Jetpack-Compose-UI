@@ -482,7 +482,7 @@ fun RecentOrder(){
 
 @Composable
 fun RecentOrderItem(orders: Orders){
-    var screenWidth = LocalConfiguration.current.screenWidthDp
+    val screenWidth = LocalConfiguration.current.screenWidthDp
 
     Card(
         colors = CardDefaults.cardColors(
