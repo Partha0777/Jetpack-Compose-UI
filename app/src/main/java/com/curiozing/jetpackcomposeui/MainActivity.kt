@@ -361,7 +361,7 @@ fun HomeContent(func: () -> Unit) {
 
 
 @Composable
-fun HomeHeaderContent(){
+fun HomeHeaderContent() {
     val localConfiguration = LocalConfiguration
     val screenHeight = localConfiguration.current.screenHeightDp
     Box {
@@ -425,17 +425,18 @@ fun HomeHeaderContent(){
 
 
 @Composable
-fun RecentOrder(){
+fun RecentOrder() {
 
 
-    var recentOrders = listOf(Orders(
-        orderId = 1,
-        products = "Chicken Pizza x 2",
-        totalPrice = 6.2,
-        outLetName = "Pizza Hut",
-        rating = 4.3,
-        image = "https://www.sargento.com/assets/Uploads/Recipe/Image/TuscanChikPizza_010__FillWzExNzAsNTgzXQ.jpg",
-    ),
+    var recentOrders = listOf(
+        Orders(
+            orderId = 1,
+            products = "Chicken Pizza x 2",
+            totalPrice = 6.2,
+            outLetName = "Pizza Hut",
+            rating = 4.3,
+            image = "https://www.sargento.com/assets/Uploads/Recipe/Image/TuscanChikPizza_010__FillWzExNzAsNTgzXQ.jpg",
+        ),
         Orders(
             orderId = 2,
             products = "Paneer Kadai",
@@ -481,7 +482,7 @@ fun RecentOrder(){
 }
 
 @Composable
-fun RecentOrderItem(orders: Orders){
+fun RecentOrderItem(orders: Orders) {
     val screenWidth = LocalConfiguration.current.screenWidthDp
 
     Card(
@@ -493,13 +494,19 @@ fun RecentOrderItem(orders: Orders){
         ),
         modifier = Modifier
             .width(screenWidth.minus(40).dp)
-            .padding(start = 20.dp)) {
+            .padding(start = 20.dp)
+    ) {
         Column(modifier = Modifier.height(120.dp)) {
-            Image(painter = rememberAsyncImagePainter(orders.image),"orderImage",modifier = Modifier.fillMaxWidth(), contentScale = ContentScale.FillWidth)
+            Image(
+                painter = rememberAsyncImagePainter(orders.image),
+                "orderImage",
+                modifier = Modifier.fillMaxWidth(),
+                contentScale = ContentScale.FillWidth
+            )
         }
         Column(modifier = Modifier.padding(horizontal = 12.dp)) {
             Spacer(modifier = Modifier.height(12.dp))
-            Text(text = orders.products,fontSize = 14.sp)
+            Text(text = orders.products, fontSize = 14.sp)
             Spacer(modifier = Modifier.height(4.dp))
             Text(text = "$${orders.totalPrice}", fontSize = 14.sp, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(12.dp))
@@ -701,8 +708,8 @@ data class Orders(
     val products: String,
     val totalPrice: Double,
     val outLetName: String,
-    val rating:Double,
-    val image:String
+    val rating: Double,
+    val image: String
 )
 
 @Preview
