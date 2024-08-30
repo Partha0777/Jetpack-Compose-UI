@@ -26,6 +26,7 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Menu
@@ -505,12 +506,14 @@ fun RecentOrderItem(orders: Orders) {
                 )
                 Box(
                     Modifier
-                        .padding(horizontal = 20.dp, vertical = 20.dp)
+                        .padding(horizontal = 16.dp, vertical = 16.dp)
                         .clip(shape = RoundedCornerShape(12.dp))
                         .background(color = Color.White)
-                        .padding(horizontal = 12.dp, vertical = 2.dp)) {
-                    Row {
-                        Text(text = orders.rating.toString())
+                        .padding(horizontal = 8.dp, vertical = 2.dp)) {
+                    Row(horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+                        Text(text = orders.rating.toString(), fontSize = 14.sp)
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Icon(imageVector = Icons.Default.Favorite, contentDescription = "", Modifier.size(14.dp))
                     }
                 }
 
