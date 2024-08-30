@@ -340,7 +340,6 @@ fun SideNavContent() {
 @Composable
 fun HomeContent(func: () -> Unit) {
 
-
     Column {
         Toolbar {
             func()
@@ -497,12 +496,26 @@ fun RecentOrderItem(orders: Orders) {
             .padding(start = 20.dp)
     ) {
         Column(modifier = Modifier.height(120.dp)) {
-            Image(
-                painter = rememberAsyncImagePainter(orders.image),
-                "orderImage",
-                modifier = Modifier.fillMaxWidth(),
-                contentScale = ContentScale.FillWidth
-            )
+            Box(contentAlignment = Alignment.TopEnd) {
+                Image(
+                    painter = rememberAsyncImagePainter(orders.image),
+                    "orderImage",
+                    modifier = Modifier.fillMaxWidth(),
+                    contentScale = ContentScale.FillWidth
+                )
+                Box(
+                    Modifier
+                        .padding(horizontal = 20.dp, vertical = 20.dp)
+                        .clip(shape = RoundedCornerShape(12.dp))
+                        .background(color = Color.White)
+                        .padding(horizontal = 12.dp, vertical = 2.dp)) {
+                    Row {
+                        Text(text = orders.rating.toString())
+                    }
+                }
+
+            }
+
         }
         Column(modifier = Modifier.padding(horizontal = 12.dp)) {
             Spacer(modifier = Modifier.height(12.dp))
