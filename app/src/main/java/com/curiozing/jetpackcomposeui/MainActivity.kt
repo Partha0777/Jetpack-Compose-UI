@@ -2,14 +2,11 @@ package com.curiozing.jetpackcomposeui
 
 import android.graphics.drawable.VectorDrawable
 import android.os.Bundle
-import android.widget.Toolbar
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.Indication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,7 +19,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -520,12 +516,19 @@ fun RecentOrderItem(orders: Orders) {
             }
 
         }
-        Column(modifier = Modifier.padding(horizontal = 12.dp)) {
-            Spacer(modifier = Modifier.height(12.dp))
-            Text(text = orders.products, fontSize = 14.sp)
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(text = "$${orders.totalPrice}", fontSize = 14.sp, fontWeight = FontWeight.Bold)
-            Spacer(modifier = Modifier.height(12.dp))
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Column(modifier = Modifier
+                .padding(horizontal = 12.dp)
+                .weight(8.0f)) {
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(text = orders.products, fontSize = 14.sp)
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(text = "$${orders.totalPrice}", fontSize = 14.sp, fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(12.dp))
+            }
+            Box(modifier = Modifier.weight(2.0f), contentAlignment = Alignment.Center) {
+                Icon(imageVector = Icons.Default.Refresh, contentDescription = "")
+            }
         }
 
     }
