@@ -348,11 +348,20 @@ fun HomeContent(func: () -> Unit) {
                 HomeFilter()
                 Spacer(modifier = Modifier.height(20.dp))
                 RecentOrder()
+                Spacer(modifier = Modifier.height(20.dp))
+                Recommended()
             }
 
         }
     }
 
+}
+
+@Composable
+fun Recommended() {
+    Column {
+        Text(text = "Recommended", fontSize = 20.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(horizontal = 20.dp))
+    }
 }
 
 
