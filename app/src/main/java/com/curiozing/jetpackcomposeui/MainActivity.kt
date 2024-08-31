@@ -359,8 +359,42 @@ fun HomeContent(func: () -> Unit) {
 
 @Composable
 fun Recommended() {
+
+    var recentOrders = listOf(
+        Orders(
+            orderId = 1,
+            products = "Chicken Pizza x 2",
+            totalPrice = 6.2,
+            outLetName = "Pizza Hut",
+            rating = 4.3,
+            image = "https://www.sargento.com/assets/Uploads/Recipe/Image/TuscanChikPizza_010__FillWzExNzAsNTgzXQ.jpg",
+        ),
+        Orders(
+            orderId = 2,
+            products = "Paneer Kadai",
+            totalPrice = 2.4,
+            outLetName = "Bind Resto",
+            rating = 4.5,
+            image = "https://dinedelicious.in/wp-content/uploads/2021/10/Kadai-Paneer-Recipe-6.jpg",
+        ),
+        Orders(
+            orderId = 3,
+            products = "Cold Brew Black",
+            totalPrice = 5.2,
+            outLetName = "Starbucks",
+            rating = 4.6,
+            image = "https://www.simplyrecipes.com/thmb/t9ZeQC3Nb2YUoQTnxUJrjJbnKEA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Cold-Brew-Coffee-LEAD-16-428691bcdd594281b2f5dc6dbc8235e4.jpg",
+        ),
+
+        )
     Column {
         Text(text = "Recommended", fontSize = 20.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(horizontal = 20.dp))
+        LazyRow(content = {
+            item {
+
+            }
+        })
+
     }
 }
 
@@ -739,6 +773,17 @@ data class Orders(
     val rating: Double,
     val image: String
 )
+
+data class Product(
+    val id: Long,
+    val name: String,
+    val retailPrice: Double,
+    val sellingPrice: Double,
+    val options: String,
+    val rating: Double,
+    val image: String
+)
+
 
 @Preview
 @Composable
