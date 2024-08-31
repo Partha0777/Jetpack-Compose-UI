@@ -388,7 +388,12 @@ fun Recommended() {
 
         )
     Column {
-        Text(text = "Recommended", fontSize = 20.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(horizontal = 20.dp))
+        Text(
+            text = "Recommended",
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(horizontal = 20.dp)
+        )
         LazyRow(content = {
             item {
 
@@ -548,11 +553,19 @@ fun RecentOrderItem(orders: Orders) {
                         .padding(horizontal = 16.dp, vertical = 16.dp)
                         .clip(shape = RoundedCornerShape(12.dp))
                         .background(color = Color.White)
-                        .padding(horizontal = 8.dp, vertical = 2.dp)) {
-                    Row(horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+                        .padding(horizontal = 8.dp, vertical = 2.dp)
+                ) {
+                    Row(
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                         Text(text = orders.rating.toString(), fontSize = 14.sp)
                         Spacer(modifier = Modifier.width(4.dp))
-                        Icon(imageVector = Icons.Default.Favorite, contentDescription = "", Modifier.size(14.dp))
+                        Icon(
+                            imageVector = Icons.Default.Favorite,
+                            contentDescription = "",
+                            Modifier.size(14.dp)
+                        )
                     }
                 }
 
@@ -560,9 +573,11 @@ fun RecentOrderItem(orders: Orders) {
 
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Column(modifier = Modifier
-                .padding(horizontal = 12.dp)
-                .weight(8.0f)) {
+            Column(
+                modifier = Modifier
+                    .padding(horizontal = 12.dp)
+                    .weight(8.0f)
+            ) {
                 Spacer(modifier = Modifier.height(12.dp))
                 Text(text = orders.products, fontSize = 14.sp)
                 Spacer(modifier = Modifier.height(4.dp))
