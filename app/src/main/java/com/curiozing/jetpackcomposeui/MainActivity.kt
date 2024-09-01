@@ -18,9 +18,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Menu
@@ -327,13 +330,13 @@ fun SideNavContent() {
 
 @Composable
 fun HomeContent(func: () -> Unit) {
-
+    val scrollState = rememberScrollState()
     Column {
         Toolbar {
             func()
         }
         Box {
-            Column {
+            Column(Modifier.verticalScroll(scrollState)) {
                 HomeHeaderContent()
                 Spacer(modifier = Modifier.height(20.dp))
                 HomeFilter()
@@ -374,14 +377,43 @@ fun RecommendedCategory() {
             modifier = Modifier.padding(horizontal = 20.dp)
         )
         LazyRow(content = {
-            recommendedCategory.take(4).forEach {
+            recommendedCategory.take(4).forEach { category ->
                 item {
-
+                    RecommendedCategoryItem(category)
                 }
             }
 
         })
 
+    }
+}
+
+@Composable
+fun RecommendedCategoryItem(category: Category) {
+    Column(Modifier.padding(start = 20.dp, top = 20.dp)) {
+        Image(painter = rememberAsyncImagePainter(category.image),
+            "",
+            contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .width(
+                            LocalConfiguration.current.screenWidthDp
+                                .div(2)
+                                .minus(20).dp
+                        )
+                        .height(100.dp)
+                        .clip(shape = RoundedCornerShape(20.dp))
+
+        )
+        Spacer(modifier = Modifier.height(50.dp))
+        Row(horizontalArrangement = Arrangement.SpaceBetween) {
+            Text(text = category.name, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            Box(modifier = Modifier
+                .padding(all = 4.dp)
+                .clip(shape = CircleShape)
+                .background(color = Color.Black)) {
+                Icon(imageVector = Icons.Default.ArrowForward, contentDescription = "", tint = Color.Black)
+            }
+        }
     }
 }
 
