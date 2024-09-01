@@ -344,6 +344,7 @@ fun HomeContent(func: () -> Unit) {
                 RecentOrder()
                 Spacer(modifier = Modifier.height(20.dp))
                 RecommendedCategory()
+                Spacer(modifier = Modifier.height(20.dp))
             }
 
         }
@@ -404,14 +405,16 @@ fun RecommendedCategoryItem(category: Category) {
                         .clip(shape = RoundedCornerShape(20.dp))
 
         )
-        Spacer(modifier = Modifier.height(50.dp))
-        Row(horizontalArrangement = Arrangement.SpaceBetween) {
+        Spacer(modifier = Modifier.height(12.dp))
+        Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
             Text(text = category.name, fontSize = 16.sp, fontWeight = FontWeight.Bold)
             Box(modifier = Modifier
-                .padding(all = 4.dp)
                 .clip(shape = CircleShape)
-                .background(color = Color.Black)) {
-                Icon(imageVector = Icons.Default.ArrowForward, contentDescription = "", tint = Color.Black)
+                .background(color = Color.Black)
+                .padding(all = 4.dp)
+            ) {
+                Icon(imageVector = Icons.Default.ArrowForward, contentDescription = "", tint = Color.White, modifier = Modifier.size(16.dp
+                ))
             }
         }
     }
