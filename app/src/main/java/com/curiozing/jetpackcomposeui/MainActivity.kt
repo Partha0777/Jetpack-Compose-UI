@@ -391,29 +391,29 @@ fun RecommendedCategory() {
 
 @Composable
 fun RecommendedCategoryItem(category: Category) {
-    Column(Modifier.padding(start = 20.dp, top = 20.dp)) {
+    Column(Modifier.padding(start = 20.dp, top = 20.dp).width(
+        LocalConfiguration.current.screenWidthDp
+            .div(2)
+            .minus(20).dp
+    )) {
         Image(painter = rememberAsyncImagePainter(category.image),
             "",
             contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .width(
-                            LocalConfiguration.current.screenWidthDp
-                                .div(2)
-                                .minus(20).dp
-                        )
+                        .fillMaxWidth()
                         .height(100.dp)
                         .clip(shape = RoundedCornerShape(20.dp))
 
         )
         Spacer(modifier = Modifier.height(12.dp))
-        Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
+        Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp),horizontalArrangement = Arrangement.SpaceBetween) {
             Text(text = category.name, fontSize = 16.sp, fontWeight = FontWeight.Bold)
             Box(modifier = Modifier
                 .clip(shape = CircleShape)
                 .background(color = Color.Black)
                 .padding(all = 4.dp)
             ) {
-                Icon(imageVector = Icons.Default.ArrowForward, contentDescription = "", tint = Color.White, modifier = Modifier.size(16.dp
+                Icon(imageVector = Icons.Default.ArrowForward, contentDescription = "", tint = Color(0xFFffde01), modifier = Modifier.size(18.dp
                 ))
             }
         }
