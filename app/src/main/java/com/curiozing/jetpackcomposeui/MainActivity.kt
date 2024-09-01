@@ -1,6 +1,5 @@
 package com.curiozing.jetpackcomposeui
 
-import android.graphics.drawable.VectorDrawable
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -23,13 +22,10 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DrawerValue
@@ -42,31 +38,25 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-import coil.compose.rememberImagePainter
 import com.curiozing.jetpackcomposeui.ui.theme.JetpackComposeUITheme
 import kotlinx.coroutines.launch
 
@@ -350,7 +340,7 @@ fun HomeContent(func: () -> Unit) {
                 Spacer(modifier = Modifier.height(20.dp))
                 RecentOrder()
                 Spacer(modifier = Modifier.height(20.dp))
-                Recommended()
+                RecommendedCategory()
             }
 
         }
@@ -365,35 +355,17 @@ data class Category(
 )
 
 @Composable
-fun Recommended() {
+fun RecommendedCategory() {
 
-    var recentOrders = listOf(
-        Orders(
-            orderId = 1,
-            products = "Chicken Pizza x 2",
-            totalPrice = 6.2,
-            outLetName = "Pizza Hut",
-            rating = 4.3,
-            image = "https://www.sargento.com/assets/Uploads/Recipe/Image/TuscanChikPizza_010__FillWzExNzAsNTgzXQ.jpg",
-        ),
-        Orders(
-            orderId = 2,
-            products = "Paneer Kadai",
-            totalPrice = 2.4,
-            outLetName = "Bind Resto",
-            rating = 4.5,
-            image = "https://dinedelicious.in/wp-content/uploads/2021/10/Kadai-Paneer-Recipe-6.jpg",
-        ),
-        Orders(
-            orderId = 3,
-            products = "Cold Brew Black",
-            totalPrice = 5.2,
-            outLetName = "Starbucks",
-            rating = 4.6,
-            image = "https://www.simplyrecipes.com/thmb/t9ZeQC3Nb2YUoQTnxUJrjJbnKEA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Cold-Brew-Coffee-LEAD-16-428691bcdd594281b2f5dc6dbc8235e4.jpg",
-        ),
-
-        )
+    var recommendedCategory = listOf(
+        Category(1, "Italian", "https://onthewood.com/wp-content/uploads/2024/03/Italian1.jpg"),
+        Category(1, "Chinese", "https://images-cdn.welcomesoftware.com/Zz0zMDM2ZWM5NmQ5YjAxMWViODcwYmI5NWUzYmNlYzM0NA==/Zz01NTg2OGYyMmQ4MmYxMWViOGM4NjRkNDA4MzFmNzQ4OA%3D%3D.jpg?width=1366"),
+        Category(1, "Indian", "https://images.moneycontrol.com/static-mcnews/2023/10/pexels-anil-sharma-10580198-770x433.jpg"),
+        Category(1, "Mexican", "https://curlytales.com/wp-content/uploads/2019/10/Best-Mexican-restaurants-in-the-world.jpg"),
+        Category(1, "Japanese", "https://www.tastingtable.com/img/gallery/20-japanese-dishes-you-need-to-try-at-least-once/l-intro-1664219638.jpg"),
+        Category(1, "French", "https://media.tacdn.com/media/attractions-content--1x-1/12/60/c1/ed.jpg"),
+        Category(1, "Thai", "https://kampatour.com/pic/blog/a5d47844-5e3b-4172-94c8-ef5027e47ff8.jpg"),
+    )
     Column {
         Text(
             text = "Recommended",
@@ -402,9 +374,12 @@ fun Recommended() {
             modifier = Modifier.padding(horizontal = 20.dp)
         )
         LazyRow(content = {
-            item {
+            recommendedCategory.take(4).forEach {
+                item {
 
+                }
             }
+
         })
 
     }
