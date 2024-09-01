@@ -86,6 +86,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
 @Composable
 fun Home() {
     SideNavigationMenu()
@@ -356,6 +357,12 @@ fun HomeContent(func: () -> Unit) {
     }
 
 }
+
+data class Category(
+    val id:Long,
+    val name:String,
+    val image:String
+)
 
 @Composable
 fun Recommended() {
