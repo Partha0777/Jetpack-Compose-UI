@@ -336,20 +336,48 @@ fun HomeContent(func: () -> Unit) {
             func()
         }
         Box {
-            Column(Modifier.verticalScroll(scrollState)) {
-                HomeHeaderContent()
-                Spacer(modifier = Modifier.height(20.dp))
-                HomeFilter()
-                Spacer(modifier = Modifier.height(20.dp))
-                RecentOrder()
-                Spacer(modifier = Modifier.height(20.dp))
-                RecommendedCategory()
-                Spacer(modifier = Modifier.height(20.dp))
-            }
+            Column {
+                Box {
+                    Column(Modifier.verticalScroll(scrollState)) {
+                        HomeHeaderContent()
+                        Spacer(modifier = Modifier.height(20.dp))
+                        HomeFilter()
+                        Spacer(modifier = Modifier.height(20.dp))
+                        RecentOrder()
+                        Spacer(modifier = Modifier.height(20.dp))
+                        RecommendedCategory()
+                        Spacer(modifier = Modifier.height(20.dp))
+                    }
+                    TopBar()
+                }
 
+            }
         }
     }
 
+}
+
+@Composable
+fun TopBar(){
+    Box(Modifier.background(Color.Transparent)) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(
+                    LocalConfiguration.current.screenHeightDp
+                        .div(10)
+                        .plus(2).dp
+                )
+                .background(
+                    color = Color.Gray.copy(alpha = 0.14f), // Adjust color and alpha for desired shadow
+                    shape = RoundedCornerShape(
+                        bottomStart = 50.dp,
+                        bottomEnd = 50.dp
+                    )
+                )
+        )
+        TabBarContent()
+    }
 }
 
 data class Category(
@@ -391,11 +419,14 @@ fun RecommendedCategory() {
 
 @Composable
 fun RecommendedCategoryItem(category: Category) {
-    Column(Modifier.padding(start = 20.dp, top = 20.dp).width(
-        LocalConfiguration.current.screenWidthDp
-            .div(2)
-            .minus(20).dp
-    )) {
+    Column(
+        Modifier
+            .padding(start = 20.dp, top = 20.dp)
+            .width(
+                LocalConfiguration.current.screenWidthDp
+                    .div(2)
+                    .minus(20).dp
+            )) {
         Image(painter = rememberAsyncImagePainter(category.image),
             "",
             contentScale = ContentScale.Crop,
@@ -406,7 +437,9 @@ fun RecommendedCategoryItem(category: Category) {
 
         )
         Spacer(modifier = Modifier.height(12.dp))
-        Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp),horizontalArrangement = Arrangement.SpaceBetween) {
+        Row(modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 4.dp),horizontalArrangement = Arrangement.SpaceBetween) {
             Text(text = category.name, fontSize = 16.sp, fontWeight = FontWeight.Bold)
             Box(modifier = Modifier
                 .clip(shape = CircleShape)
@@ -456,25 +489,7 @@ fun HomeHeaderContent() {
             elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
         ) {
             Column {
-                Box {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(
-                                screenHeight
-                                    .div(10)
-                                    .plus(2).dp
-                            )
-                            .background(
-                                color = Color.Gray.copy(alpha = 0.14f), // Adjust color and alpha for desired shadow
-                                shape = RoundedCornerShape(
-                                    bottomStart = 50.dp,
-                                    bottomEnd = 50.dp
-                                )
-                            )
-                    )
-                    TabBarContent()
-                }
+
                 Spacer(Modifier.height(20.dp))
                 DeliveryLocationUI()
             }
