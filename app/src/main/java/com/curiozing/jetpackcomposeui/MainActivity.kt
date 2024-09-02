@@ -361,7 +361,7 @@ data class Category(
 @Composable
 fun RecommendedCategory() {
 
-    var recommendedCategory = listOf(
+    val recommendedCategory = listOf(
         Category(1, "Italian", "https://onthewood.com/wp-content/uploads/2024/03/Italian1.jpg"),
         Category(1, "Chinese", "https://images-cdn.welcomesoftware.com/Zz0zMDM2ZWM5NmQ5YjAxMWViODcwYmI5NWUzYmNlYzM0NA==/Zz01NTg2OGYyMmQ4MmYxMWViOGM4NjRkNDA4MzFmNzQ4OA%3D%3D.jpg?width=1366"),
         Category(1, "Indian", "https://images.moneycontrol.com/static-mcnews/2023/10/pexels-anil-sharma-10580198-770x433.jpg"),
