@@ -465,10 +465,10 @@ fun HomeHeaderContent() {
                 .height(
                     screenHeight
                         .div(3.8)
-                        .plus(2).dp
+                        .plus(1.5).dp
                 )
                 .background(
-                    color = Color.Gray.copy(alpha = 0.14f), // Adjust color and alpha for desired shadow
+                    color = Color.Gray.copy(alpha = 0.15f), // Adjust color and alpha for desired shadow
                     shape = RoundedCornerShape(
                         bottomStart = 50.dp,
                         bottomEnd = 50.dp
@@ -488,8 +488,9 @@ fun HomeHeaderContent() {
             colors = CardDefaults.cardColors(containerColor = Color(0xFFffde01)),
             elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
         ) {
-            Column {
-
+            Column(modifier = Modifier.padding(top = LocalConfiguration.current.screenHeightDp
+                .div(10)
+                .plus(2).dp)) {
                 Spacer(Modifier.height(20.dp))
                 DeliveryLocationUI()
             }
