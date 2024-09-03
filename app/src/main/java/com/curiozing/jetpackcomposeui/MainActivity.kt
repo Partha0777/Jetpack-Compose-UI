@@ -347,12 +347,30 @@ fun HomeContent(func: () -> Unit) {
                         Spacer(modifier = Modifier.height(20.dp))
                         RecommendedCategory()
                         Spacer(modifier = Modifier.height(20.dp))
+                        RecommendationProducts()
                     }
                     TopBar()
                 }
 
             }
         }
+    }
+
+}
+
+@Composable
+fun RecommendationProducts() {
+    Column {
+        Text(
+            text = "Recommended",
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(horizontal = 20.dp)
+        )
+        LazyRow(content = {
+
+        })
+
     }
 
 }
@@ -395,7 +413,7 @@ fun RecommendedCategory() {
     )
     Column {
         Text(
-            text = "Recommended",
+            text = "Recommended Category",
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(horizontal = 20.dp)
