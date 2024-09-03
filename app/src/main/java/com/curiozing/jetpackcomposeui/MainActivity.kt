@@ -376,7 +376,7 @@ fun RecommendationProducts() {
 }
 
 @Composable
-fun TopBar(){
+fun TopBar() {
     Box(Modifier.background(Color.Transparent)) {
         Box(
             modifier = Modifier
@@ -404,12 +404,36 @@ fun RecommendedCategory() {
 
     val recommendedCategory = listOf(
         Category(1, "Italian", "https://onthewood.com/wp-content/uploads/2024/03/Italian1.jpg"),
-        Category(1, "Chinese", "https://images-cdn.welcomesoftware.com/Zz0zMDM2ZWM5NmQ5YjAxMWViODcwYmI5NWUzYmNlYzM0NA==/Zz01NTg2OGYyMmQ4MmYxMWViOGM4NjRkNDA4MzFmNzQ4OA%3D%3D.jpg?width=1366"),
-        Category(1, "Indian", "https://images.moneycontrol.com/static-mcnews/2023/10/pexels-anil-sharma-10580198-770x433.jpg"),
-        Category(1, "Mexican", "https://curlytales.com/wp-content/uploads/2019/10/Best-Mexican-restaurants-in-the-world.jpg"),
-        Category(1, "Japanese", "https://www.tastingtable.com/img/gallery/20-japanese-dishes-you-need-to-try-at-least-once/l-intro-1664219638.jpg"),
-        Category(1, "French", "https://media.tacdn.com/media/attractions-content--1x-1/12/60/c1/ed.jpg"),
-        Category(1, "Thai", "https://kampatour.com/pic/blog/a5d47844-5e3b-4172-94c8-ef5027e47ff8.jpg"),
+        Category(
+            1,
+            "Chinese",
+            "https://images-cdn.welcomesoftware.com/Zz0zMDM2ZWM5NmQ5YjAxMWViODcwYmI5NWUzYmNlYzM0NA==/Zz01NTg2OGYyMmQ4MmYxMWViOGM4NjRkNDA4MzFmNzQ4OA%3D%3D.jpg?width=1366"
+        ),
+        Category(
+            1,
+            "Indian",
+            "https://images.moneycontrol.com/static-mcnews/2023/10/pexels-anil-sharma-10580198-770x433.jpg"
+        ),
+        Category(
+            1,
+            "Mexican",
+            "https://curlytales.com/wp-content/uploads/2019/10/Best-Mexican-restaurants-in-the-world.jpg"
+        ),
+        Category(
+            1,
+            "Japanese",
+            "https://www.tastingtable.com/img/gallery/20-japanese-dishes-you-need-to-try-at-least-once/l-intro-1664219638.jpg"
+        ),
+        Category(
+            1,
+            "French",
+            "https://media.tacdn.com/media/attractions-content--1x-1/12/60/c1/ed.jpg"
+        ),
+        Category(
+            1,
+            "Thai",
+            "https://kampatour.com/pic/blog/a5d47844-5e3b-4172-94c8-ef5027e47ff8.jpg"
+        ),
     )
     Column {
         Text(
@@ -439,28 +463,39 @@ fun RecommendedCategoryItem(category: Category) {
                 LocalConfiguration.current.screenWidthDp
                     .div(2)
                     .minus(20).dp
-            )) {
-        Image(painter = rememberAsyncImagePainter(category.image),
+            )
+    ) {
+        Image(
+            painter = rememberAsyncImagePainter(category.image),
             "",
             contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(100.dp)
-                        .clip(shape = RoundedCornerShape(20.dp))
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(100.dp)
+                .clip(shape = RoundedCornerShape(20.dp))
 
         )
         Spacer(modifier = Modifier.height(12.dp))
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 4.dp),horizontalArrangement = Arrangement.SpaceBetween) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 4.dp), horizontalArrangement = Arrangement.SpaceBetween
+        ) {
             Text(text = category.name, fontSize = 16.sp, fontWeight = FontWeight.Bold)
-            Box(modifier = Modifier
-                .clip(shape = CircleShape)
-                .background(color = Color.Black)
-                .padding(all = 4.dp)
+            Box(
+                modifier = Modifier
+                    .clip(shape = CircleShape)
+                    .background(color = Color.Black)
+                    .padding(all = 4.dp)
             ) {
-                Icon(imageVector = Icons.Default.ArrowForward, contentDescription = "", tint = Color(0xFFffde01), modifier = Modifier.size(18.dp
-                ))
+                Icon(
+                    imageVector = Icons.Default.ArrowForward,
+                    contentDescription = "",
+                    tint = Color(0xFFffde01),
+                    modifier = Modifier.size(
+                        18.dp
+                    )
+                )
             }
         }
     }
@@ -501,9 +536,13 @@ fun HomeHeaderContent() {
             colors = CardDefaults.cardColors(containerColor = Color(0xFFffde01)),
             elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
         ) {
-            Column(modifier = Modifier.padding(top = LocalConfiguration.current.screenHeightDp
-                .div(10)
-                .plus(2).dp)) {
+            Column(
+                modifier = Modifier.padding(
+                    top = LocalConfiguration.current.screenHeightDp
+                        .div(10)
+                        .plus(2).dp
+                )
+            ) {
                 Spacer(Modifier.height(20.dp))
                 DeliveryLocationUI()
             }
@@ -834,11 +873,13 @@ data class Orders(
     val rating: Double,
     val image: String
 )
+
 data class Category(
-    val id:Long,
-    val name:String,
-    val image:String
+    val id: Long,
+    val name: String,
+    val image: String
 )
+
 data class Product(
     val id: Long,
     val name: String,
