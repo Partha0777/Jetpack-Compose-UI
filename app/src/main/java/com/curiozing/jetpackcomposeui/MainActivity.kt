@@ -380,11 +380,6 @@ fun TopBar(){
     }
 }
 
-data class Category(
-    val id:Long,
-    val name:String,
-    val image:String
-)
 
 @Composable
 fun RecommendedCategory() {
@@ -821,7 +816,11 @@ data class Orders(
     val rating: Double,
     val image: String
 )
-
+data class Category(
+    val id:Long,
+    val name:String,
+    val image:String
+)
 data class Product(
     val id: Long,
     val name: String,
