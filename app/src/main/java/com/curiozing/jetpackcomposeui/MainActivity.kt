@@ -380,12 +380,18 @@ fun HomeContent(func: () -> Unit) {
                             Spacer(modifier = Modifier.height(20.dp))
                             RecommendedCategory()
                             Spacer(modifier = Modifier.height(20.dp))
+                            Text(
+                                text = "Recommended",
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(horizontal = 20.dp)
+                            )
                         }
                         items(products.chunked(2)) {rowItems ->
-                            Row(modifier = Modifier.fillMaxWidth()) {
+                            Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp)) {
                                 for (item in rowItems) {
                                     Box(modifier = Modifier
-                                        .height(LocalConfiguration.current.screenHeightDp.div(5).dp)
+                                        .height(LocalConfiguration.current.screenHeightDp.div(4.5).dp)
                                         .width(LocalConfiguration.current.screenWidthDp.div(2).dp)){
                                         Card(
                                             modifier = Modifier.padding(8.dp),
@@ -395,7 +401,7 @@ fun HomeContent(func: () -> Unit) {
                                             )
                                         ) {
                                             Image(
-                                                contentScale = ContentScale.Crop,
+                                                contentScale = ContentScale.FillBounds,
                                                 modifier = Modifier.fillMaxSize(),
                                                 painter = rememberAsyncImagePainter(model = item.image),
                                                 contentDescription = ""
