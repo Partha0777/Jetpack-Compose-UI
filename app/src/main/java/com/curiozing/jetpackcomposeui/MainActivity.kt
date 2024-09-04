@@ -388,20 +388,21 @@ fun HomeContent(func: () -> Unit) {
                             )
                         }
                         items(products.chunked(2)) {rowItems ->
-                            Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp)) {
+                            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
                                 for (item in rowItems) {
                                     Box(modifier = Modifier
                                         .height(LocalConfiguration.current.screenHeightDp.div(4.5).dp)
-                                        .width(LocalConfiguration.current.screenWidthDp.div(2).dp)){
+                                        .width(LocalConfiguration.current.screenWidthDp.div(2).dp)
+                                    ){
                                         Card(
-                                            modifier = Modifier.padding(8.dp),
                                             colors = CardDefaults.cardColors(
                                                 containerColor = Color.White,
                                                 contentColor = Color.White
-                                            )
+                                            ),
+                                            modifier = Modifier.padding(8.dp)
                                         ) {
                                             Image(
-                                                contentScale = ContentScale.FillBounds,
+                                                contentScale = ContentScale.Crop,
                                                 modifier = Modifier.fillMaxSize(),
                                                 painter = rememberAsyncImagePainter(model = item.image),
                                                 contentDescription = ""
