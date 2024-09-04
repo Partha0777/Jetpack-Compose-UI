@@ -361,26 +361,26 @@ fun HomeContent(func: () -> Unit) {
 @Composable
 fun RecommendationProducts() {
     val products = listOf(
-        Product(1L, "Kung Pao Chicken", "Chinese", 10.99, 8.99, "Spicy, Chicken", 4.5, "image1.jpg"),
-        Product(2L, "Sushi Platter", "Japanese", 15.99, 13.99, "Assorted Fish", 4.8, "image2.jpg"),
-        Product(3L, "Tandoori Chicken", "Indian", 12.99, 10.99, "Spicy, Chicken", 4.7, "image3.jpg"),
-        Product(4L, "Margherita Pizza", "Italian", 9.99, 8.49, "Vegetarian, Cheese", 4.3, "image4.jpg"),
-        Product(5L, "Green Curry", "Thai", 11.99, 10.49, "Spicy, Chicken", 4.6, "image5.jpg"),
-        Product(6L, "Tacos", "Mexican", 8.99, 7.99, "Beef, Cheese", 4.5, "image6.jpg"),
-        Product(7L, "Croissant", "French", 3.99, 2.99, "Butter", 4.8, "image7.jpg"),
-        Product(8L, "Spring Rolls", "Chinese", 6.99, 5.99, "Vegetarian", 4.2, "image8.jpg"),
-        Product(9L, "Pad Thai", "Thai", 11.49, 9.99, "Shrimp, Noodles", 4.4, "image9.jpg"),
-        Product(10L, "Spaghetti Carbonara", "Italian", 13.99, 11.99, "Bacon, Egg", 4.5, "image10.jpg"),
-        Product(11L, "Biryani", "Indian", 13.99, 12.49, "Chicken, Rice", 4.7, "image11.jpg"),
-        Product(12L, "Ratatouille", "French", 10.99, 9.99, "Vegetables", 4.6, "image12.jpg"),
-        Product(13L, "Burrito", "Mexican", 9.99, 8.49, "Beef, Rice", 4.3, "image13.jpg"),
-        Product(14L, "Tempura", "Japanese", 14.99, 12.99, "Shrimp, Vegetables", 4.5, "image14.jpg"),
-        Product(15L, "Chicken Parmesan", "Italian", 14.49, 12.99, "Chicken, Cheese", 4.6, "image15.jpg"),
-        Product(16L, "Dumplings", "Chinese", 9.99, 8.99, "Pork, Steamed", 4.4, "image16.jpg"),
-        Product(17L, "Tom Yum Soup", "Thai", 8.99, 7.99, "Spicy, Shrimp", 4.3, "image17.jpg"),
-        Product(18L, "Churros", "Mexican", 4.99, 3.99, "Fried Dough, Sugar", 4.6, "image18.jpg"),
-        Product(19L, "Butter Chicken", "Indian", 14.99, 13.49, "Creamy, Chicken", 4.8, "image19.jpg"),
-        Product(20L, "Macarons", "French", 5.99, 4.99, "Sweet, Almond", 4.7, "image20.jpg")
+        Product(1L, "Kung Pao Chicken", "Chinese", 10.99, 8.99, "Spicy, Chicken", 4.5, "https://www.kitchensanctuary.com/wp-content/uploads/2019/10/Kung-Pao-Chicken-square-FS-39-new.jpg"),
+        Product(2L, "Sushi Platter", "Japanese", 15.99, 13.99, "Assorted Fish", 4.8, "https://miamifreshfishmarket.com/cdn/shop/products/platter-12-sushi.jpg?v=1711646076&width=1445"),
+        Product(3L, "Tandoori Chicken", "Indian", 12.99, 10.99, "Spicy, Chicken", 4.7, "https://www.easycookingwithmolly.com/wp-content/uploads/2023/11/air-fryer-whole-tandoori-chicken-3.jpg"),
+        Product(4L, "Margherita Pizza", "Italian", 9.99, 8.49, "Vegetarian, Cheese", 4.3, "https://cdn.loveandlemons.com/wp-content/uploads/2023/07/margherita-pizza.jpg"),
+        Product(5L, "Green Curry", "Thai", 11.99, 10.49, "Spicy, Chicken", 4.6, "https://www.archanaskitchen.com/images/archanaskitchen/0-Archanas-Kitchen-Recipes/2018/Vegetarian_Thai_Green_Curry_Recipe-2-2.jpg"),
+        Product(6L, "Tacos", "Mexican", 8.99, 7.99, "Beef, Cheese", 4.5, "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/2/29/0/0149359_Making-Taco_s4x3.jpg.rend.hgtvcom.1280.1280.suffix/1371603491866.webp"),
+        Product(7L, "Croissant", "French", 3.99, 2.99, "Butter", 4.8, "https://sarahsvegankitchen.b-cdn.net/wp-content/uploads/2024/05/Vegan-Croissants-1.jpg"),
+        Product(8L, "Spring Rolls", "Chinese", 6.99, 5.99, "Vegetarian", 4.2, "https://www.elmundoeats.com/wp-content/uploads/2024/02/Crispy-spring-rolls.jpg"),
+        Product(9L, "Pad Thai", "Thai", 11.49, 9.99, "Shrimp, Noodles", 4.4, "https://www.recipetineats.com/tachyon/2020/01/Chicken-Pad-Thai_9-SQ.jpg"),
+        Product(10L, "Spaghetti Carbonara", "Italian", 13.99, 11.99, "Bacon, Egg", 4.5, "https://static01.nyt.com/images/2021/02/14/dining/carbonara-horizontal/carbonara-horizontal-square640-v2.jpg"),
+        Product(11L, "Biryani", "Indian", 13.99, 12.49, "Chicken, Rice", 4.7, "https://www.kannammacooks.com/wp-content/uploads/buhari-hotel-chennai-chicken-biryani-recipe-1-4.jpg"),
+        Product(12L, "Ratatouille", "French", 10.99, 9.99, "Vegetables", 4.6, "https://zenaskitchen.com/wp-content/uploads/2022/02/ratatouille-1.jpg"),
+        Product(13L, "Burrito", "Mexican", 9.99, 8.49, "Beef, Rice", 4.3, "https://cdn.britannica.com/13/234013-050-73781543/rice-and-chorizo-burrito.jpg"),
+        Product(14L, "Tempura", "Japanese", 14.99, 12.99, "Shrimp, Vegetables", 4.5, "https://www.allrecipes.com/thmb/xWetQsyyrT2R0V4hgS00m2961Hk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/129467-crispy-shrimp-tempura-ddmfs-4x3-1279-0d2e8debf0e04481acb89f60366bd405.jpg"),
+        Product(15L, "Chicken Parmesan", "Italian", 14.49, 12.99, "Chicken, Cheese", 4.6, "https://hips.hearstapps.com/hmg-prod/images/chicken-parmesan-secondary-644041992a1d4.jpg"),
+        Product(16L, "Dumplings", "Chinese", 9.99, 8.99, "Pork, Steamed", 4.4, "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2020/11/19/0/MW612_pork-dumplings_s4x3.jpg.rend.hgtvcom.616.462.suffix/1605802271825.webp"),
+        Product(17L, "Tom Yum Soup", "Thai", 8.99, 7.99, "Spicy, Shrimp", 4.3, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJxWz9cTtWmg8q9cNuygLcZY4j4LIvcnY8qA&s"),
+        Product(18L, "Churros", "Mexican", 4.99, 3.99, "Fried Dough, Sugar", 4.6, "https://www.recipetineats.com/tachyon/2016/08/Churros_9-SQ.jpg"),
+        Product(19L, "Butter Chicken", "Indian", 14.99, 13.49, "Creamy, Chicken", 4.8, "https://www.indianhealthyrecipes.com/wp-content/uploads/2023/04/butter-chicken-recipe.jpg"),
+        Product(20L, "Macarons", "French", 5.99, 4.99, "Sweet, Almond", 4.7, "https://bakewithshivesh.com/wp-content/uploads/2020/10/IMG-9043-scaled.jpg")
     )
 
 
