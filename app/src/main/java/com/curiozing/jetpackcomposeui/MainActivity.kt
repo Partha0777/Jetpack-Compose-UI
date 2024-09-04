@@ -344,7 +344,7 @@ fun HomeContent(func: () -> Unit) {
         Product(3L, "Tandoori Chicken", "Indian", 12.99, 10.99, "Spicy, Chicken", 4.7, "https://www.easycookingwithmolly.com/wp-content/uploads/2023/11/air-fryer-whole-tandoori-chicken-3.jpg"),
         Product(4L, "Margherita Pizza", "Italian", 9.99, 8.49, "Vegetarian, Cheese", 4.3, "https://cdn.loveandlemons.com/wp-content/uploads/2023/07/margherita-pizza.jpg"),
         Product(5L, "Green Curry", "Thai", 11.99, 10.49, "Spicy, Chicken", 4.6, "https://www.archanaskitchen.com/images/archanaskitchen/0-Archanas-Kitchen-Recipes/2018/Vegetarian_Thai_Green_Curry_Recipe-2-2.jpg"),
-        Product(6L, "Tacos", "Mexican", 8.99, 7.99, "Beef, Cheese", 4.5, "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/2/29/0/0149359_Making-Taco_s4x3.jpg.rend.hgtvcom.1280.1280.suffix/1371603491866.webp"),
+        Product(6L, "Tacos", "Mexican", 8.99, 7.99, "Beef, Cheese", 4.5, "https://www.onceuponachef.com/images/2011/02/chicken-tacos-11.jpg"),
         Product(7L, "Croissant", "French", 3.99, 2.99, "Butter", 4.8, "https://sarahsvegankitchen.b-cdn.net/wp-content/uploads/2024/05/Vegan-Croissants-1.jpg"),
         Product(8L, "Spring Rolls", "Chinese", 6.99, 5.99, "Vegetarian", 4.2, "https://www.elmundoeats.com/wp-content/uploads/2024/02/Crispy-spring-rolls.jpg"),
         Product(9L, "Pad Thai", "Thai", 11.49, 9.99, "Shrimp, Noodles", 4.4, "https://www.recipetineats.com/tachyon/2020/01/Chicken-Pad-Thai_9-SQ.jpg"),
@@ -354,7 +354,7 @@ fun HomeContent(func: () -> Unit) {
         Product(13L, "Burrito", "Mexican", 9.99, 8.49, "Beef, Rice", 4.3, "https://cdn.britannica.com/13/234013-050-73781543/rice-and-chorizo-burrito.jpg"),
         Product(14L, "Tempura", "Japanese", 14.99, 12.99, "Shrimp, Vegetables", 4.5, "https://www.allrecipes.com/thmb/xWetQsyyrT2R0V4hgS00m2961Hk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/129467-crispy-shrimp-tempura-ddmfs-4x3-1279-0d2e8debf0e04481acb89f60366bd405.jpg"),
         Product(15L, "Chicken Parmesan", "Italian", 14.49, 12.99, "Chicken, Cheese", 4.6, "https://hips.hearstapps.com/hmg-prod/images/chicken-parmesan-secondary-644041992a1d4.jpg"),
-        Product(16L, "Dumplings", "Chinese", 9.99, 8.99, "Pork, Steamed", 4.4, "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2020/11/19/0/MW612_pork-dumplings_s4x3.jpg.rend.hgtvcom.616.462.suffix/1605802271825.webp"),
+        Product(16L, "Dumplings", "Chinese", 9.99, 8.99, "Pork, Steamed", 4.4, "https://www.bhg.com/thmb/eQgTJ-Bl7DUSNIVQvfntHP3ZVOM=/2000x0/filters:no_upscale():strip_icc()/bhg-pork-and-shitake-steamed-dumplings-FmOg5-5J4gv94CccQYTVph-0ef0a4a8987244759154f9e5e1b1819e.jpg"),
         Product(17L, "Tom Yum Soup", "Thai", 8.99, 7.99, "Spicy, Shrimp", 4.3, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJxWz9cTtWmg8q9cNuygLcZY4j4LIvcnY8qA&s"),
         Product(18L, "Churros", "Mexican", 4.99, 3.99, "Fried Dough, Sugar", 4.6, "https://www.recipetineats.com/tachyon/2016/08/Churros_9-SQ.jpg"),
         Product(19L, "Butter Chicken", "Indian", 14.99, 13.49, "Creamy, Chicken", 4.8, "https://www.indianhealthyrecipes.com/wp-content/uploads/2023/04/butter-chicken-recipe.jpg"),
@@ -381,17 +381,28 @@ fun HomeContent(func: () -> Unit) {
                             RecommendedCategory()
                             Spacer(modifier = Modifier.height(20.dp))
                         }
-                        items(products.chunked(3)) {rowItems ->
+                        items(products.chunked(2)) {rowItems ->
                             Row(modifier = Modifier.fillMaxWidth()) {
                                 for (item in rowItems) {
-                                    Box(
-                                        modifier = Modifier
-                                            .padding(8.dp)
-                                            .size(100.dp)
-                                            .weight(1f), // Divide space equally in the row
-                                    ) {
-                                        Text(text = "${item.name}")
+                                    Box(modifier = Modifier
+                                        .height(LocalConfiguration.current.screenHeightDp.div(5).dp)
+                                        .width(LocalConfiguration.current.screenWidthDp.div(2).dp)){
+                                        Card(
+                                            modifier = Modifier.padding(8.dp),
+                                            colors = CardDefaults.cardColors(
+                                                containerColor = Color.White,
+                                                contentColor = Color.White
+                                            )
+                                        ) {
+                                            Image(
+                                                contentScale = ContentScale.Crop,
+                                                modifier = Modifier.fillMaxSize(),
+                                                painter = rememberAsyncImagePainter(model = item.image),
+                                                contentDescription = ""
+                                            )
+                                        }
                                     }
+
                                 }
                             }
                         }
