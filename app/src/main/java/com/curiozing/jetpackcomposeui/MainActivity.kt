@@ -17,7 +17,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -330,36 +336,8 @@ fun SideNavContent() {
 
 @Composable
 fun HomeContent(func: () -> Unit) {
-    val scrollState = rememberScrollState()
-    Column {
-        Toolbar {
-            func()
-        }
-        Box {
-            Column {
-                Box {
-                    Column(Modifier.verticalScroll(scrollState)) {
-                        HomeHeaderContent()
-                        Spacer(modifier = Modifier.height(20.dp))
-                        HomeFilter()
-                        Spacer(modifier = Modifier.height(20.dp))
-                        RecentOrder()
-                        Spacer(modifier = Modifier.height(20.dp))
-                        RecommendedCategory()
-                        Spacer(modifier = Modifier.height(20.dp))
-                        RecommendationProducts()
-                    }
-                    TopBar()
-                }
 
-            }
-        }
-    }
 
-}
-
-@Composable
-fun RecommendationProducts() {
     val products = listOf(
         Product(1L, "Kung Pao Chicken", "Chinese", 10.99, 8.99, "Spicy, Chicken", 4.5, "https://www.kitchensanctuary.com/wp-content/uploads/2019/10/Kung-Pao-Chicken-square-FS-39-new.jpg"),
         Product(2L, "Sushi Platter", "Japanese", 15.99, 13.99, "Assorted Fish", 4.8, "https://miamifreshfishmarket.com/cdn/shop/products/platter-12-sushi.jpg?v=1711646076&width=1445"),
@@ -384,19 +362,102 @@ fun RecommendationProducts() {
     )
 
 
+    val scrollState = rememberScrollState()
     Column {
+        Toolbar {
+            func()
+        }
+        Box {
+            Column {
+                Box {
+                    LazyColumn(modifier = Modifier.fillMaxSize()) {
+                        item {
+                            HomeHeaderContent()
+                            Spacer(modifier = Modifier.height(20.dp))
+                            HomeFilter()
+                            Spacer(modifier = Modifier.height(20.dp))
+                            RecentOrder()
+                            Spacer(modifier = Modifier.height(20.dp))
+                            RecommendedCategory()
+                            Spacer(modifier = Modifier.height(20.dp))
+                        }
+                        items(products.chunked(3)) {rowItems ->
+                            Row(modifier = Modifier.fillMaxWidth()) {
+                                for (item in rowItems) {
+                                    Box(
+                                        modifier = Modifier
+                                            .padding(8.dp)
+                                            .size(100.dp)
+                                            .weight(1f), // Divide space equally in the row
+                                    ) {
+                                        Text(text = "${item.name}")
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                    TopBar()
+                }
+
+            }
+        }
+    }
+
+}
+
+@Composable
+fun RecommendationProducts() {
+
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(3), // Set number of columns
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        content = {
+            items(50) { index ->
+                Box(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .size(100.dp),
+                ) {
+                    Text(text = "Item $index")
+                }
+            }
+        }
+    )
+  /*  Column {
         Text(
             text = "Recommended",
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(horizontal = 20.dp)
         )
-        LazyRow(content = {
-
-        })
+        Box( modifier =  Modifier
+            .fillMaxWidth()
+        ) {
+            LazyVerticalGrid(
+                userScrollEnabled = false,
+                columns = GridCells.Fixed(2)
+            ) {
+                items(products.size) {
+                    Card(
+                        modifier = Modifier.height(LocalConfiguration.current.screenHeightDp.div(4).dp),
+                        colors = CardDefaults.cardColors(
+                            contentColor = Color.White
+                        )
+                    ) {
+                        Image(
+                            painter = rememberAsyncImagePainter(model = products[it]),
+                            contentDescription = ""
+                        )
+                    }
+                }
+            }
+        }
 
     }
-
+*/
 }
 
 @Composable
