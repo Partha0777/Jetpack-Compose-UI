@@ -185,7 +185,7 @@ fun SideNavContent() {
                             ) {
                                 Image(
                                     painter = painterResource(id = R.drawable.profile_female),
-                                    contentDescription = ""
+                                    contentDescription = "profile"
                                 )
                             }
                             Text(
@@ -593,7 +593,7 @@ fun HomeContent(func: () -> Unit) {
                                                 contentScale = ContentScale.Crop,
                                                 modifier = Modifier.fillMaxSize(),
                                                 painter = rememberAsyncImagePainter(model = item.image),
-                                                contentDescription = ""
+                                                contentDescription = "product"
                                             )
                                         }
                                     }
@@ -780,7 +780,7 @@ fun RecommendedCategoryItem(category: Category) {
             ) {
                 Icon(
                     imageVector = Icons.Default.ArrowForward,
-                    contentDescription = "",
+                    contentDescription = "category",
                     tint = Color(0xFFffde01),
                     modifier = Modifier.size(
                         18.dp
@@ -938,7 +938,7 @@ fun RecentOrderItem(orders: Orders) {
                         Spacer(modifier = Modifier.width(4.dp))
                         Icon(
                             imageVector = Icons.Default.Favorite,
-                            contentDescription = "",
+                            contentDescription = "order",
                             Modifier.size(14.dp)
                         )
                     }
@@ -960,7 +960,7 @@ fun RecentOrderItem(orders: Orders) {
                 Spacer(modifier = Modifier.height(12.dp))
             }
             Box(modifier = Modifier.weight(2.0f), contentAlignment = Alignment.Center) {
-                Icon(imageVector = Icons.Default.Refresh, contentDescription = "")
+                Icon(imageVector = Icons.Default.Refresh, contentDescription = "orderItem")
             }
         }
 
@@ -981,7 +981,7 @@ fun Toolbar(func: () -> Unit) {
                 onClick = {
                     func.invoke()
                 }) {
-                Icon(imageVector = Icons.Default.Menu, contentDescription = "")
+                Icon(imageVector = Icons.Default.Menu, contentDescription = "menuIcon")
             }
             Text(text = "FOODIES", fontSize = 18.sp, fontWeight = FontWeight.Bold)
         }
