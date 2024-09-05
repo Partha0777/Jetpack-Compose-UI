@@ -1132,7 +1132,7 @@ fun HomeFilter() {
                     ) {
                         Icon(
                             imageVector = ImageVector.vectorResource(i.icon),
-                            contentDescription = "icon",
+                            contentDescription = "filterIcon",
                             Modifier.size(28.dp)
                         )
                         Spacer(modifier = Modifier.width(12.dp))
