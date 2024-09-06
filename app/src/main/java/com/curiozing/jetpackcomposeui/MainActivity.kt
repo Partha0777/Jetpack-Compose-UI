@@ -564,7 +564,7 @@ fun HomeContent(func: () -> Unit) {
                                 text = "Recommended",
                                 fontSize = 20.sp,
                                 fontWeight = FontWeight.Bold,
-                                modifier = Modifier.padding(horizontal = 20.dp)
+                                modifier = Modifier.padding(horizontal = 16.dp)
                             )
                         }
                         items(products.chunked(2)) { rowItems ->
@@ -1128,7 +1128,7 @@ fun HomeFilter() {
                     elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
                     colors = CardDefaults.cardColors(containerColor = Color.White),
                     modifier = Modifier
-                        .padding(start = 20.dp, end = 2.dp)
+                        .padding(start = 16.dp, end = 2.dp)
                         .height(68.dp)
                         .width(screenWidth.div(3).dp),
                     onClick = {}
