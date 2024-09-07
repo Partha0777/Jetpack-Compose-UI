@@ -568,47 +568,7 @@ fun HomeContent(func: () -> Unit) {
                             )
                         }
                         items(products.chunked(2)) { rowItems ->
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceEvenly
-                            ) {
-                                rowItems.forEachIndexed { index, item ->
-                                    Box(
-                                        modifier = Modifier
-                                            .height(
-                                                LocalConfiguration.current.screenHeightDp.div(
-                                                    4.5
-                                                ).dp
-                                            )
-                                            .width(LocalConfiguration.current.screenWidthDp.div(2).dp)
-                                    ) {
-                                        Card(
-                                            colors = CardDefaults.cardColors(
-                                                containerColor = Color.White,
-                                                contentColor = Color.White
-                                            ),
-                                            modifier = Modifier.padding(
-                                                start = when (index) {
-                                                    0 -> 16.dp
-                                                    1 -> 8.dp
-                                                    else -> 16.dp
-                                                }, end = when (index) {
-                                                    0 -> 8.dp
-                                                    1 -> 16.dp
-                                                    else -> 16.dp
-                                                }, top = 16.dp
-                                            )
-                                        ) {
-                                            Image(
-                                                contentScale = ContentScale.Crop,
-                                                modifier = Modifier.fillMaxSize(),
-                                                painter = rememberAsyncImagePainter(model = item.image),
-                                                contentDescription = "product"
-                                            )
-                                        }
-                                    }
-                                }
-                            }
+                            ProductItem(rowItems)
                         }
 
                     }
@@ -619,6 +579,51 @@ fun HomeContent(func: () -> Unit) {
         }
     }
 
+}
+
+@Composable
+fun ProductItem(rowItems: List<Product>) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
+        rowItems.forEachIndexed { index, item ->
+            Box(
+                modifier = Modifier
+                    .height(
+                        LocalConfiguration.current.screenHeightDp.div(
+                            4.5
+                        ).dp
+                    )
+                    .width(LocalConfiguration.current.screenWidthDp.div(2).dp)
+            ) {
+                Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color.White,
+                        contentColor = Color.White
+                    ),
+                    modifier = Modifier.padding(
+                        start = when (index) {
+                            0 -> 16.dp
+                            1 -> 8.dp
+                            else -> 16.dp
+                        }, end = when (index) {
+                            0 -> 8.dp
+                            1 -> 16.dp
+                            else -> 16.dp
+                        }, top = 16.dp
+                    )
+                ) {
+                    Image(
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier.fillMaxSize(),
+                        painter = rememberAsyncImagePainter(model = item.image),
+                        contentDescription = "product"
+                    )
+                }
+            }
+        }
+    }
 }
 
 @Composable
