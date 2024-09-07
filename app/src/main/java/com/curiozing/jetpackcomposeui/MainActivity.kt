@@ -5,12 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -588,18 +590,10 @@ fun ProductItem(rowItems: List<Product>) {
         rowItems.forEachIndexed { index, item ->
             Box(
                 modifier = Modifier
-                    .height(
-                        LocalConfiguration.current.screenHeightDp.div(
-                            4.5
-                        ).dp
-                    )
+
                     .width(LocalConfiguration.current.screenWidthDp.div(2).dp)
             ) {
-                Card(
-                    colors = CardDefaults.cardColors(
-                        containerColor = Color.White,
-                        contentColor = Color.White
-                    ),
+                Column(
                     modifier = Modifier.padding(
                         start = when (index) {
                             0 -> 16.dp
@@ -612,12 +606,22 @@ fun ProductItem(rowItems: List<Product>) {
                         }, top = 16.dp
                     )
                 ) {
+
                     Image(
                         contentScale = ContentScale.Crop,
-                        modifier = Modifier.fillMaxSize(),
+                        modifier = Modifier
+                            .height(
+                                LocalConfiguration.current.screenHeightDp.div(
+                                    4.5
+                                ).dp
+                            )
+                            .fillMaxWidth()
+                            .clip(shape = RoundedCornerShape(20.dp)),
                         painter = rememberAsyncImagePainter(model = item.image),
                         contentDescription = "product"
                     )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(text = item.name, fontSize = 16.sp, fontWeight = FontWeight.Bold, maxLines = 2)
                 }
             }
         }
