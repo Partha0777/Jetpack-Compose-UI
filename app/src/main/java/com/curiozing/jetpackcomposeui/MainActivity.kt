@@ -566,6 +566,7 @@ fun HomeContent(func: () -> Unit) {
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier.padding(horizontal = 16.dp)
                             )
+                            Spacer(modifier = Modifier.height(20.dp))
                         }
                         items(products.chunked(2)) { rowItems ->
                             ProductItem(rowItems)
@@ -603,7 +604,7 @@ fun ProductItem(rowItems: List<Product>) {
                             0 -> 8.dp
                             1 -> 16.dp
                             else -> 16.dp
-                        }, top = 16.dp
+                        }, bottom = 24.dp
                     )
                 ) {
 
