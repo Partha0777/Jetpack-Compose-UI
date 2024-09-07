@@ -541,8 +541,6 @@ fun HomeContent(func: () -> Unit) {
         )
     )
 
-
-    val scrollState = rememberScrollState()
     Column {
         Toolbar {
             func()
