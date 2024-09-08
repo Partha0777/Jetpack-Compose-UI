@@ -63,7 +63,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -624,7 +626,11 @@ fun ProductItem(rowItems: List<Product>) {
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(text = item.name, fontSize = 16.sp, fontWeight = FontWeight.Normal, maxLines = 2)
                     Spacer(modifier = Modifier.height(8.dp))
-                    Text(text = "$${item.sellingPrice}", fontSize = 18.sp, fontWeight = FontWeight.Bold, maxLines = 2)
+                    Row {
+                        Text(text = "$${item.sellingPrice}", fontSize = 16.sp, fontWeight = FontWeight.Bold, maxLines = 2)
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text(text = "$${item.retailPrice}", fontSize = 16.sp, fontWeight = FontWeight.Normal, maxLines = 2, color = Color.Gray, style = TextStyle(textDecoration = TextDecoration.LineThrough))
+                    }
                 }
             }
         }
