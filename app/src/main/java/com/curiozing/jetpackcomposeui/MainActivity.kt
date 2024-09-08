@@ -622,7 +622,9 @@ fun ProductItem(rowItems: List<Product>) {
                         contentDescription = "product"
                     )
                     Spacer(modifier = Modifier.height(8.dp))
-                    Text(text = item.name, fontSize = 16.sp, fontWeight = FontWeight.Bold, maxLines = 2)
+                    Text(text = item.name, fontSize = 16.sp, fontWeight = FontWeight.Normal, maxLines = 2)
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(text = "$${item.sellingPrice}", fontSize = 18.sp, fontWeight = FontWeight.Bold, maxLines = 2)
                 }
             }
         }
