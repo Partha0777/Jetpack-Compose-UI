@@ -74,8 +74,6 @@ import com.curiozing.jetpackcomposeui.ui.theme.JetpackComposeUITheme
 import kotlinx.coroutines.launch
 
 
-val primaryColor =  Color(0xFFffde01)
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -135,7 +133,7 @@ fun SideNavContent() {
             bottomEndPercent = 20,
             bottomStartPercent = 20
         ),
-        color = primaryColor, modifier = Modifier
+        color = Color(0xFFffde01), modifier = Modifier
             .height(height = screenHeight.minus(screenHeight.div(5)).dp)
             .width(width = screenWidth.minus(screenWidth.div(2.25)).dp)
     ) {
@@ -188,7 +186,7 @@ fun SideNavContent() {
                                 modifier = Modifier
                                     .size(80.dp)
                                     .clip(shape = CircleShape)
-                                    .background(color = primaryColor)
+                                    .background(color = Color(0xFFffde01))
                             ) {
                                 Image(
                                     painter = painterResource(id = R.drawable.profile_female),
@@ -206,7 +204,7 @@ fun SideNavContent() {
                             Box(
                                 modifier = Modifier
                                     .clip(shape = RoundedCornerShape(50))
-                                    .background(color = primaryColor)
+                                    .background(color = Color(0xFFffde01))
                             ) {
                                 Text(
                                     modifier = Modifier.padding(
@@ -629,8 +627,8 @@ fun ProductItem(rowItems: List<Product>) {
                         )
                         Box(modifier = Modifier
                             .clip(shape = RoundedCornerShape( bottomEnd = 20.dp, topStart = 20.dp))
-                            .background(color = Color.Black).padding(vertical = 8.dp, horizontal = 16.dp)) {
-                            Text(text = "${"%.1f".format(((item.retailPrice - item.sellingPrice) / item.retailPrice) * 100)}%", color = Color.White)
+                            .background(color = Color(0xFFffde01)).padding(vertical = 4.dp, horizontal = 16.dp)) {
+                            Text(text = "${"%.1f".format(((item.retailPrice - item.sellingPrice) / item.retailPrice) * 100)}%", color = Color.Black, fontWeight = FontWeight.SemiBold)
                         }
                     }
                     Spacer(modifier = Modifier.height(8.dp))
@@ -833,7 +831,7 @@ fun RecommendedCategoryItem(category: Category) {
                 Icon(
                     imageVector = Icons.Default.ArrowForward,
                     contentDescription = "category",
-                    tint = primaryColor,
+                    tint = Color(0xFFffde01),
                     modifier = Modifier.size(
                         18.dp
                     )
@@ -875,7 +873,7 @@ fun HomeHeaderContent() {
                 bottomEnd = 50.dp,
                 bottomStart = 50.dp
             ),
-            colors = CardDefaults.cardColors(containerColor = primaryColor),
+            colors = CardDefaults.cardColors(containerColor = Color(0xFFffde01)),
             elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
         ) {
             Column(
@@ -1041,7 +1039,7 @@ fun Toolbar(func: () -> Unit) {
             Box(
                 Modifier
                     .clip(shape = CircleShape)
-                    .background(primaryColor)
+                    .background(Color(0xFFffde01))
                     .padding(all = 8.dp)
             ) {
                 Icon(
