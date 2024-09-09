@@ -625,10 +625,22 @@ fun ProductItem(rowItems: List<Product>) {
                             painter = rememberAsyncImagePainter(model = item.image),
                             contentDescription = "product"
                         )
-                        Box(modifier = Modifier
-                            .clip(shape = RoundedCornerShape( bottomEnd = 20.dp, topStart = 20.dp))
-                            .background(color = Color(0xFFffde01)).padding(vertical = 4.dp, horizontal = 16.dp)) {
-                            Text(text = "${"%.1f".format(((item.retailPrice - item.sellingPrice) / item.retailPrice) * 100)}%", color = Color.Black, fontWeight = FontWeight.SemiBold)
+                        Box(
+                            modifier = Modifier
+                                .clip(
+                                    shape = RoundedCornerShape(
+                                        bottomEnd = 20.dp,
+                                        topStart = 20.dp
+                                    )
+                                )
+                                .background(color = Color(0xFFffde01))
+                                .padding(vertical = 4.dp, horizontal = 16.dp)
+                        ) {
+                            Text(
+                                text = "${"%.1f".format(((item.retailPrice - item.sellingPrice) / item.retailPrice) * 100)}%",
+                                color = Color.Black,
+                                fontWeight = FontWeight.SemiBold
+                            )
                         }
                     }
                     Spacer(modifier = Modifier.height(8.dp))
