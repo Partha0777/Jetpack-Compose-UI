@@ -37,6 +37,7 @@ import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DrawerValue
@@ -645,12 +646,29 @@ fun ProductItem(rowItems: List<Product>) {
                         }
                     }
                     Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = item.name,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Normal,
-                        maxLines = 2
-                    )
+                    Row(horizontalArrangement = Arrangement.Center) {
+                        Text(
+                            modifier = Modifier.weight(0.7f),
+                            text = item.name,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Normal,
+                            maxLines = 2
+                        )
+                        Row(modifier = Modifier.weight(0.3f), verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                imageVector = Icons.Default.Star,
+                                contentDescription = "",
+                                modifier = Modifier.size(18.dp)
+                            )
+                            Spacer(modifier = Modifier.width(4.dp))
+                            Text(
+                                text = item.rating.toString(),
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.Normal,
+                                maxLines = 2
+                            )
+                        }
+                    }
                     Spacer(modifier = Modifier.height(8.dp))
                     Row {
                         Text(
