@@ -639,6 +639,7 @@ fun ProductItem(rowItems: List<Product>) {
                             Text(
                                 text = "${"%.1f".format(((item.retailPrice - item.sellingPrice) / item.retailPrice) * 100)}%",
                                 color = Color.Black,
+                                fontSize = 14.sp,
                                 fontWeight = FontWeight.SemiBold
                             )
                         }
