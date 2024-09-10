@@ -654,7 +654,10 @@ fun ProductItem(rowItems: List<Product>) {
                             fontWeight = FontWeight.Normal,
                             maxLines = 2
                         )
-                        Row(modifier = Modifier.weight(0.3f), verticalAlignment = Alignment.CenterVertically) {
+                        Row(
+                            modifier = Modifier.weight(0.3f),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
                             Icon(
                                 imageVector = Icons.Default.Star,
                                 contentDescription = "",
