@@ -532,15 +532,12 @@ fun HomeContent(func: () -> Unit) {
                         items(products.chunked(2)) { rowItems ->
                             ProductItem(rowItems)
                         }
-
                     }
                     TopBar()
                 }
-
             }
         }
     }
-
 }
 
 @Composable
@@ -565,7 +562,6 @@ fun ProductItem(rowItems: List<Product>) {
                         }, bottom = 24.dp
                     )
                 ) {
-
                     Box {
                         Image(
                             contentScale = ContentScale.Crop,
@@ -651,7 +647,6 @@ fun ProductItem(rowItems: List<Product>) {
 
 @Composable
 fun RecommendationProducts() {
-
     LazyVerticalGrid(columns = GridCells.Fixed(3), // Set number of columns
         modifier = Modifier
             .fillMaxSize()
