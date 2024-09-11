@@ -81,8 +81,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             JetpackComposeUITheme {
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = Color.White
+                    modifier = Modifier.fillMaxSize(), color = Color.White
                 ) {
                     Home()
                 }
@@ -99,8 +98,7 @@ fun Home() {
 }
 
 data class HomeFilter(
-    val icon: Int,
-    val title: String
+    val icon: Int, val title: String
 )
 
 @Composable
@@ -108,17 +106,15 @@ fun SideNavigationMenu() {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
-    ModalNavigationDrawer(
-        drawerState = drawerState,
-        drawerContent = {
-            SideNavContent()
-        }, content = {
-            HomeContent {
-                scope.launch {
-                    drawerState.open()
-                }
+    ModalNavigationDrawer(drawerState = drawerState, drawerContent = {
+        SideNavContent()
+    }, content = {
+        HomeContent {
+            scope.launch {
+                drawerState.open()
             }
-        })
+        }
+    })
 }
 
 
@@ -130,18 +126,16 @@ fun SideNavContent() {
 
     Surface(
         shape = RoundedCornerShape(
-            topEndPercent = 20,
-            bottomEndPercent = 20,
-            bottomStartPercent = 20
+            topEndPercent = 20, bottomEndPercent = 20, bottomStartPercent = 20
         ),
-        color = Color(0xFFffde01), modifier = Modifier
+        color = Color(0xFFffde01),
+        modifier = Modifier
             .height(height = screenHeight.minus(screenHeight.div(5)).dp)
             .width(width = screenWidth.minus(screenWidth.div(2.25)).dp)
     ) {
 
         Column(
-            modifier = Modifier
-                .fillMaxSize()
+            modifier = Modifier.fillMaxSize()
         ) {
             Column(
                 modifier = Modifier
@@ -152,8 +146,7 @@ fun SideNavContent() {
                     modifier = Modifier
                         .clip(
                             shape = RoundedCornerShape(
-                                bottomStartPercent = 20,
-                                bottomEndPercent = 20
+                                bottomStartPercent = 20, bottomEndPercent = 20
                             )
                         )
                         .fillMaxSize()
@@ -165,9 +158,7 @@ fun SideNavContent() {
                         defaultElevation = 2.dp // Apply elevation here
                     ),
                     shape = RoundedCornerShape(
-                        topEndPercent = 20,
-                        bottomEndPercent = 20,
-                        bottomStartPercent = 20
+                        topEndPercent = 20, bottomEndPercent = 20, bottomStartPercent = 20
                     ),
                 ) {
                     Column {
@@ -209,10 +200,7 @@ fun SideNavContent() {
                             ) {
                                 Text(
                                     modifier = Modifier.padding(
-                                        top = 4.dp,
-                                        bottom = 4.dp,
-                                        start = 12.dp,
-                                        end = 12.dp
+                                        top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp
                                     ),
                                     text = "My Orders",
                                     color = Color.Black,
@@ -234,10 +222,7 @@ fun SideNavContent() {
                                     Spacer(modifier = Modifier.height(4.dp))
                                     Text(
                                         modifier = Modifier.padding(
-                                            top = 4.dp,
-                                            bottom = 4.dp,
-                                            start = 12.dp,
-                                            end = 12.dp
+                                            top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp
                                         ),
                                         text = "Wallet",
                                         color = Color.DarkGray,
@@ -254,10 +239,7 @@ fun SideNavContent() {
                                     Spacer(modifier = Modifier.height(4.dp))
                                     Text(
                                         modifier = Modifier.padding(
-                                            top = 4.dp,
-                                            bottom = 4.dp,
-                                            start = 12.dp,
-                                            end = 12.dp
+                                            top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp
                                         ),
                                         text = "Home",
                                         color = Color.DarkGray,
@@ -280,10 +262,7 @@ fun SideNavContent() {
                                     Spacer(modifier = Modifier.height(4.dp))
                                     Text(
                                         modifier = Modifier.padding(
-                                            top = 4.dp,
-                                            bottom = 4.dp,
-                                            start = 12.dp,
-                                            end = 12.dp
+                                            top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp
                                         ),
                                         text = "Favourite",
                                         color = Color.DarkGray,
@@ -300,10 +279,7 @@ fun SideNavContent() {
                                     Spacer(modifier = Modifier.height(4.dp))
                                     Text(
                                         modifier = Modifier.padding(
-                                            top = 4.dp,
-                                            bottom = 4.dp,
-                                            start = 12.dp,
-                                            end = 12.dp
+                                            top = 4.dp, bottom = 4.dp, start = 12.dp, end = 12.dp
                                         ),
                                         text = "Settings",
                                         color = Color.DarkGray,
@@ -354,8 +330,7 @@ fun HomeContent(func: () -> Unit) {
             "Spicy, Chicken",
             4.5,
             "https://www.kitchensanctuary.com/wp-content/uploads/2019/10/Kung-Pao-Chicken-square-FS-39-new.jpg"
-        ),
-        Product(
+        ), Product(
             2L,
             "Sushi Platter",
             "Japanese",
@@ -364,8 +339,7 @@ fun HomeContent(func: () -> Unit) {
             "Assorted Fish",
             4.8,
             "https://miamifreshfishmarket.com/cdn/shop/products/platter-12-sushi.jpg?v=1711646076&width=1445"
-        ),
-        Product(
+        ), Product(
             3L,
             "Tandoori Chicken",
             "Indian",
@@ -374,8 +348,7 @@ fun HomeContent(func: () -> Unit) {
             "Spicy, Chicken",
             4.7,
             "https://www.easycookingwithmolly.com/wp-content/uploads/2023/11/air-fryer-whole-tandoori-chicken-3.jpg"
-        ),
-        Product(
+        ), Product(
             4L,
             "Margherita Pizza",
             "Italian",
@@ -384,8 +357,7 @@ fun HomeContent(func: () -> Unit) {
             "Vegetarian, Cheese",
             4.3,
             "https://cdn.loveandlemons.com/wp-content/uploads/2023/07/margherita-pizza.jpg"
-        ),
-        Product(
+        ), Product(
             5L,
             "Green Curry",
             "Thai",
@@ -394,8 +366,7 @@ fun HomeContent(func: () -> Unit) {
             "Spicy, Chicken",
             4.6,
             "https://www.archanaskitchen.com/images/archanaskitchen/0-Archanas-Kitchen-Recipes/2018/Vegetarian_Thai_Green_Curry_Recipe-2-2.jpg"
-        ),
-        Product(
+        ), Product(
             6L,
             "Tacos",
             "Mexican",
@@ -404,8 +375,7 @@ fun HomeContent(func: () -> Unit) {
             "Beef, Cheese",
             4.5,
             "https://www.onceuponachef.com/images/2011/02/chicken-tacos-11.jpg"
-        ),
-        Product(
+        ), Product(
             7L,
             "Croissant",
             "French",
@@ -414,8 +384,7 @@ fun HomeContent(func: () -> Unit) {
             "Butter",
             4.8,
             "https://sarahsvegankitchen.b-cdn.net/wp-content/uploads/2024/05/Vegan-Croissants-1.jpg"
-        ),
-        Product(
+        ), Product(
             8L,
             "Spring Rolls",
             "Chinese",
@@ -424,8 +393,7 @@ fun HomeContent(func: () -> Unit) {
             "Vegetarian",
             4.2,
             "https://www.elmundoeats.com/wp-content/uploads/2024/02/Crispy-spring-rolls.jpg"
-        ),
-        Product(
+        ), Product(
             9L,
             "Pad Thai",
             "Thai",
@@ -434,8 +402,7 @@ fun HomeContent(func: () -> Unit) {
             "Shrimp, Noodles",
             4.4,
             "https://www.recipetineats.com/tachyon/2020/01/Chicken-Pad-Thai_9-SQ.jpg"
-        ),
-        Product(
+        ), Product(
             10L,
             "Spaghetti Carbonara",
             "Italian",
@@ -444,8 +411,7 @@ fun HomeContent(func: () -> Unit) {
             "Bacon, Egg",
             4.5,
             "https://static01.nyt.com/images/2021/02/14/dining/carbonara-horizontal/carbonara-horizontal-square640-v2.jpg"
-        ),
-        Product(
+        ), Product(
             11L,
             "Biryani",
             "Indian",
@@ -454,8 +420,7 @@ fun HomeContent(func: () -> Unit) {
             "Chicken, Rice",
             4.7,
             "https://www.kannammacooks.com/wp-content/uploads/buhari-hotel-chennai-chicken-biryani-recipe-1-4.jpg"
-        ),
-        Product(
+        ), Product(
             12L,
             "Ratatouille",
             "French",
@@ -464,8 +429,7 @@ fun HomeContent(func: () -> Unit) {
             "Vegetables",
             4.6,
             "https://zenaskitchen.com/wp-content/uploads/2022/02/ratatouille-1.jpg"
-        ),
-        Product(
+        ), Product(
             13L,
             "Burrito",
             "Mexican",
@@ -474,8 +438,7 @@ fun HomeContent(func: () -> Unit) {
             "Beef, Rice",
             4.3,
             "https://cdn.britannica.com/13/234013-050-73781543/rice-and-chorizo-burrito.jpg"
-        ),
-        Product(
+        ), Product(
             14L,
             "Tempura",
             "Japanese",
@@ -484,8 +447,7 @@ fun HomeContent(func: () -> Unit) {
             "Shrimp, Vegetables",
             4.5,
             "https://www.allrecipes.com/thmb/xWetQsyyrT2R0V4hgS00m2961Hk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/129467-crispy-shrimp-tempura-ddmfs-4x3-1279-0d2e8debf0e04481acb89f60366bd405.jpg"
-        ),
-        Product(
+        ), Product(
             15L,
             "Chicken Parmesan",
             "Italian",
@@ -494,8 +456,7 @@ fun HomeContent(func: () -> Unit) {
             "Chicken, Cheese",
             4.6,
             "https://hips.hearstapps.com/hmg-prod/images/chicken-parmesan-secondary-644041992a1d4.jpg"
-        ),
-        Product(
+        ), Product(
             16L,
             "Dumplings",
             "Chinese",
@@ -504,8 +465,7 @@ fun HomeContent(func: () -> Unit) {
             "Pork, Steamed",
             4.4,
             "https://www.bhg.com/thmb/eQgTJ-Bl7DUSNIVQvfntHP3ZVOM=/2000x0/filters:no_upscale():strip_icc()/bhg-pork-and-shitake-steamed-dumplings-FmOg5-5J4gv94CccQYTVph-0ef0a4a8987244759154f9e5e1b1819e.jpg"
-        ),
-        Product(
+        ), Product(
             17L,
             "Tom Yum Soup",
             "Thai",
@@ -514,8 +474,7 @@ fun HomeContent(func: () -> Unit) {
             "Spicy, Shrimp",
             4.3,
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJxWz9cTtWmg8q9cNuygLcZY4j4LIvcnY8qA&s"
-        ),
-        Product(
+        ), Product(
             18L,
             "Churros",
             "Mexican",
@@ -524,8 +483,7 @@ fun HomeContent(func: () -> Unit) {
             "Fried Dough, Sugar",
             4.6,
             "https://www.recipetineats.com/tachyon/2016/08/Churros_9-SQ.jpg"
-        ),
-        Product(
+        ), Product(
             19L,
             "Butter Chicken",
             "Indian",
@@ -534,8 +492,7 @@ fun HomeContent(func: () -> Unit) {
             "Creamy, Chicken",
             4.8,
             "https://www.indianhealthyrecipes.com/wp-content/uploads/2023/04/butter-chicken-recipe.jpg"
-        ),
-        Product(
+        ), Product(
             20L,
             "Macarons",
             "French",
@@ -589,8 +546,7 @@ fun HomeContent(func: () -> Unit) {
 @Composable
 fun ProductItem(rowItems: List<Product>) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceEvenly
+        modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         rowItems.forEachIndexed { index, item ->
             Box(
@@ -628,8 +584,7 @@ fun ProductItem(rowItems: List<Product>) {
                             modifier = Modifier
                                 .clip(
                                     shape = RoundedCornerShape(
-                                        bottomEnd = 20.dp,
-                                        topStart = 20.dp
+                                        bottomEnd = 20.dp, topStart = 20.dp
                                     )
                                 )
                                 .background(color = Color(0xFFffde01))
@@ -697,12 +652,10 @@ fun ProductItem(rowItems: List<Product>) {
 @Composable
 fun RecommendationProducts() {
 
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(3), // Set number of columns
+    LazyVerticalGrid(columns = GridCells.Fixed(3), // Set number of columns
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
-        content = {
+            .padding(16.dp), content = {
             items(50) { index ->
                 Box(
                     modifier = Modifier
@@ -712,9 +665,7 @@ fun RecommendationProducts() {
                     Text(text = "Item $index")
                 }
             }
-        }
-    )
-    /*  Column {
+        })/*  Column {
           Text(
               text = "Recommended",
               fontSize = 20.sp,
@@ -762,8 +713,7 @@ fun TopBar() {
                 .background(
                     color = Color.Gray.copy(alpha = 0.14f), // Adjust color and alpha for desired shadow
                     shape = RoundedCornerShape(
-                        bottomStart = 50.dp,
-                        bottomEnd = 50.dp
+                        bottomStart = 50.dp, bottomEnd = 50.dp
                     )
                 )
         )
@@ -798,14 +748,10 @@ fun RecommendedCategory() {
             "https://www.tastingtable.com/img/gallery/20-japanese-dishes-you-need-to-try-at-least-once/l-intro-1664219638.jpg"
         ),
         Category(
-            1,
-            "French",
-            "https://media.tacdn.com/media/attractions-content--1x-1/12/60/c1/ed.jpg"
+            1, "French", "https://media.tacdn.com/media/attractions-content--1x-1/12/60/c1/ed.jpg"
         ),
         Category(
-            1,
-            "Thai",
-            "https://kampatour.com/pic/blog/a5d47844-5e3b-4172-94c8-ef5027e47ff8.jpg"
+            1, "Thai", "https://kampatour.com/pic/blog/a5d47844-5e3b-4172-94c8-ef5027e47ff8.jpg"
         ),
     )
     Column {
@@ -851,7 +797,8 @@ fun RecommendedCategoryItem(category: Category) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 4.dp), horizontalArrangement = Arrangement.SpaceBetween
+                .padding(horizontal = 4.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(text = category.name, fontSize = 16.sp, fontWeight = FontWeight.Bold)
             Box(
@@ -890,8 +837,7 @@ fun HomeHeaderContent() {
                 .background(
                     color = Color.Gray.copy(alpha = 0.15f), // Adjust color and alpha for desired shadow
                     shape = RoundedCornerShape(
-                        bottomStart = 50.dp,
-                        bottomEnd = 50.dp
+                        bottomStart = 50.dp, bottomEnd = 50.dp
                     )
                 )
         )
@@ -900,19 +846,14 @@ fun HomeHeaderContent() {
                 .fillMaxWidth()
                 .height(screenHeight.div(3.8).dp),
             shape = RoundedCornerShape(
-                topStart = 0.dp,
-                topEnd = 0.dp,
-                bottomEnd = 50.dp,
-                bottomStart = 50.dp
+                topStart = 0.dp, topEnd = 0.dp, bottomEnd = 50.dp, bottomStart = 50.dp
             ),
             colors = CardDefaults.cardColors(containerColor = Color(0xFFffde01)),
             elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
         ) {
             Column(
                 modifier = Modifier.padding(
-                    top = LocalConfiguration.current.screenHeightDp
-                        .div(10)
-                        .plus(2).dp
+                    top = LocalConfiguration.current.screenHeightDp.div(10).plus(2).dp
                 )
             ) {
                 Spacer(Modifier.height(20.dp))
@@ -959,7 +900,8 @@ fun RecentOrder() {
 
     Column {
         Row(
-            horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier
                 .padding(horizontal = 16.dp)
                 .fillMaxWidth()
         ) {
@@ -989,11 +931,9 @@ fun RecentOrderItem(orders: Orders) {
     Card(
         colors = CardDefaults.cardColors(
             containerColor = Color.White
-        ),
-        elevation = CardDefaults.cardElevation(
+        ), elevation = CardDefaults.cardElevation(
             2.dp
-        ),
-        modifier = Modifier
+        ), modifier = Modifier
             .width(screenWidth.minus(40).dp)
             .padding(start = 20.dp)
     ) {
@@ -1059,10 +999,9 @@ fun Toolbar(func: () -> Unit) {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            IconButton(
-                onClick = {
-                    func.invoke()
-                }) {
+            IconButton(onClick = {
+                func.invoke()
+            }) {
                 Icon(imageVector = Icons.Default.Menu, contentDescription = "menuIcon")
             }
             Text(text = "FOODIES", fontSize = 18.sp, fontWeight = FontWeight.Bold)
@@ -1107,10 +1046,7 @@ fun TabBarContent() {
             .fillMaxWidth()
             .height(screenHeight.div(10).dp),
         shape = RoundedCornerShape(
-            topStart = 0.dp,
-            topEnd = 0.dp,
-            bottomEnd = 50.dp,
-            bottomStart = 50.dp
+            topStart = 0.dp, topEnd = 0.dp, bottomEnd = 50.dp, bottomStart = 50.dp
         ),
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
@@ -1174,9 +1110,7 @@ fun DeliveryLocationUI() {
             Text(text = "Home", fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.width(8.dp))
             Text(
-                text = "4078 David Cross CA",
-                color = Color.Gray,
-                fontSize = 14.sp
+                text = "4078 David Cross CA", color = Color.Gray, fontSize = 14.sp
             )
         }
     }
@@ -1196,16 +1130,14 @@ fun HomeFilter() {
     LazyRow(content = {
         for (i in homeFilterList) {
             item {
-                Card(
-                    shape = RoundedCornerShape(12.dp),
+                Card(shape = RoundedCornerShape(12.dp),
                     elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
                     colors = CardDefaults.cardColors(containerColor = Color.White),
                     modifier = Modifier
                         .padding(start = 16.dp, end = 2.dp)
                         .height(68.dp)
                         .width(screenWidth.div(3).dp),
-                    onClick = {}
-                ) {
+                    onClick = {}) {
                     Row(
                         modifier = Modifier
                             .padding(all = 16.dp)
@@ -1233,8 +1165,7 @@ fun HomeFilter() {
 }
 
 data class TopBar(
-    var image: Int,
-    var tintColor: Color
+    var image: Int, var tintColor: Color
 )
 
 data class Orders(
@@ -1247,9 +1178,7 @@ data class Orders(
 )
 
 data class Category(
-    val id: Long,
-    val name: String,
-    val image: String
+    val id: Long, val name: String, val image: String
 )
 
 data class Product(
