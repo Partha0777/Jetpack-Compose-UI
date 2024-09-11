@@ -594,9 +594,7 @@ fun ProductItem(rowItems: List<Product>) {
     ) {
         rowItems.forEachIndexed { index, item ->
             Box(
-                modifier = Modifier
-
-                    .width(LocalConfiguration.current.screenWidthDp.div(2).dp)
+                modifier = Modifier.width(LocalConfiguration.current.screenWidthDp.div(2).dp)
             ) {
                 Column(
                     modifier = Modifier.padding(
