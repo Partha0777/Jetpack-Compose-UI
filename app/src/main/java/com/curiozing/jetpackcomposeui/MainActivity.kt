@@ -587,7 +587,7 @@ fun ProductItem(rowItems: List<Product>) {
                                 .padding(vertical = 4.dp, horizontal = 16.dp)
                         ) {
                             Text(
-                                text = "${"%.1f".format(((item.retailPrice - item.sellingPrice) / item.retailPrice) * 100)}%",
+                                text = "${"%.1f".format(((item.retailPrice - item.sellingPrice) / item.retailPrice) * 100)}% Off",
                                 color = Color.Black,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.SemiBold
