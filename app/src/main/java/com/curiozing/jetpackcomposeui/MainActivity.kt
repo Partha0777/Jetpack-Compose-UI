@@ -646,55 +646,6 @@ fun ProductItem(rowItems: List<Product>) {
 }
 
 @Composable
-fun RecommendationProducts() {
-    LazyVerticalGrid(columns = GridCells.Fixed(3), // Set number of columns
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp), content = {
-            items(50) { index ->
-                Box(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .size(100.dp),
-                ) {
-                    Text(text = "Item $index")
-                }
-            }
-        })/*  Column {
-          Text(
-              text = "Recommended",
-              fontSize = 20.sp,
-              fontWeight = FontWeight.Bold,
-              modifier = Modifier.padding(horizontal = 20.dp)
-          )
-          Box( modifier =  Modifier
-              .fillMaxWidth()
-          ) {
-              LazyVerticalGrid(
-                  userScrollEnabled = false,
-                  columns = GridCells.Fixed(2)
-              ) {
-                  items(products.size) {
-                      Card(
-                          modifier = Modifier.height(LocalConfiguration.current.screenHeightDp.div(4).dp),
-                          colors = CardDefaults.cardColors(
-                              contentColor = Color.White
-                          )
-                      ) {
-                          Image(
-                              painter = rememberAsyncImagePainter(model = products[it]),
-                              contentDescription = ""
-                          )
-                      }
-                  }
-              }
-          }
-
-      }
-  */
-}
-
-@Composable
 fun TopBar() {
     Box(Modifier.background(Color.Transparent)) {
         Box(
