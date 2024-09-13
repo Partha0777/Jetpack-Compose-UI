@@ -604,7 +604,6 @@ fun HomeHeaderContent() {
 
 @Composable
 fun RecentOrder() {
-
     Column {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -628,7 +627,6 @@ fun RecentOrder() {
             }
         })
     }
-
 }
 
 @Composable
