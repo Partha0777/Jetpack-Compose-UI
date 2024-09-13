@@ -89,10 +89,6 @@ fun Home() {
     SideNavigationMenu()
 }
 
-data class HomeFilter(
-    val icon: Int, val title: String
-)
-
 @Composable
 fun SideNavigationMenu() {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -860,6 +856,17 @@ fun HomeFilter() {
 
 }
 
+@Preview
+@Composable
+fun GreetingPreview() {
+    JetpackComposeUITheme {
+        Home()
+    }
+}
+
+data class HomeFilter(
+    val icon: Int, val title: String
+)
 data class TopBar(
     var image: Int, var tintColor: Color
 )
@@ -887,12 +894,3 @@ data class Product(
     val rating: Double,
     val image: String
 )
-
-
-@Preview
-@Composable
-fun GreetingPreview() {
-    JetpackComposeUITheme {
-        Home()
-    }
-}
