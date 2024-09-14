@@ -903,35 +903,3 @@ data class Product(
     val rating: Double,
     val image: String
 )
-
-
-
-abstract class Animal {
-    abstract fun makeSound()
-}
-
-class Dog : Animal() {
-    override fun makeSound() {
-        println("Woof!")
-    }
-}
-
-class Cat : Animal() {
-    override fun makeSound() {
-        println("Meoww!")
-    }
-}
-
-annotation class Info(val name:String)
-@Info("Partha")
-class Book{
-
-}
-fun main() {
-    val kClass = Book::class
-
-    val book = kClass.findAnnotation<Info>()
-    book?.let {
-        print("Name : ${it.name}")
-    }
-}
