@@ -1,8 +1,8 @@
 package com.curiozing.jetpackcomposeui.utils
 
-import com.curiozing.jetpackcomposeui.Category
-import com.curiozing.jetpackcomposeui.Orders
-import com.curiozing.jetpackcomposeui.Product
+import com.curiozing.jetpackcomposeui.model.theme1.Category
+import com.curiozing.jetpackcomposeui.model.theme1.Orders
+import com.curiozing.jetpackcomposeui.model.theme1.Product
 
 object MockData {
     val recommendedCategory = listOf(

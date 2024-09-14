@@ -1,4 +1,4 @@
-package com.curiozing.jetpackcomposeui.model
+package com.curiozing.jetpackcomposeui.model.theme1
 
 import androidx.compose.ui.graphics.Color
 

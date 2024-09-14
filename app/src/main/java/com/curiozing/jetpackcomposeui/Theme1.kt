@@ -63,13 +63,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-import com.curiozing.jetpackcomposeui.model.TopBarData
+import com.curiozing.jetpackcomposeui.model.theme1.TopBarData
+import com.curiozing.jetpackcomposeui.model.theme1.Category
+import com.curiozing.jetpackcomposeui.model.theme1.Orders
+import com.curiozing.jetpackcomposeui.model.theme1.Product
 import com.curiozing.jetpackcomposeui.ui.theme.JetpackComposeUITheme
 import com.curiozing.jetpackcomposeui.utils.MockData
 import kotlinx.coroutines.launch
-import kotlin.reflect.KClass
-import kotlin.reflect.full.findAnnotation
-import kotlin.reflect.full.findAnnotations
 
 
 class Theme1 : ComponentActivity() {
@@ -880,26 +880,4 @@ data class HomeFilter(
 
 
 
-data class Orders(
-    val orderId: Long,
-    val products: String,
-    val totalPrice: Double,
-    val outLetName: String,
-    val rating: Double,
-    val image: String
-)
 
-data class Category(
-    val id: Long, val name: String, val image: String
-)
-
-data class Product(
-    val id: Long,
-    val name: String,
-    val category: String,
-    val retailPrice: Double,
-    val sellingPrice: Double,
-    val options: String,
-    val rating: Double,
-    val image: String
-)
