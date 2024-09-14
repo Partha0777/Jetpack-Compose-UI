@@ -63,9 +63,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
+import com.curiozing.jetpackcomposeui.model.TopBarData
 import com.curiozing.jetpackcomposeui.ui.theme.JetpackComposeUITheme
 import com.curiozing.jetpackcomposeui.utils.MockData
 import kotlinx.coroutines.launch
+import kotlin.reflect.KClass
+import kotlin.reflect.full.findAnnotation
+import kotlin.reflect.full.findAnnotations
 
 
 class Theme1 : ComponentActivity() {
@@ -726,10 +730,10 @@ fun TabBarContent() {
 
     val topBarImageList = remember {
         mutableStateListOf(
-            TopBar(R.drawable.veg_icon, Color.DarkGray),
-            TopBar(R.drawable.sea_food_icon, Color.DarkGray),
-            TopBar(R.drawable.western_food_icon, Color.DarkGray),
-            TopBar(R.drawable.noodles_icon, Color.DarkGray)
+            TopBarData(R.drawable.veg_icon, Color.DarkGray),
+            TopBarData(R.drawable.sea_food_icon, Color.DarkGray),
+            TopBarData(R.drawable.western_food_icon, Color.DarkGray),
+            TopBarData(R.drawable.noodles_icon, Color.DarkGray)
         )
     }
 
@@ -866,10 +870,15 @@ fun GreetingPreview() {
 
 data class HomeFilter(
     val icon: Int, val title: String
-)
-data class TopBar(
-    var image: Int, var tintColor: Color
-)
+){
+    init {
+        require(true){
+
+        }
+    }
+}
+
+
 
 data class Orders(
     val orderId: Long,
@@ -894,3 +903,35 @@ data class Product(
     val rating: Double,
     val image: String
 )
+
+
+
+abstract class Animal {
+    abstract fun makeSound()
+}
+
+class Dog : Animal() {
+    override fun makeSound() {
+        println("Woof!")
+    }
+}
+
+class Cat : Animal() {
+    override fun makeSound() {
+        println("Meoww!")
+    }
+}
+
+annotation class Info(val name:String)
+@Info("Partha")
+class Book{
+
+}
+fun main() {
+    val kClass = Book::class
+
+    val book = kClass.findAnnotation<Info>()
+    book?.let {
+        print("Name : ${it.name}")
+    }
+}
