@@ -1,4 +1,4 @@
-package com.curiozing.jetpackcomposeui
+package com.curiozing.jetpackcomposeui.themes.theme1
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -63,6 +63,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
+import com.curiozing.jetpackcomposeui.R
 import com.curiozing.jetpackcomposeui.model.theme1.TopBarData
 import com.curiozing.jetpackcomposeui.model.theme1.Category
 import com.curiozing.jetpackcomposeui.model.theme1.Orders
