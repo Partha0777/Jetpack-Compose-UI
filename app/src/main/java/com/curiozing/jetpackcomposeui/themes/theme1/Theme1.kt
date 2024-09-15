@@ -73,24 +73,8 @@ import com.curiozing.jetpackcomposeui.utils.MockData
 import kotlinx.coroutines.launch
 
 
-class Theme1 : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            JetpackComposeUITheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(), color = Color.White
-                ) {
-                    Home()
-                }
-            }
-        }
-    }
-}
-
-
 @Composable
-fun Home() {
+fun Theme1() {
     SideNavigationMenu()
 }
 
@@ -865,7 +849,7 @@ fun HomeFilter() {
 @Composable
 fun GreetingPreview() {
     JetpackComposeUITheme {
-        Home()
+        Theme1()
     }
 }
 
