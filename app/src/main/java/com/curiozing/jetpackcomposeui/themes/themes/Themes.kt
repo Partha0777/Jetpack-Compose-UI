@@ -33,11 +33,12 @@ class Themes : ComponentActivity() {
 }
 
 @Composable
-fun ThemeList(navigateToTheme : (page:String) -> Unit){
+fun ThemeList(navigateToTheme: (page: String) -> Unit) {
     Column(
         Modifier
             .fillMaxSize()
-            .padding(horizontal = 20.dp, vertical = 20.dp)) {
+            .padding(horizontal = 20.dp, vertical = 20.dp)
+    ) {
         Text(text = "Theme 1", Modifier.clickable {
             navigateToTheme.invoke("Theme1")
         })
@@ -45,11 +46,11 @@ fun ThemeList(navigateToTheme : (page:String) -> Unit){
 }
 
 @Composable
-fun AppNavHost(){
+fun AppNavHost() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "themes"){
+    NavHost(navController = navController, startDestination = "themes") {
         composable("themes") {
-            ThemeList{
+            ThemeList {
                 navController.navigate(it)
             }
         }

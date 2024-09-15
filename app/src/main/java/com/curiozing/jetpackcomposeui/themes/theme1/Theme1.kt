@@ -297,7 +297,6 @@ fun SideNavContent() {
 fun HomeContent(func: () -> Unit) {
 
 
-
     Column {
         Toolbar {
             func()
@@ -855,9 +854,9 @@ fun GreetingPreview() {
 
 data class HomeFilter(
     val icon: Int, val title: String
-){
+) {
     init {
-        require(true){
+        require(true) {
 
         }
     }
