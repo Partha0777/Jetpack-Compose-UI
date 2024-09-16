@@ -20,9 +20,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.curiozing.jetpackcomposeui.model.themes.Themes
 import com.curiozing.jetpackcomposeui.themes.theme1.Theme1
 import com.curiozing.jetpackcomposeui.ui.theme.JetpackComposeUITheme
+import com.curiozing.jetpackcomposeui.utils.MockData.themeList
 
 class ThemesView : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +39,6 @@ class ThemesView : ComponentActivity() {
 
 @Composable
 fun ThemeList(navigateToTheme: (page: String) -> Unit) {
-    val themeList = mutableListOf(Themes(1,"Theme 1", "Theme1"))
     Column(
         Modifier
             .fillMaxSize()

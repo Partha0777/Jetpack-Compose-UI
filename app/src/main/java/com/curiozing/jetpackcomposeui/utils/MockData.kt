@@ -3,8 +3,12 @@ package com.curiozing.jetpackcomposeui.utils
 import com.curiozing.jetpackcomposeui.model.theme1.Category
 import com.curiozing.jetpackcomposeui.model.theme1.Orders
 import com.curiozing.jetpackcomposeui.model.theme1.Product
+import com.curiozing.jetpackcomposeui.model.themes.Themes
 
 object MockData {
+
+    val themeList = mutableListOf(Themes(1,"Theme 1", "Theme1"))
+
     val recommendedCategory = listOf(
         Category(1, "Italian", "https://onthewood.com/wp-content/uploads/2024/03/Italian1.jpg"),
         Category(
