@@ -14,7 +14,7 @@
         android:theme="@style/Theme.JetpackComposeUI"
         tools:targetApi="31">
         <activity
-            android:name=".themes.themes.Themes"
+            android:name=".themes.themes.ThemesView"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.JetpackComposeUI">
