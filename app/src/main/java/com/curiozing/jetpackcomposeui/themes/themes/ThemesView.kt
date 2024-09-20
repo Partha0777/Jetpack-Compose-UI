@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -45,6 +46,8 @@ fun ThemeList(navigateToTheme: (page: String) -> Unit) {
             .padding(horizontal = 20.dp, vertical = 20.dp)
     ) {
         Text(text = "Themes", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+        Spacer(modifier = Modifier.height(12.dp))
+        Divider()
         Spacer(modifier = Modifier.height(20.dp))
         LazyColumn(content = {
             themeList.forEach {
