@@ -57,7 +57,7 @@ fun ThemeList(navigateToTheme: (page: String) -> Unit) {
             Text(text = "Themes", fontSize = 16.sp, fontWeight = FontWeight.Bold)
         }
         Spacer(modifier = Modifier.height(12.dp))
-        Divider()
+        Divider(thickness = 0.8.dp)
         Spacer(modifier = Modifier.height(20.dp))
         LazyColumn(content = {
             themeList.forEach {
