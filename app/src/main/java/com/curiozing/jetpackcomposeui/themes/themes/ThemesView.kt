@@ -5,12 +5,18 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Divider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -45,7 +51,11 @@ fun ThemeList(navigateToTheme: (page: String) -> Unit) {
             .fillMaxSize()
             .padding(horizontal = 20.dp, vertical = 20.dp)
     ) {
-        Text(text = "Themes", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+        Row {
+            Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "")
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = "Themes", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+        }
         Spacer(modifier = Modifier.height(12.dp))
         Divider()
         Spacer(modifier = Modifier.height(20.dp))
