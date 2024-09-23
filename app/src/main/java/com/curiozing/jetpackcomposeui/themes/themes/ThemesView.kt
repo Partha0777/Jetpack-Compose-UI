@@ -67,7 +67,10 @@ fun ThemeList(navigateToTheme: (page: String) -> Unit) {
                     Card(modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 4.dp), colors = CardDefaults.cardColors(
                         containerColor = Color.White
                     ), shape = RoundedCornerShape(24.dp), elevation = CardDefaults.elevatedCardElevation(defaultElevation = 1.5.dp)) {
-                        Text(text = it.themeName, modifier = Modifier.padding(horizontal = 12.dp, vertical = 12.dp).clickable {
+                        Text(text = it.themeName, modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp).clickable {
+                            navigateToTheme.invoke(it.route)
+                        })
+                        Text(text = it.themeName, modifier = Modifier.clickable {
                             navigateToTheme.invoke(it.route)
                         })
                     }
