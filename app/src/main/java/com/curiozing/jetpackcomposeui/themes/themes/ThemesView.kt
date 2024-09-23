@@ -71,33 +71,52 @@ fun ThemeList(navigateToTheme: (page: String) -> Unit) {
         LazyColumn(content = {
             themeList.forEach {
                 item {
-                    Card(modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 4.dp, vertical = 8.dp), colors = CardDefaults.cardColors(
-                        containerColor = Color.White
-                    ), shape = RoundedCornerShape(32.dp), elevation = CardDefaults.elevatedCardElevation(defaultElevation = 1.5.dp)) {
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 4.dp, vertical = 8.dp),
+                        colors = CardDefaults.cardColors(
+                            containerColor = Color.White
+                        ),
+                        shape = RoundedCornerShape(32.dp),
+                        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 1.5.dp)
+                    ) {
                         Spacer(modifier = Modifier.height(14.dp))
-                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
                             Text(text = it.themeName, modifier = Modifier
                                 .padding(horizontal = 18.dp)
                                 .clickable {
                                     navigateToTheme.invoke(it.route)
                                 })
-                            Box(modifier = Modifier.padding(horizontal = 24.dp).background(color = Color.Black,RoundedCornerShape(60))) {
-                                Text(text = it.category.name.lowercase().replaceFirstChar { it.titlecase() }, fontSize = 12.sp, color = Color.White, modifier = Modifier
-                                    .padding(horizontal = 8.dp, vertical = 2.dp)
-                                    .clickable {
-                                        navigateToTheme.invoke(it.route)
-                                    })
+                            Box(
+                                modifier = Modifier
+                                    .padding(horizontal = 24.dp)
+                                    .background(color = Color.Black, RoundedCornerShape(60))
+                            ) {
+                                Text(text = it.category.name.lowercase()
+                                    .replaceFirstChar { it.titlecase() },
+                                    fontSize = 12.sp,
+                                    color = Color.White,
+                                    modifier = Modifier
+                                        .padding(horizontal = 8.dp, vertical = 2.dp)
+                                        .clickable {
+                                            navigateToTheme.invoke(it.route)
+                                        })
                             }
                         }
 
                         Spacer(modifier = Modifier.height(4.dp))
-                        Text(text = it.description, fontSize = 12.sp, color = Color.Gray, modifier = Modifier
-                            .padding(horizontal = 18.dp)
-                            .clickable {
-                                navigateToTheme.invoke(it.route)
-                            })
+                        Text(text = it.description,
+                            fontSize = 12.sp,
+                            color = Color.Gray,
+                            modifier = Modifier
+                                .padding(horizontal = 18.dp)
+                                .clickable {
+                                    navigateToTheme.invoke(it.route)
+                                })
                         Spacer(modifier = Modifier.height(14.dp))
                     }
 
