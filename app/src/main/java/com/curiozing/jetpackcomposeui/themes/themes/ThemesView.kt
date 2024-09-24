@@ -1,5 +1,6 @@
 package com.curiozing.jetpackcomposeui.themes.themes
 
+import android.graphics.drawable.VectorDrawable
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,8 +19,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
@@ -63,9 +66,11 @@ fun ThemeList(navigateToTheme: (page: String) -> Unit) {
             .fillMaxSize()
             .padding(horizontal = 20.dp, vertical = 20.dp)
     ) {
-        Row {
+        Row (verticalAlignment = Alignment.CenterVertically) {
             Spacer(modifier = Modifier.width(8.dp))
             Text(text = "Themes List", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            Spacer(modifier = Modifier.width(4.dp))
+            Icon(imageVector = Icons.Default.Favorite, contentDescription = "", modifier = Modifier.height(18.dp).width(18.dp))
         }
         Spacer(modifier = Modifier.height(12.dp))
         LazyColumn(content = {
