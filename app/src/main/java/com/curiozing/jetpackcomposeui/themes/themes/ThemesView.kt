@@ -83,6 +83,7 @@ fun ThemeList(navigateToTheme: (page: String) -> Unit) {
                     ) {
                         Spacer(modifier = Modifier.height(14.dp))
                         Row(
+                            verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
