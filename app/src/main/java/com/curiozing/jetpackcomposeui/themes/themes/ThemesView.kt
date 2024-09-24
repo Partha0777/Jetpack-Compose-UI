@@ -66,11 +66,17 @@ fun ThemeList(navigateToTheme: (page: String) -> Unit) {
             .fillMaxSize()
             .padding(horizontal = 20.dp, vertical = 20.dp)
     ) {
-        Row (verticalAlignment = Alignment.CenterVertically) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             Spacer(modifier = Modifier.width(8.dp))
             Text(text = "Themes List", fontSize = 16.sp, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.width(4.dp))
-            Icon(imageVector = Icons.Default.Favorite, contentDescription = "", modifier = Modifier.height(18.dp).width(18.dp))
+            Icon(
+                imageVector = Icons.Default.Favorite,
+                contentDescription = "",
+                modifier = Modifier
+                    .height(18.dp)
+                    .width(18.dp)
+            )
         }
         Spacer(modifier = Modifier.height(12.dp))
         LazyColumn(content = {
