@@ -99,7 +99,7 @@ fun ThemeList(navigateToTheme: (page: String) -> Unit) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ThemeListItem(themes: Themes,func:() -> Unit){
+fun ThemeListItem(themes: Themes, func: () -> Unit) {
     val cardShape = RoundedCornerShape(32.dp)
 
     Card(
@@ -110,23 +110,25 @@ fun ThemeListItem(themes: Themes,func:() -> Unit){
         colors = CardDefaults.cardColors(containerColor = Color.White),
         onClick = {
             func()
-        }){
+        }) {
         Spacer(modifier = Modifier.height(14.dp))
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(text = themes.themeName, modifier = Modifier
-                .padding(horizontal = 18.dp)
+            Text(
+                text = themes.themeName, modifier = Modifier
+                    .padding(horizontal = 18.dp)
             )
             Box(
                 modifier = Modifier
                     .padding(horizontal = 24.dp)
                     .background(color = Color.Black, RoundedCornerShape(60))
             ) {
-                Text(text = themes.category.name.lowercase()
-                    .replaceFirstChar { it.titlecase() },
+                Text(
+                    text = themes.category.name.lowercase()
+                        .replaceFirstChar { it.titlecase() },
                     fontSize = 12.sp,
                     color = Color.White,
                     modifier = Modifier
@@ -136,15 +138,18 @@ fun ThemeListItem(themes: Themes,func:() -> Unit){
         }
 
         Spacer(modifier = Modifier.height(4.dp))
-        Text(text = themes.description,
+        Text(
+            text = themes.description,
             fontSize = 12.sp,
             color = Color.Gray,
             modifier = Modifier
-                .padding(horizontal = 18.dp))
+                .padding(horizontal = 18.dp)
+        )
         Spacer(modifier = Modifier.height(14.dp))
     }
 
 }
+
 @Composable
 fun AppNavHost() {
     val navController = rememberNavController()
