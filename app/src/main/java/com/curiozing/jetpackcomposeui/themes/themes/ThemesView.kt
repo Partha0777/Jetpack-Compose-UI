@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.curiozing.jetpackcomposeui.model.themes.Themes
 import com.curiozing.jetpackcomposeui.themes.theme1.Theme1
 import com.curiozing.jetpackcomposeui.ui.theme.JetpackComposeUITheme
 import com.curiozing.jetpackcomposeui.utils.MockData.themeList
@@ -82,62 +83,64 @@ fun ThemeList(navigateToTheme: (page: String) -> Unit) {
         LazyColumn(content = {
             themeList.forEach {
                 item {
-                    Card(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 4.dp, vertical = 8.dp),
-                        colors = CardDefaults.cardColors(
-                            containerColor = Color.White
-                        ),
-                        shape = RoundedCornerShape(32.dp),
-                        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 1.5.dp)
-                    ) {
-                        Spacer(modifier = Modifier.height(14.dp))
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween
-                        ) {
-                            Text(text = it.themeName, modifier = Modifier
-                                .padding(horizontal = 18.dp)
-                                .clickable {
-                                    navigateToTheme.invoke(it.route)
-                                })
-                            Box(
-                                modifier = Modifier
-                                    .padding(horizontal = 24.dp)
-                                    .background(color = Color.Black, RoundedCornerShape(60))
-                            ) {
-                                Text(text = it.category.name.lowercase()
-                                    .replaceFirstChar { it.titlecase() },
-                                    fontSize = 12.sp,
-                                    color = Color.White,
-                                    modifier = Modifier
-                                        .padding(horizontal = 8.dp, vertical = 2.dp)
-                                        .clickable {
-                                            navigateToTheme.invoke(it.route)
-                                        })
-                            }
-                        }
-
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text(text = it.description,
-                            fontSize = 12.sp,
-                            color = Color.Gray,
-                            modifier = Modifier
-                                .padding(horizontal = 18.dp)
-                                .clickable {
-                                    navigateToTheme.invoke(it.route)
-                                })
-                        Spacer(modifier = Modifier.height(14.dp))
+                    ThemeListItem(themes = it) {
+                        navigateToTheme.invoke(it.route)
                     }
-
                 }
             }
         })
     }
 }
 
+@Composable
+fun ThemeListItem(themes: Themes,func:() -> Unit){
+    Card(
+        modifier = Modifier
+            .clickable {
+                func()
+            }
+            .fillMaxWidth()
+            .padding(horizontal = 4.dp, vertical = 8.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        ),
+        shape = RoundedCornerShape(32.dp),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 1.5.dp)
+    ) {
+        Spacer(modifier = Modifier.height(14.dp))
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(text = themes.themeName, modifier = Modifier
+                .padding(horizontal = 18.dp)
+            )
+            Box(
+                modifier = Modifier
+                    .padding(horizontal = 24.dp)
+                    .background(color = Color.Black, RoundedCornerShape(60))
+            ) {
+                Text(text = themes.category.name.lowercase()
+                    .replaceFirstChar { it.titlecase() },
+                    fontSize = 12.sp,
+                    color = Color.White,
+                    modifier = Modifier
+                        .padding(horizontal = 8.dp, vertical = 2.dp)
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(text = themes.description,
+            fontSize = 12.sp,
+            color = Color.Gray,
+            modifier = Modifier
+                .padding(horizontal = 18.dp))
+        Spacer(modifier = Modifier.height(14.dp))
+    }
+
+}
 @Composable
 fun AppNavHost() {
     val navController = rememberNavController()
