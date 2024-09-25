@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,16 +24,20 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.toLowerCase
@@ -92,21 +97,20 @@ fun ThemeList(navigateToTheme: (page: String) -> Unit) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ThemeListItem(themes: Themes,func:() -> Unit){
+    val cardShape = RoundedCornerShape(32.dp)
+
     Card(
         modifier = Modifier
-            .clickable {
-                func()
-            }
-            .fillMaxWidth()
-            .padding(horizontal = 4.dp, vertical = 8.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = Color.White
-        ),
+            .padding(start = 4.dp, end = 4.dp, top = 4.dp, bottom = 4.dp),
         shape = RoundedCornerShape(32.dp),
-        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 1.5.dp)
-    ) {
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        onClick = {
+            func()
+        }){
         Spacer(modifier = Modifier.height(14.dp))
         Row(
             verticalAlignment = Alignment.CenterVertically,
