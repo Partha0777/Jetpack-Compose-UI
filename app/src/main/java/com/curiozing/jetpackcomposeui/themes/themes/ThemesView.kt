@@ -48,6 +48,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.curiozing.jetpackcomposeui.model.themes.Themes
 import com.curiozing.jetpackcomposeui.themes.theme1.Theme1
+import com.curiozing.jetpackcomposeui.themes.theme2.Theme2
 import com.curiozing.jetpackcomposeui.ui.theme.JetpackComposeUITheme
 import com.curiozing.jetpackcomposeui.utils.MockData.themeList
 import java.util.Locale
@@ -161,6 +162,9 @@ fun AppNavHost() {
         }
         composable("Theme1") {
             Theme1()
+        }
+        composable("Theme2") {
+            Theme2()
         }
     }
 }
