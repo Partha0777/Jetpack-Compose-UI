@@ -19,6 +19,7 @@ enum class ThemeCategory {
     FINANCE,
     TRAVEL,
     NEWS,
+    GROCERY,
     FOOD,
     LIFESTYLE,
     COMMUNICATION

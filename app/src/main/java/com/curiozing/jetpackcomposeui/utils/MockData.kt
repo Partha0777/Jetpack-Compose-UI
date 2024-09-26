@@ -8,7 +8,10 @@ import com.curiozing.jetpackcomposeui.model.themes.Themes
 
 object MockData {
 
-    val themeList = mutableListOf(Themes(1,"Theme 1", "Theme1", "Food app with stylish Top bar and Side Nava Menu", ThemeCategory.FOOD))
+    val themeList = mutableListOf(
+        Themes(1,"Theme 1", "Theme1", "Food app with stylish Top bar and Side Nava Menu", ThemeCategory.FOOD),
+        Themes(2,"Theme 2", "Theme2", "Grocery app with animation!", ThemeCategory.GROCERY)
+    )
 
     val recommendedCategory = listOf(
         Category(1, "Italian", "https://onthewood.com/wp-content/uploads/2024/03/Italian1.jpg"),
