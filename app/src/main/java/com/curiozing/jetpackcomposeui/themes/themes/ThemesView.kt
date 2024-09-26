@@ -101,11 +101,9 @@ fun ThemeList(navigateToTheme: (page: String) -> Unit) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ThemeListItem(themes: Themes, func: () -> Unit) {
-    val cardShape = RoundedCornerShape(32.dp)
-
     Card(
         modifier = Modifier
-            .padding(start = 4.dp, end = 4.dp, top = 4.dp, bottom = 4.dp),
+            .padding(start = 4.dp, end = 4.dp, top = 8.dp, bottom = 8.dp),
         shape = RoundedCornerShape(32.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
