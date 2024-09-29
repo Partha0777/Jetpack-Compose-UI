@@ -99,13 +99,17 @@ fun CircularScrollScreenWithoutCanvas() {
 
 
 @Composable
-fun Theme2(){
+fun Theme2() {
     Surface {
-        Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
             CircularScrollScreenWithoutCanvas()
 
         }
-}
+    }
 }
 
 
