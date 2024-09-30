@@ -26,10 +26,7 @@ fun CircularListViewWithoutCanvas(
     items: List<String>,
     radius: Dp = 650.dp
 ) {
-    // Mutable state to hold the drag offset (position in degrees)
     var dragOffset by remember { mutableStateOf(0f) }
-
-    // Adjust the scroll offset within a circular range
     val totalAngle = 360f
     val anglePerItem = totalAngle / items.size
     val radiusPx = radius.toPx()
