@@ -20,67 +20,81 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import kotlin.math.roundToInt
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Text
+import androidx.compose.runtime.*
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.unit.dp
+import kotlin.math.atan2
+import kotlin.math.cos
+import kotlin.math.sin
+import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.foundation.layout.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.*
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.unit.*
+import kotlin.math.*
 
 @Composable
-fun CircularListViewWithoutCanvas(
+fun RotatingWheel(
     items: List<String>,
-    radius: Dp = 650.dp
+    wheelSize: Dp = 300.dp
 ) {
-    var dragOffset by remember { mutableStateOf(0f) }
-    val totalAngle = 360f
-    val anglePerItem = totalAngle / items.size
-    val radiusPx = radius.toPx()
+    var rotationAngle by remember { mutableStateOf(0f) }
+    val radius = wheelSize / 2
 
     Box(
         modifier = Modifier
-            .fillMaxSize()
+            .size(wheelSize)
             .pointerInput(Unit) {
+                var previousAngle = 0.0
                 detectDragGestures(
-                    onDrag = { _, dragAmount ->
-                        dragOffset += dragAmount.y / 4.5f
+                    onDragStart = { offset ->
+                        val center = Offset((size.width / 2).toFloat(), (size.height / 2).toFloat())
+                        previousAngle = atan2(
+                            y = (offset.y - center.y),
+                            x = (offset.x - center.x)
+                        ).toDouble()
+                    },
+                    onDrag = { change, _ ->
+                        val center = Offset((size.width / 4).toFloat(), (size.height / 4).toFloat())
+                        val currentAngle = atan2(
+                            y = (change.position.y - center.y),
+                            x = (change.position.x - center.x)
+                        ).toDouble()
+                        val angleDelta = Math.toDegrees(currentAngle - previousAngle).toFloat()
+                        rotationAngle += angleDelta
+                        previousAngle = currentAngle
+                        change.consume()
                     }
                 )
             }
+            .rotate(rotationAngle),
+        contentAlignment = Alignment.Center
     ) {
         items.forEachIndexed { index, item ->
-            // Calculate the angle for each item, considering the drag offset
-            val angle = ((index * anglePerItem + dragOffset) % totalAngle).toRadians()
+            val angle = 2 * Math.PI * index / items.size
+            val offsetX = (radius.value * cos(angle)).dp
+            val offsetY = (radius.value * sin(angle)).dp
 
-            // Calculate the x, y position for each item
-            val x = radiusPx * cos(angle) + 450
-            val y = radiusPx * sin(angle) + 200
-
-            // Offset each item based on its calculated position
             Box(
                 modifier = Modifier
-                    .size(60.dp) // Size of each item
-                    .offset { IntOffset(x.roundToInt(), y.roundToInt()) },
+                    .offset(x = offsetX, y = offsetY)
+                    .size(50.dp),
                 contentAlignment = Alignment.Center
             ) {
-                BasicText(text = item) // You can replace this with any UI content
+                // Replace with your item content
+                Text(text = item)
             }
         }
     }
 }
-
-
-// Helper function to convert degrees to radians
-fun Float.toRadians(): Double = this * PI / 180f
-
-// Extension function to convert Dp to pixels (px)
-@Composable
-fun Dp.toPx(): Float = with(LocalDensity.current) { this@toPx.toPx() }
-
-// Helper extension function to convert degrees to radians
-
-@Composable
-fun CircularScrollScreenWithoutCanvas() {
-    CircularListViewWithoutCanvas(
-        items = List(8) { "Item $it" },
-        radius = 160.dp
-    )
-}
-
 
 @Composable
 fun Theme2() {
@@ -90,7 +104,7 @@ fun Theme2() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            CircularScrollScreenWithoutCanvas()
+            RotatingWheel(listOf("HI", "Hello", "Hey", "wow", "Hoeoo"))
 
         }
     }
