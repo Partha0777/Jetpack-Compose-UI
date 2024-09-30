@@ -63,7 +63,7 @@ fun RotatingWheel(
                         ).toDouble()
                     },
                     onDrag = { change, _ ->
-                        val center = Offset((size.width / 4).toFloat(), (size.height / 4).toFloat())
+                        val center = Offset((size.width / 2).toFloat(), (size.height / 2).toFloat())
                         val currentAngle = atan2(
                             y = (change.position.y - center.y),
                             x = (change.position.x - center.x)
