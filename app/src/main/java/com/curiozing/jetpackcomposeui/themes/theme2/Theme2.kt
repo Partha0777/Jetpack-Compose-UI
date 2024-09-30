@@ -37,8 +37,7 @@ fun CircularListViewWithoutCanvas(
             .pointerInput(Unit) {
                 detectDragGestures(
                     onDrag = { _, dragAmount ->
-                        // Update drag offset based on drag amount (y for vertical dragging)
-                        dragOffset += dragAmount.y / 4.5f // Adjust for rotation speed
+                        dragOffset += dragAmount.y / 4.5f
                     }
                 )
             }
