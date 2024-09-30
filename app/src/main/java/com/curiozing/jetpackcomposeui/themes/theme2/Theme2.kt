@@ -34,9 +34,13 @@ import kotlin.math.cos
 import kotlin.math.sin
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.*
 import kotlin.math.*
@@ -56,19 +60,21 @@ fun RotatingWheel(
                 var previousAngle = 0.0
                 detectDragGestures(
                     onDragStart = { offset ->
-                        val center = Offset((size.width / 2).toFloat(), (size.height / 2).toFloat())
+                        val center = Offset(size.width / 2f, size.height / 2f)
                         previousAngle = atan2(
                             y = (offset.y - center.y),
                             x = (offset.x - center.x)
                         ).toDouble()
                     },
                     onDrag = { change, _ ->
-                        val center = Offset((size.width / 2).toFloat(), (size.height / 2).toFloat())
+                        val center = Offset(size.width / 2f, size.height / 2f)
                         val currentAngle = atan2(
                             y = (change.position.y - center.y),
                             x = (change.position.x - center.x)
                         ).toDouble()
-                        val angleDelta = Math.toDegrees(currentAngle - previousAngle).toFloat()
+                        val angleDelta = Math
+                            .toDegrees(currentAngle - previousAngle)
+                            .toFloat()
                         rotationAngle += angleDelta
                         previousAngle = currentAngle
                         change.consume()
@@ -86,15 +92,17 @@ fun RotatingWheel(
             Box(
                 modifier = Modifier
                     .offset(x = offsetX, y = offsetY)
+                    .rotate(-rotationAngle) // Counteract the parent's rotation
                     .size(50.dp),
                 contentAlignment = Alignment.Center
             ) {
-                // Replace with your item content
-                Text(text = item)
+                // Your item content remains upright
+                Icon(imageVector = Icons.Filled.Favorite, contentDescription = "")
             }
         }
     }
 }
+
 
 @Composable
 fun Theme2() {
@@ -104,7 +112,7 @@ fun Theme2() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            RotatingWheel(listOf("HI", "Hello", "Hey", "wow", "Hoeoo"))
+            RotatingWheel(listOf("HI", "Hello", "Hey", "wow", "Hoeoo", "HI", "Hello", "Hey", "wow", "Hoeoo"))
 
         }
     }
