@@ -39,16 +39,22 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Outline
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.unit.*
 import kotlin.math.*
 
 @Composable
 fun RotatingWheel(
     items: List<String>,
-    wheelSize: Dp = 300.dp
+    wheelSize: Dp = 420.dp
 ) {
     var rotationAngle by remember { mutableStateOf(0f) }
     val radius = wheelSize / 2
@@ -56,6 +62,18 @@ fun RotatingWheel(
     Box(
         modifier = Modifier
             .size(wheelSize)
+            .layout { measurable, constraints ->
+                // Measure the child view
+                val placeable = measurable.measure(constraints)
+                val width = placeable.width
+                val height = placeable.height
+
+                // Define the layout with half the height
+                layout(width, height / 2) {
+                    // Offset the view upwards by half its height
+                    placeable.placeRelative(0, -height / 2 - 300)
+                }
+            }
             .pointerInput(Unit) {
                 var previousAngle = 0.0
                 detectDragGestures(
@@ -84,7 +102,7 @@ fun RotatingWheel(
             .rotate(rotationAngle),
         contentAlignment = Alignment.Center
     ) {
-        items.forEachIndexed { index, item ->
+        items.forEachIndexed { index, _ ->
             val angle = 2 * Math.PI * index / items.size
             val offsetX = (radius.value * cos(angle)).dp
             val offsetY = (radius.value * sin(angle)).dp
@@ -110,15 +128,12 @@ fun Theme2() {
         Column(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
         ) {
             RotatingWheel(listOf("HI", "Hello", "Hey", "wow", "Hoeoo", "HI", "Hello", "Hey", "wow", "Hoeoo"))
 
         }
     }
 }
-
-
 
 
 
