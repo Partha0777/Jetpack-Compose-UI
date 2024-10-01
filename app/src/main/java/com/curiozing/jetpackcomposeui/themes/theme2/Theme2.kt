@@ -71,7 +71,7 @@ fun RotatingWheel(
                 // Define the layout with half the height
                 layout(width, height) {
                     // Offset the view upwards by half its height
-                    placeable.placeRelative(0, -height/2)
+                    placeable.placeRelative(0, -height / 2)
                 }
             }
             .pointerInput(Unit) {
@@ -129,7 +129,20 @@ fun Theme2() {
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            RotatingWheel(listOf("HI", "Hello", "Hey", "wow", "Hoeoo", "HI", "Hello", "Hey", "wow", "Hoeoo"))
+            RotatingWheel(
+                listOf(
+                    "HI",
+                    "Hello",
+                    "Hey",
+                    "wow",
+                    "Hoeoo",
+                    "HI",
+                    "Hello",
+                    "Hey",
+                    "wow",
+                    "Hoeoo"
+                )
+            )
 
         }
     }
