@@ -54,7 +54,7 @@ import kotlin.math.*
 @Composable
 fun RotatingWheel(
     items: List<String>,
-    wheelSize: Dp = 420.dp
+    wheelSize: Dp = 400.dp
 ) {
     var rotationAngle by remember { mutableStateOf(0f) }
     val radius = wheelSize / 2
@@ -69,9 +69,9 @@ fun RotatingWheel(
                 val height = placeable.height
 
                 // Define the layout with half the height
-                layout(width, height / 2) {
+                layout(width, height) {
                     // Offset the view upwards by half its height
-                    placeable.placeRelative(0, -height / 2 - 300)
+                    placeable.placeRelative(0, -height/2)
                 }
             }
             .pointerInput(Unit) {
