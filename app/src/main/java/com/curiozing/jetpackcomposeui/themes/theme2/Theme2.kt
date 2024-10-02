@@ -48,27 +48,27 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.*
+import androidx.constraintlayout.compose.ConstraintLayout
 import kotlin.math.*
 
 @Composable
 fun RotatingWheel(
     items: List<String>,
-    wheelSize: Dp = 350.dp
+    modifier: Modifier,
 ) {
     var rotationAngle by remember { mutableStateOf(0f) }
-    val radius = wheelSize / 2
-    var screenHeight = LocalConfiguration.current.screenHeightDp
+    val radius = 180.dp
     Box(
-        modifier = Modifier
-            .offset { IntOffset(0, -screenHeight / 2) }
-            .background(Color.Yellow)
+        modifier = modifier
             .fillMaxWidth()
-            .height(400.dp)
+            .height(420.dp)
+            .background(Color.Yellow)
             .pointerInput(Unit) {
                 var previousAngle = 0.0
                 detectDragGestures(
@@ -117,29 +117,34 @@ fun RotatingWheel(
     }
 }
 
-
 @Composable
 fun Theme2() {
     Surface {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            RotatingWheel(
-                listOf(
-                    "HI",
-                    "Hello",
-                    "Hey",
-                    "wow",
-                    "Hoeoo",
-                    "HI",
-                    "Hello",
-                    "Hey",
-                    "wow",
-                    "Hoeoo"
+        Column {
+            Column {
+                RotatingWheel(
+                    listOf(
+                        "HI",
+                        "Hello",
+                        "Hey",
+                        "Wow",
+                        "Hoeoo",
+                        "HI",
+                        "Hello",
+                        "Hey",
+                        "Wow",
+                        "Hoeoo"
+                    ),
+                    modifier = Modifier
+                        .layout { measurable, constraints ->
+                            val placeable = measurable.measure(constraints)
+                            layout(placeable.width, placeable.height-500) {
+                                placeable.placeRelative(0, -500) // Shift up
+                            }
+                        }
                 )
-            )
-
+                Text(text = "Hello")
+            }
         }
     }
 }
