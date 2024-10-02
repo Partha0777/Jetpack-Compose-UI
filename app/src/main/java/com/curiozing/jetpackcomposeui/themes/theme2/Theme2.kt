@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import kotlin.math.roundToInt
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
@@ -34,6 +35,8 @@ import kotlin.math.cos
 import kotlin.math.sin
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Icon
@@ -110,11 +113,12 @@ fun RotatingWheel(
             Box(
                 modifier = Modifier
                     .offset(x = offsetX, y = offsetY)
+                    .clip(CircleShape)
+                    .background(color = Color.LightGray)
                     .rotate(-rotationAngle) // Counteract the parent's rotation
                     .size(50.dp),
                 contentAlignment = Alignment.Center
             ) {
-                // Your item content remains upright
                 Icon(imageVector = Icons.Filled.Favorite, contentDescription = "")
             }
         }
