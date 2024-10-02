@@ -51,32 +51,24 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.layout
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.*
 import kotlin.math.*
 
 @Composable
 fun RotatingWheel(
     items: List<String>,
-    wheelSize: Dp = 400.dp
+    wheelSize: Dp = 350.dp
 ) {
     var rotationAngle by remember { mutableStateOf(0f) }
     val radius = wheelSize / 2
-
+    var screenHeight = LocalConfiguration.current.screenHeightDp
     Box(
         modifier = Modifier
-            .size(wheelSize)
-            .layout { measurable, constraints ->
-                // Measure the child view
-                val placeable = measurable.measure(constraints)
-                val width = placeable.width
-                val height = placeable.height
-
-                // Define the layout with half the height
-                layout(width, height) {
-                    // Offset the view upwards by half its height
-                    placeable.placeRelative(0, -height / 2)
-                }
-            }
+            .offset { IntOffset(0, -screenHeight / 2) }
+            .background(Color.Yellow)
+            .fillMaxWidth()
+            .height(400.dp)
             .pointerInput(Unit) {
                 var previousAngle = 0.0
                 detectDragGestures(
