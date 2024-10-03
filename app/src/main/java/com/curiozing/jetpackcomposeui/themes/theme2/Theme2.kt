@@ -68,7 +68,6 @@ fun RotatingWheel(
         modifier = modifier
             .fillMaxWidth()
             .height(420.dp)
-            .background(Color.Yellow)
             .pointerInput(Unit) {
                 var previousAngle = 0.0
                 detectDragGestures(
