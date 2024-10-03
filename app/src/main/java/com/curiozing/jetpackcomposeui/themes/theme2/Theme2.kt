@@ -31,7 +31,7 @@ fun RotatingWheel(
     items: List<String>,
     modifier: Modifier,
 ) {
-    var rotationAngle by remember { mutableStateOf(0f) }
+    var rotationAngle by remember { mutableFloatStateOf(0f) }
     val radius = 180.dp
     Box(
         modifier = modifier
@@ -69,7 +69,6 @@ fun RotatingWheel(
             val angle = 2 * Math.PI * index / items.size
             val offsetX = (radius.value * cos(angle)).dp
             val offsetY = (radius.value * sin(angle)).dp
-
             Box(
                 modifier = Modifier
                     .offset(x = offsetX, y = offsetY)
@@ -96,12 +95,10 @@ fun Theme2() {
                         "Hello",
                         "Hey",
                         "Wow",
-                        "Hoeoo",
                         "HI",
                         "Hello",
                         "Hey",
                         "Wow",
-                        "Hoeoo"
                     ),
                     modifier = Modifier
                         .layout { measurable, constraints ->
@@ -111,7 +108,6 @@ fun Theme2() {
                             }
                         }
                 )
-                Text(text = "Hello")
             }
         }
     }
