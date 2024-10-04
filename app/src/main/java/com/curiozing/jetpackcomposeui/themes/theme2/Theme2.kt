@@ -84,8 +84,7 @@ fun RotatingWheel(
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
-                    modifier = Modifier.padding(all = 12.dp)
-                    ,
+                    modifier = Modifier.padding(all = 12.dp),
                     imageVector = Icons.Filled.Favorite,
                     contentDescription = null
                 )
