@@ -25,19 +25,19 @@ import androidx.compose.material3.Icon
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.layout.layout
+import androidx.compose.ui.platform.LocalConfiguration
 
 @Composable
 fun RotatingWheel(
     items: List<String>,
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
 ) {
     var rotationAngle by remember { mutableFloatStateOf(0f) }
-    val radius = 180.dp
-    val height = 420.dp
-    Box(
+
+    BoxWithConstraints(
         modifier = modifier
             .fillMaxWidth()
-            .height(height)
+            .aspectRatio(1f) // Ensures the Box is square
             .pointerInput(Unit) {
                 var previousAngle = 0.0
                 detectDragGestures(
@@ -66,20 +66,29 @@ fun RotatingWheel(
             .rotate(rotationAngle),
         contentAlignment = Alignment.Center
     ) {
+        val itemSize = maxWidth * 0.1f
+
+        // Calculate the radius dynamically based on the available maxWidth
+        val radius = maxWidth / 2f - itemSize / 2f
+
         items.forEachIndexed { index, _ ->
             val angle = 2 * Math.PI * index / items.size
-            val offsetX = (radius.value * cos(angle)).dp
-            val offsetY = (radius.value * sin(angle)).dp
+            val offsetX = radius * cos(angle).toFloat()
+            val offsetY = radius * sin(angle).toFloat()
             Box(
                 modifier = Modifier
                     .offset(x = offsetX, y = offsetY)
                     .clip(CircleShape)
                     .background(color = Color.LightGray)
-                    .rotate(-rotationAngle) // Counteract the parent's rotation
-                    .size(50.dp),
+                    .rotate(-rotationAngle), // Counteracts the parent's rotation
                 contentAlignment = Alignment.Center
             ) {
-                Icon(imageVector = Icons.Filled.Favorite, contentDescription = "")
+                Icon(
+                    modifier = Modifier.padding(all = 12.dp)
+                    ,
+                    imageVector = Icons.Filled.Favorite,
+                    contentDescription = null
+                )
             }
         }
     }
@@ -109,6 +118,7 @@ fun Theme2() {
                             }
                         }
                 )
+                Text(text = "Helloo")
             }
         }
     }
