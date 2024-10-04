@@ -1,6 +1,8 @@
 package com.curiozing.jetpackcomposeui.themes.theme2
 
 
+import android.content.Context
+import android.util.DisplayMetrics
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.gestures.detectDragGestures
@@ -26,6 +28,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun RotatingWheel(
@@ -95,6 +98,7 @@ fun RotatingWheel(
 
 @Composable
 fun Theme2() {
+    val context = LocalContext.current
     Surface {
         Column {
             Column {
@@ -111,9 +115,10 @@ fun Theme2() {
                     ),
                     modifier = Modifier
                         .layout { measurable, constraints ->
+                            val halfHeight = (calculateHeightForAspectRatioOne(context)).toInt()
                             val placeable = measurable.measure(constraints)
-                            layout(placeable.width, placeable.height - 500) {
-                                placeable.placeRelative(0, -500) // Shift up
+                            layout(placeable.width, placeable.height - halfHeight) {
+                                placeable.placeRelative(0, -halfHeight) // Shift up
                             }
                         }
                 )
@@ -121,7 +126,27 @@ fun Theme2() {
             }
         }
     }
+
+
 }
+fun getScreenWidthInPixels(context: Context): Int {
+    val displayMetrics: DisplayMetrics = context.resources.displayMetrics
+    return displayMetrics.widthPixels
+}
+
+fun convertPixelsToDp(context: Context, pixels: Int): Float {
+    val density: Float = context.resources.displayMetrics.density
+    return pixels / density
+}
+
+fun calculateHeightForAspectRatioOne(context: Context): Float {
+    val screenWidthPx = getScreenWidthInPixels(context)
+    val screenWidthDp = convertPixelsToDp(context, screenWidthPx)
+    val heightDp = screenWidthDp // Aspect ratio of 1:1
+    return heightDp
+}
+
+
 
 
 
