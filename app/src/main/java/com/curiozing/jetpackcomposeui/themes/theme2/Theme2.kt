@@ -33,10 +33,11 @@ fun RotatingWheel(
 ) {
     var rotationAngle by remember { mutableFloatStateOf(0f) }
     val radius = 180.dp
+    val height = 420.dp
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(420.dp)
+            .height(height)
             .pointerInput(Unit) {
                 var previousAngle = 0.0
                 detectDragGestures(
