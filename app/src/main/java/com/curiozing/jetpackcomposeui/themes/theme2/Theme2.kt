@@ -21,6 +21,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import kotlin.math.atan2
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Icon
@@ -99,30 +100,41 @@ fun RotatingWheel(
 @Composable
 fun Theme2() {
     val context = LocalContext.current
+    val halfHeight = (calculateHeightForAspectRatioOne(context)).toInt()
     Surface {
-        Column {
-            Column {
-                RotatingWheel(
-                    listOf(
-                        "HI",
-                        "Hello",
-                        "Hey",
-                        "Wow",
-                        "HI",
-                        "Hello",
-                        "Hey",
-                        "Wow",
-                    ),
-                    modifier = Modifier
-                        .layout { measurable, constraints ->
-                            val halfHeight = (calculateHeightForAspectRatioOne(context)).toInt()
-                            val placeable = measurable.measure(constraints)
-                            layout(placeable.width, placeable.height - halfHeight) {
-                                placeable.placeRelative(0, -halfHeight) // Shift up
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Box {
+                Box(modifier = Modifier
+                    .height(halfHeight.div(2).dp).width((LocalConfiguration.current.screenWidthDp).dp).clip(CircleShape.copy(topStart = CornerSize(0),
+                    topEnd = CornerSize(0),
+                    bottomEnd = CornerSize(100),
+                    bottomStart = CornerSize(100)))
+                    .background(color = Color.Gray))
+
+                Column {
+                    RotatingWheel(
+                        listOf(
+                            "HI",
+                            "Hello",
+                            "Hey",
+                            "Wow",
+                            "HI",
+                            "Hello",
+                            "Hey",
+                            "Wow",
+                        ),
+                        modifier = Modifier
+                            .layout { measurable, constraints ->
+                                val halfHeight = (calculateHeightForAspectRatioOne(context)).toInt() + 120
+                                val placeable = measurable.measure(constraints)
+                                layout(placeable.width, placeable.height - halfHeight) {
+                                    placeable.placeRelative(0, -halfHeight) // Shift up
+                                }
                             }
-                        }
-                )
-                Text(text = "Helloo")
+                    )
+                    Text(text = "Helloo")
+                }
+
             }
         }
     }
