@@ -104,12 +104,20 @@ fun Theme2() {
     Surface {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Box {
-                Box(modifier = Modifier
-                    .height(halfHeight.div(2).dp).width((LocalConfiguration.current.screenWidthDp).dp).clip(CircleShape.copy(topStart = CornerSize(0),
-                    topEnd = CornerSize(0),
-                    bottomEnd = CornerSize(100),
-                    bottomStart = CornerSize(100)))
-                    .background(color = Color.Gray))
+                Box(
+                    modifier = Modifier
+                        .height(halfHeight.div(2).dp)
+                        .width((LocalConfiguration.current.screenWidthDp).dp)
+                        .clip(
+                            CircleShape.copy(
+                                topStart = CornerSize(0),
+                                topEnd = CornerSize(0),
+                                bottomEnd = CornerSize(100),
+                                bottomStart = CornerSize(100)
+                            )
+                        )
+                        .background(color = Color.Gray)
+                )
 
                 Column {
                     RotatingWheel(
@@ -125,7 +133,8 @@ fun Theme2() {
                         ),
                         modifier = Modifier
                             .layout { measurable, constraints ->
-                                val halfHeight = (calculateHeightForAspectRatioOne(context)).toInt() + 120
+                                val halfHeight =
+                                    (calculateHeightForAspectRatioOne(context)).toInt() + 120
                                 val placeable = measurable.measure(constraints)
                                 layout(placeable.width, placeable.height - halfHeight) {
                                     placeable.placeRelative(0, -halfHeight) // Shift up
@@ -141,6 +150,7 @@ fun Theme2() {
 
 
 }
+
 fun getScreenWidthInPixels(context: Context): Int {
     val displayMetrics: DisplayMetrics = context.resources.displayMetrics
     return displayMetrics.widthPixels
