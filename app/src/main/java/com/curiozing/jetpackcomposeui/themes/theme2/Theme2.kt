@@ -34,14 +34,15 @@ import androidx.compose.ui.platform.LocalContext
 @Composable
 fun RotatingWheel(
     items: List<String>,
-    modifier: Modifier = Modifier,
+    modifier: Modifier,
 ) {
-    var rotationAngle by remember { mutableFloatStateOf(0f) }
-
-    BoxWithConstraints(
+    var rotationAngle by remember { mutableStateOf(0f) }
+    val radius = 240.dp
+    Box(
         modifier = modifier
             .fillMaxWidth()
-            .aspectRatio(1f) // Ensures the Box is square
+            .height(540.dp)
+            .background(Color.Yellow)
             .pointerInput(Unit) {
                 var previousAngle = 0.0
                 detectDragGestures(
@@ -70,11 +71,6 @@ fun RotatingWheel(
             .rotate(rotationAngle),
         contentAlignment = Alignment.Center
     ) {
-        val itemSize = maxWidth * 0.1f
-
-        // Calculate the radius dynamically based on the available maxWidth
-        val radius = maxWidth / 2f - itemSize / 2f
-
         items.forEachIndexed { index, _ ->
             val angle = 2 * Math.PI * index / items.size
             val offsetX = radius * cos(angle).toFloat()
@@ -84,14 +80,11 @@ fun RotatingWheel(
                     .offset(x = offsetX, y = offsetY)
                     .clip(CircleShape)
                     .background(color = Color.LightGray)
-                    .rotate(-rotationAngle), // Counteracts the parent's rotation
+                    .rotate(-rotationAngle) // Counteract the parent's rotation
+                    .size(50.dp),
                 contentAlignment = Alignment.Center
             ) {
-                Icon(
-                    modifier = Modifier.padding(all = 12.dp),
-                    imageVector = Icons.Filled.Favorite,
-                    contentDescription = null
-                )
+                Icon(imageVector = Icons.Filled.Favorite, contentDescription = "")
             }
         }
     }
@@ -99,56 +92,34 @@ fun RotatingWheel(
 
 @Composable
 fun Theme2() {
-    val context = LocalContext.current
-    val halfHeight = (calculateHeightForAspectRatioOne(context)).toInt()
     Surface {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Box {
-                Box(
+        Column {
+            Column {
+                RotatingWheel(
+                    listOf(
+                        "HI",
+                        "Hello",
+                        "Hey",
+                        "Wow",
+                        "Hoeoo",
+                        "HI",
+                        "Hello",
+                        "Hey",
+                        "Wow",
+                        "Hoeoo"
+                    ),
                     modifier = Modifier
-                        .height(halfHeight.div(2).dp)
-                        .width((LocalConfiguration.current.screenWidthDp).dp)
-                        .clip(
-                            CircleShape.copy(
-                                topStart = CornerSize(0),
-                                topEnd = CornerSize(0),
-                                bottomEnd = CornerSize(100),
-                                bottomStart = CornerSize(100)
-                            )
-                        )
-                        .background(color = Color.Gray)
-                )
-
-                Column {
-                    RotatingWheel(
-                        listOf(
-                            "HI",
-                            "Hello",
-                            "Hey",
-                            "Wow",
-                            "HI",
-                            "Hello",
-                            "Hey",
-                            "Wow",
-                        ),
-                        modifier = Modifier
-                            .layout { measurable, constraints ->
-                                val halfHeight =
-                                    (calculateHeightForAspectRatioOne(context)).toInt() + 120
-                                val placeable = measurable.measure(constraints)
-                                layout(placeable.width, placeable.height - halfHeight) {
-                                    placeable.placeRelative(0, -halfHeight) // Shift up
-                                }
+                        .layout { measurable, constraints ->
+                            val placeable = measurable.measure(constraints)
+                            layout(placeable.width, placeable.height-800) {
+                                placeable.placeRelative(0, -800) // Shift up
                             }
-                    )
-                    Text(text = "Helloo")
-                }
-
+                        }
+                )
+                Text(text = "Hello")
             }
         }
     }
-
-
 }
 
 fun getScreenWidthInPixels(context: Context): Int {
