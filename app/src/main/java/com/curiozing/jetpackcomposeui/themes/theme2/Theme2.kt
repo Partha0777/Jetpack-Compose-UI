@@ -111,7 +111,7 @@ fun Theme2() {
                     modifier = Modifier
                         .layout { measurable, constraints ->
                             val placeable = measurable.measure(constraints)
-                            layout(placeable.width, placeable.height-800) {
+                            layout(placeable.width, placeable.height - 800) {
                                 placeable.placeRelative(0, -800) // Shift up
                             }
                         }
