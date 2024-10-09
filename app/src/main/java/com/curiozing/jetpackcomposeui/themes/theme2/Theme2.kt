@@ -37,11 +37,12 @@ fun RotatingWheel(
     modifier: Modifier,
 ) {
     var rotationAngle by remember { mutableStateOf(0f) }
-    val radius = 240.dp
+    var screenHeight = LocalConfiguration.current.screenHeightDp
+    val radius = screenHeight.div(3.2).dp
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(540.dp)
+            .height(screenHeight.div(1.4).dp)
             .background(Color.Yellow)
             .pointerInput(Unit) {
                 var previousAngle = 0.0
@@ -111,8 +112,8 @@ fun Theme2() {
                     modifier = Modifier
                         .layout { measurable, constraints ->
                             val placeable = measurable.measure(constraints)
-                            layout(placeable.width, placeable.height - 800) {
-                                placeable.placeRelative(0, -800) // Shift up
+                            layout(placeable.width, placeable.height - 0) {
+                                placeable.placeRelative(0, -0) // Shift up
                             }
                         }
                 )
