@@ -3,6 +3,7 @@ package com.curiozing.jetpackcomposeui.themes.theme2
 
 import android.content.Context
 import android.util.DisplayMetrics
+import android.util.Log
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.gestures.detectDragGestures
@@ -38,6 +39,7 @@ fun RotatingWheel(
 ) {
     var rotationAngle by remember { mutableStateOf(0f) }
     val screenHeight = LocalConfiguration.current.screenHeightDp
+    Log.d("screenHeight ==", screenHeight.toString())
     val radius = screenHeight.div(3.2).dp
     Box(
         modifier = modifier
@@ -93,6 +95,9 @@ fun RotatingWheel(
 
 @Composable
 fun Theme2() {
+    val screenHeight = LocalConfiguration.current.screenHeightDp
+    Log.d("screenHeight.div(1) ==", screenHeight.div(1).toString())
+    Log.d("screenHeight.div(1) ==", screenHeight.toString())
     Surface {
         Column {
             Column {
@@ -112,8 +117,9 @@ fun Theme2() {
                     modifier = Modifier
                         .layout { measurable, constraints ->
                             val placeable = measurable.measure(constraints)
-                            layout(placeable.width, placeable.height - 0) {
-                                placeable.placeRelative(0, -0) // Shift up
+                            Log.d("Height --> screenHeight", "${placeable.height} $screenHeight")
+                            layout(placeable.width, placeable.height -  (screenHeight + 100)) {
+                                placeable.placeRelative(0, - (screenHeight + 100)) // Shift up
                             }
                         }
                 )
