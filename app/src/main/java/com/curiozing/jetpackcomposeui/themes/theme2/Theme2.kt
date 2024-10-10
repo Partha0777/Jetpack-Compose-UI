@@ -1,8 +1,5 @@
 package com.curiozing.jetpackcomposeui.themes.theme2
 
-
-import android.content.Context
-import android.util.DisplayMetrics
 import android.util.Log
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -123,23 +120,6 @@ fun Theme2() {
             }
         }
     }
-}
-
-fun getScreenWidthInPixels(context: Context): Int {
-    val displayMetrics: DisplayMetrics = context.resources.displayMetrics
-    return displayMetrics.widthPixels
-}
-
-fun convertPixelsToDp(context: Context, pixels: Int): Float {
-    val density: Float = context.resources.displayMetrics.density
-    return pixels / density
-}
-
-fun calculateHeightForAspectRatioOne(context: Context): Float {
-    val screenWidthPx = getScreenWidthInPixels(context)
-    val screenWidthDp = convertPixelsToDp(context, screenWidthPx)
-    val heightDp = screenWidthDp // Aspect ratio of 1:1
-    return heightDp
 }
 
 
