@@ -96,8 +96,6 @@ fun RotatingWheel(
 @Composable
 fun Theme2() {
     val screenHeight = LocalConfiguration.current.screenHeightDp
-    Log.d("screenHeight.div(1) ==", screenHeight.div(1).toString())
-    Log.d("screenHeight.div(1) ==", screenHeight.toString())
     Surface {
         Column {
             Column {
