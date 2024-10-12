@@ -145,7 +145,7 @@ fun HalfCircleBottomBackground() {
 
             // Draw a half-circle at the bottom
             drawArc(
-                color = Color.Blue,
+                color = Color.Gray,
                 startAngle = 0f, // Starts from the top of the half-circle
                 sweepAngle = 180f, // Sweep for half circle (180 degrees)
                 useCenter = true,  // Close the arc to form a half circle
