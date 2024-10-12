@@ -1,6 +1,7 @@
 package com.curiozing.jetpackcomposeui.themes.theme2
 
 import android.util.Log
+import androidx.compose.foundation.Canvas
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.gestures.detectDragGestures
@@ -19,11 +20,13 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import kotlin.math.atan2
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Icon
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalConfiguration
 
@@ -40,7 +43,6 @@ fun RotatingWheel(
         modifier = modifier
             .fillMaxWidth()
             .height(screenHeight.div(1.4).dp)
-            .background(Color.Yellow)
             .pointerInput(Unit) {
                 var previousAngle = 0.0
                 detectDragGestures(
@@ -93,36 +95,63 @@ fun Theme2() {
     val screenHeight = LocalConfiguration.current.screenHeightDp
     Surface {
         Column {
-            Column {
-                RotatingWheel(
-                    listOf(
-                        "HI",
-                        "Hello",
-                        "Hey",
-                        "Wow",
-                        "Hoeoo",
-                        "HI",
-                        "Hello",
-                        "Hey",
-                        "Wow",
-                        "Hoeoo"
-                    ),
-                    modifier = Modifier
-                        .layout { measurable, constraints ->
-                            val placeable = measurable.measure(constraints)
-                            Log.d("Height --> screenHeight", "${placeable.height} $screenHeight")
-                            layout(placeable.width, placeable.height - (screenHeight + 100)) {
-                                placeable.placeRelative(0, -(screenHeight + 100)) // Shift up
+            Box {
+                HalfCircleBottomBackground()
+
+                Column {
+                    RotatingWheel(
+                        listOf(
+                            "HI",
+                            "Hello",
+                            "Hey",
+                            "Wow",
+                            "Hoeoo",
+                            "HI",
+                            "Hello",
+                            "Hey",
+                            "Wow",
+                            "Hoeoo"
+                        ),
+                        modifier = Modifier
+                            .layout { measurable, constraints ->
+                                val placeable = measurable.measure(constraints)
+                                Log.d("Height --> screenHeight", "${placeable.height} $screenHeight")
+                                layout(placeable.width, placeable.height - (screenHeight + 50)) {
+                                    placeable.placeRelative(0, -(screenHeight + 50)) // Shift up
+                                }
                             }
-                        }
-                )
-                Text(text = "Hello")
+                    )
+                    Text(text = "Hello")
+                }
+
             }
         }
     }
 }
 
+@Composable
+fun HalfCircleBottomBackground() {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(100.dp)
+    ) {
+        Canvas(modifier = Modifier.fillMaxSize()) {
+            val canvasWidth = size.width + 300
+            val canvasHeight = 20f
 
+            // Draw a half-circle at the bottom
+            drawArc(
+                color = Color.Blue,
+                startAngle = 0f, // Starts from the top of the half-circle
+                sweepAngle = 180f, // Sweep for half circle (180 degrees)
+                useCenter = true,  // Close the arc to form a half circle
+                topLeft = Offset(-150f, -575f), // Move arc to the bottom half of the canvas
+                size = Size(canvasWidth, 1150f) // Restrict the arc's height to half of the canvas
+            )
+        }
+    }
+}
 
 
 
