@@ -115,7 +115,10 @@ fun Theme2() {
                         modifier = Modifier
                             .layout { measurable, constraints ->
                                 val placeable = measurable.measure(constraints)
-                                Log.d("Height --> screenHeight", "${placeable.height} $screenHeight")
+                                Log.d(
+                                    "Height --> screenHeight",
+                                    "${placeable.height} $screenHeight"
+                                )
                                 layout(placeable.width, placeable.height - (screenHeight + 50)) {
                                     placeable.placeRelative(0, -(screenHeight + 50)) // Shift up
                                 }
