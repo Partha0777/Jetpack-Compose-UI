@@ -119,7 +119,7 @@ fun Theme2() {
                                     "Height --> screenHeight",
                                     "${placeable.height} $screenHeight"
                                 )
-                                layout(placeable.width, placeable.height - (screenHeight + 50)) {
+                                layout(placeable.width, placeable.height - (screenHeight + 100)) {
                                     placeable.placeRelative(0, -(screenHeight + 50)) // Shift up
                                 }
                             }
