@@ -37,7 +37,6 @@ fun RotatingWheel(
 ) {
     var rotationAngle by remember { mutableStateOf(0f) }
     val screenHeight = LocalConfiguration.current.screenHeightDp
-    Log.d("screenHeight ==", screenHeight.toString())
     val radius = screenHeight.div(3.2).dp
     Box(
         modifier = modifier
