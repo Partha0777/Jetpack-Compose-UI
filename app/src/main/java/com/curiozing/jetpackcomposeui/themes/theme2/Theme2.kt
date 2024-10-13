@@ -1,6 +1,5 @@
 package com.curiozing.jetpackcomposeui.themes.theme2
 
-import android.util.Log
 import androidx.compose.foundation.Canvas
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -20,7 +19,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import kotlin.math.atan2
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Icon
