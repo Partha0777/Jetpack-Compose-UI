@@ -134,8 +134,6 @@ fun HalfCircleBottomBackground() {
         Canvas(modifier = Modifier.fillMaxSize()) {
             val canvasWidth = size.width + 300
             val canvasHeight = 20f
-
-            // Draw a half-circle at the bottom
             drawArc(
                 color = Color.Gray,
                 startAngle = 0f, // Starts from the top of the half-circle
