@@ -94,7 +94,6 @@ fun Theme2() {
         Column {
             Box {
                 HalfCircleBottomBackground()
-
                 Column {
                     RotatingWheel(
                         listOf(
