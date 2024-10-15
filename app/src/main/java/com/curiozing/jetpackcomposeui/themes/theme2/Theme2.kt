@@ -128,14 +128,15 @@ fun Theme2() {
 @Composable
 fun HalfCircleBottomBackground() {
     val screenHeight = LocalConfiguration.current.screenHeightDp
-    lateinit var placeable:Placeable
+    lateinit var placeable: Placeable
 
     Box(
         modifier = Modifier
-            .fillMaxWidth().layout { measurable, constraints ->
+            .fillMaxWidth()
+            .layout { measurable, constraints ->
                 placeable = measurable.measure(constraints)
                 layout(placeable.width, placeable.height) {
-                    placeable.placeRelative(0, -(placeable.height.div(4)-80)) // Shift up
+                    placeable.placeRelative(0, -(placeable.height.div(4) - 80)) // Shift up
                 }
             }
     ) {
@@ -146,8 +147,11 @@ fun HalfCircleBottomBackground() {
                 startAngle = 0f, // Starts from the top of the half-circle
                 sweepAngle = screenHeight.div(2).toFloat(), // Sweep for half circle (180 degrees)
                 useCenter = true,
-                topLeft = Offset(-80f,0f),// Close the arc to form a half circle
-                size = Size(canvasWidth+160, (placeable.height.div(2)).toFloat()) // Restrict the arc's height to half of the canvas
+                topLeft = Offset(-80f, 0f),// Close the arc to form a half circle
+                size = Size(
+                    canvasWidth + 160,
+                    (placeable.height.div(2)).toFloat()
+                ) // Restrict the arc's height to half of the canvas
             )
         }
     }
