@@ -25,6 +25,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.layout.Placeable
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalConfiguration
 
@@ -33,7 +34,7 @@ fun RotatingWheel(
     items: List<String>,
     modifier: Modifier,
 ) {
-    var rotationAngle by remember { mutableStateOf(0f) }
+    var rotationAngle by remember { mutableFloatStateOf(0f) }
     val screenHeight = LocalConfiguration.current.screenHeightDp
     val radius = screenHeight.div(3.2).dp
     Box(
@@ -126,21 +127,27 @@ fun Theme2() {
 
 @Composable
 fun HalfCircleBottomBackground() {
+    val screenHeight = LocalConfiguration.current.screenHeightDp
+    lateinit var placeable:Placeable
+
     Box(
         modifier = Modifier
-            .fillMaxWidth()
-            .height(100.dp)
+            .fillMaxWidth().layout { measurable, constraints ->
+                placeable = measurable.measure(constraints)
+                layout(placeable.width, placeable.height) {
+                    placeable.placeRelative(0, -(placeable.height.div(4)-80)) // Shift up
+                }
+            }
     ) {
         Canvas(modifier = Modifier.fillMaxSize()) {
-            val canvasWidth = size.width + 300
-            val canvasHeight = 20f
+            val canvasWidth = size.width+160
             drawArc(
                 color = Color.Gray,
                 startAngle = 0f, // Starts from the top of the half-circle
-                sweepAngle = 180f, // Sweep for half circle (180 degrees)
-                useCenter = true,  // Close the arc to form a half circle
-                topLeft = Offset(-150f, -575f), // Move arc to the bottom half of the canvas
-                size = Size(canvasWidth, 1150f) // Restrict the arc's height to half of the canvas
+                sweepAngle = screenHeight.div(2).toFloat(), // Sweep for half circle (180 degrees)
+                useCenter = true,
+                topLeft = Offset(-80f,0f),// Close the arc to form a half circle
+                size = Size(canvasWidth, (placeable.height.div(2)).toFloat()) // Restrict the arc's height to half of the canvas
             )
         }
     }
