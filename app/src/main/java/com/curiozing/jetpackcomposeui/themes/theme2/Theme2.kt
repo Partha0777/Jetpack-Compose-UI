@@ -113,7 +113,7 @@ fun Theme2() {
                             .layout { measurable, constraints ->
                                 val placeable = measurable.measure(constraints)
                                 layout(placeable.width, placeable.height - (screenHeight + 100)) {
-                                    placeable.placeRelative(0, -(screenHeight + 50)) // Shift up
+                                    placeable.placeRelative(0, -(screenHeight + 40)) // Shift up
                                 }
                             }
                     )
@@ -140,14 +140,14 @@ fun HalfCircleBottomBackground() {
             }
     ) {
         Canvas(modifier = Modifier.fillMaxSize()) {
-            val canvasWidth = size.width+160
+            val canvasWidth = placeable.width.toFloat()
             drawArc(
                 color = Color.Gray,
                 startAngle = 0f, // Starts from the top of the half-circle
                 sweepAngle = screenHeight.div(2).toFloat(), // Sweep for half circle (180 degrees)
                 useCenter = true,
                 topLeft = Offset(-80f,0f),// Close the arc to form a half circle
-                size = Size(canvasWidth, (placeable.height.div(2)).toFloat()) // Restrict the arc's height to half of the canvas
+                size = Size(canvasWidth+160, (placeable.height.div(2)).toFloat()) // Restrict the arc's height to half of the canvas
             )
         }
     }
