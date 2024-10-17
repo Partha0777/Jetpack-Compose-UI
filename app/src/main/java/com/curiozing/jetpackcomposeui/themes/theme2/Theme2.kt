@@ -27,13 +27,19 @@ fun Theme2() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
 
-        Column(modifier = Modifier.fillMaxSize().background(brush = Brush.linearGradient(
-            listOf(
-                Color(0xFF155761),
-                Color(0xFF114c57),
-                Color(0xFF0e3c4c)
-            )
-        ))) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    brush = Brush.linearGradient(
+                        listOf(
+                            Color(0xFF155761),
+                            Color(0xFF114c57),
+                            Color(0xFF0e3c4c)
+                        )
+                    )
+                )
+        ) {
             Box {
             }
         }
