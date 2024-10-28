@@ -72,7 +72,7 @@ fun Theme2() {
                 modifier = Modifier.padding(horizontal = 18.dp),
                 text = "FreshBox is an online groceries store that provides quality cooking ingredients at affordable prices.",
                 fontSize = 16.sp,
-                lineHeight = 20.sp,
+                lineHeight = 24.sp,
                 color = Color.White
             )
         }
