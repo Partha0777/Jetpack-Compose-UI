@@ -52,8 +52,6 @@ fun Theme2() {
                         )
                     )
                 )
-
-
         ) {
             Box(modifier = Modifier.padding(horizontal = 50.dp, vertical = 50.dp)) {
                 Image(
@@ -77,7 +75,6 @@ fun Theme2() {
                 lineHeight = 20.sp,
                 color = Color.White
             )
-
         }
     }
 }
