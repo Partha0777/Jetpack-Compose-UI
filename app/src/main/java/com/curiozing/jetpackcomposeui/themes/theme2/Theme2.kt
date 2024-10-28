@@ -37,6 +37,7 @@ fun Theme2() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
 
+
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -68,14 +69,15 @@ fun Theme2() {
                 lineHeight = 40.sp,
                 color = Color.White
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(18.dp))
             Text(
-                modifier = Modifier.padding(horizontal = 16.dp),
+                modifier = Modifier.padding(horizontal = 18.dp),
                 text = "FreshBox is an online groceries store that provides quality cooking ingredients at affordable prices.",
                 fontSize = 16.sp,
                 lineHeight = 20.sp,
                 color = Color.White
             )
+
         }
     }
 }
