@@ -54,8 +54,11 @@ fun Theme2() {
 
 
         ) {
-            Box(modifier = Modifier .padding(horizontal = 50.dp, vertical = 50.dp)) {
-                Image(painter = painterResource(id = R.drawable.grocery_lading_image), contentDescription ="")
+            Box(modifier = Modifier.padding(horizontal = 50.dp, vertical = 50.dp)) {
+                Image(
+                    painter = painterResource(id = R.drawable.grocery_lading_image),
+                    contentDescription = ""
+                )
             }
             Text(
                 modifier = Modifier.padding(horizontal = 12.dp),
@@ -63,14 +66,16 @@ fun Theme2() {
                 fontWeight = FontWeight.ExtraBold,
                 fontSize = 32.sp,
                 lineHeight = 40.sp,
-                color = Color.White)
+                color = Color.White
+            )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
                 modifier = Modifier.padding(horizontal = 16.dp),
                 text = "FreshBox is an online groceries store that provides quality cooking ingredients at affordable prices.",
                 fontSize = 16.sp,
                 lineHeight = 20.sp,
-                color = Color.White)
+                color = Color.White
+            )
         }
     }
 }
