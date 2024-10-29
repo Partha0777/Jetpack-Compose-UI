@@ -42,52 +42,59 @@ fun Theme2() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
 
+        LandingScreen()
+    }
+}
 
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .fillMaxSize()
-                .background(
-                    brush = Brush.linearGradient(
-                        listOf(
-                            Color(0xFF155761),
-                            Color(0xFF114c57),
-                            Color(0xFF0e3c4c)
-                        )
+@Composable
+fun LandingScreen(){
+    Column(
+        verticalArrangement = Arrangement.SpaceEvenly,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                brush = Brush.linearGradient(
+                    listOf(
+                        Color(0xFF155761),
+                        Color(0xFF114c57),
+                        Color(0xFF0e3c4c)
                     )
                 )
+            )
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 12.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Row(
-                modifier = Modifier.padding(horizontal = 12.dp),
-            ) {
-                Icon(
-                    modifier = Modifier
-                        .height(40.dp)
-                        .width(40.dp),
-                    imageVector = Icons.Default.ShoppingCart,
-                    contentDescription = "",
-                    tint = Color.White
-                )
-                Text(
-                    text = "FreshBox",
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = 32.sp,
-                    lineHeight = 40.sp,
-                    color = Color.White
-                )
-            }
-            Box(modifier = Modifier.padding(horizontal = 50.dp, vertical = 50.dp)) {
-                Image(
-                    painter = painterResource(id = R.drawable.grocery_lading_image),
-                    contentDescription = ""
-                )
-            }
+            Icon(
+                modifier = Modifier
+                    .height(30.dp)
+                    .width(30.dp),
+                imageVector = Icons.Default.ShoppingCart,
+                contentDescription = "",
+                tint = Color.White
+            )
+            Text(
+                text = "FreshBox",
+                fontWeight = FontWeight.ExtraBold,
+                fontSize = 28.sp,
+                lineHeight = 40.sp,
+                color = Color.White
+            )
+        }
+        Box(modifier = Modifier.padding(horizontal = 50.dp, vertical = 50.dp)) {
+            Image(
+                painter = painterResource(id = R.drawable.grocery_lading_image),
+                contentDescription = ""
+            )
+        }
+        Column {
             Text(
                 modifier = Modifier.padding(horizontal = 12.dp),
                 text = "Discover the best products",
                 fontWeight = FontWeight.ExtraBold,
-                fontSize = 32.sp,
+                fontSize = 28.sp,
                 lineHeight = 40.sp,
                 color = Color.White
             )
@@ -100,5 +107,6 @@ fun Theme2() {
                 color = Color(0xFFD7D7D7)
             )
         }
+
     }
 }
