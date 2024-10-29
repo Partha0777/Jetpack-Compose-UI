@@ -112,18 +112,20 @@ fun LandingScreen() {
 @Composable
 fun LandingPageViewItem(title: String, desc: String, imageId: Int) {
     Column(
-        verticalArrangement = Arrangement.SpaceEvenly,
+        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
     ) {
-        Box(modifier = Modifier.padding(horizontal = 50.dp, vertical = 50.dp)) {
+        Box(modifier = Modifier.padding(horizontal = 50.dp, vertical = 20.dp)) {
             Image(
                 painter = painterResource(id = imageId),
                 contentDescription = ""
             )
         }
-        Column {
+        Column(
+            horizontalAlignment = Alignment.Start
+        ) {
             Text(
                 modifier = Modifier.padding(horizontal = 12.dp),
                 text = title,
