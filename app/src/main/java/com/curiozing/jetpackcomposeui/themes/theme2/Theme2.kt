@@ -8,15 +8,20 @@ import androidx.compose.foundation.background
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -53,6 +58,25 @@ fun Theme2() {
                     )
                 )
         ) {
+            Row(
+                modifier = Modifier.padding(horizontal = 12.dp),
+            ) {
+                Icon(
+                    modifier = Modifier
+                        .height(40.dp)
+                        .width(40.dp),
+                    imageVector = Icons.Default.ShoppingCart,
+                    contentDescription = "",
+                    tint = Color.White
+                )
+                Text(
+                    text = "FreshBox",
+                    fontWeight = FontWeight.ExtraBold,
+                    fontSize = 32.sp,
+                    lineHeight = 40.sp,
+                    color = Color.White
+                )
+            }
             Box(modifier = Modifier.padding(horizontal = 50.dp, vertical = 50.dp)) {
                 Image(
                     painter = painterResource(id = R.drawable.grocery_lading_image),
@@ -73,7 +97,7 @@ fun Theme2() {
                 text = "FreshBox is an online groceries store that provides quality cooking ingredients at affordable prices.",
                 fontSize = 16.sp,
                 lineHeight = 24.sp,
-                color = Color.White
+                color = Color(0xFFD7D7D7)
             )
         }
     }
