@@ -8,6 +8,8 @@ import androidx.compose.foundation.background
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Icon
@@ -47,9 +49,13 @@ fun Theme2() {
 }
 
 @Composable
-fun LandingScreen(){
+fun LandingScreen() {
+    val pagerState = rememberPagerState(
+        initialPage = 0,
+        pageCount = { 2 }
+    )
     Column(
-        verticalArrangement = Arrangement.SpaceEvenly,
+        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
@@ -62,9 +68,10 @@ fun LandingScreen(){
                     )
                 )
             )
+
     ) {
         Row(
-            modifier = Modifier.padding(horizontal = 12.dp),
+            modifier = Modifier.padding(top = 60.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
@@ -83,16 +90,43 @@ fun LandingScreen(){
                 color = Color.White
             )
         }
+        HorizontalPager(state = pagerState) {
+            if (it == 0) {
+                LandingPageViewItem(
+                    title = "Discover the best products",
+                    desc = "FreshBox is an online groceries store that provides quality cooking ingredients at affordable prices.",
+                    imageId = R.drawable.grocery_lading_image
+                )
+            } else if (it == 1) {
+                LandingPageViewItem(
+                    title = "Best Offers",
+                    desc = "FreshBox is an online groceries store that provides quality cooking ingredients at affordable prices.",
+                    imageId = R.drawable.grocery_lading_image
+                )
+            }
+        }
+    }
+}
+
+
+@Composable
+fun LandingPageViewItem(title: String, desc: String, imageId: Int) {
+    Column(
+        verticalArrangement = Arrangement.SpaceEvenly,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
         Box(modifier = Modifier.padding(horizontal = 50.dp, vertical = 50.dp)) {
             Image(
-                painter = painterResource(id = R.drawable.grocery_lading_image),
+                painter = painterResource(id = imageId),
                 contentDescription = ""
             )
         }
         Column {
             Text(
                 modifier = Modifier.padding(horizontal = 12.dp),
-                text = "Discover the best products",
+                text = title,
                 fontWeight = FontWeight.ExtraBold,
                 fontSize = 28.sp,
                 lineHeight = 40.sp,
@@ -101,12 +135,12 @@ fun LandingScreen(){
             Spacer(modifier = Modifier.height(18.dp))
             Text(
                 modifier = Modifier.padding(horizontal = 18.dp),
-                text = "FreshBox is an online groceries store that provides quality cooking ingredients at affordable prices.",
+                text = desc,
                 fontSize = 16.sp,
                 lineHeight = 24.sp,
                 color = Color(0xFFD7D7D7)
             )
         }
-
     }
+
 }
