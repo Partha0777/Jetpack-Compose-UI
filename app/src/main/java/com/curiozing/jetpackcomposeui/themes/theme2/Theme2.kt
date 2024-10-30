@@ -43,7 +43,6 @@ fun Theme2() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
-
         LandingScreen()
     }
 }
