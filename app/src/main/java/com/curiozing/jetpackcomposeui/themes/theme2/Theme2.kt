@@ -100,7 +100,7 @@ fun LandingScreen() {
             } else if (it == 1) {
                 LandingPageViewItem(
                     title = "Best Offers",
-                    desc = "FreshBox is an online groceries store that provides quality cooking ingredients at affordable prices.",
+                    desc = "Stock up and save! Get incredible savings when you buy in bulk. Whether it's grains, oils, or snacks, the more you buy, the more you save. Perfect for families and home cooks alike.",
                     imageId = R.drawable.grocery_lading_image
                 )
             }
