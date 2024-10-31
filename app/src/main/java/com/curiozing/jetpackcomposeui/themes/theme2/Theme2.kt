@@ -64,8 +64,7 @@ fun LandingScreen() {
                 )
             ),
         verticalArrangement = Arrangement.SpaceBetween,
-
-        ) {
+    ) {
         Row(
             modifier = Modifier.weight(2f),
             verticalAlignment = Alignment.CenterVertically
