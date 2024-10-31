@@ -23,6 +23,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowCompat
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.curiozing.jetpackcomposeui.R
 
 
@@ -37,7 +40,7 @@ fun Theme2() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
-        LandingScreen()
+        Theme2Navigator()
     }
 }
 
@@ -138,4 +141,16 @@ fun LandingPageViewItem(title: String, desc: String, imageId: Int) {
         }
     }
 
+}
+
+@Composable
+fun Theme2Navigator(){
+
+    val navController = rememberNavController()
+
+    NavHost(navController = navController, startDestination = "landingPage" ){
+        composable("landingPage") {
+            LandingScreen()
+        }
+    }
 }
