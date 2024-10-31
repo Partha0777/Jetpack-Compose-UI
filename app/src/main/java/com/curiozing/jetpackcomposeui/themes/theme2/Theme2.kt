@@ -115,8 +115,8 @@ fun LandingScreen() {
                 modifier = Modifier.padding(horizontal = 12.dp),
                 text = "Skip",
                 fontWeight = FontWeight.Normal,
-                fontSize = 18.sp,
-                color = Color.White
+                fontSize = 16.sp,
+                color = Color(0xFFB1B1B1)
             )
         }
 
