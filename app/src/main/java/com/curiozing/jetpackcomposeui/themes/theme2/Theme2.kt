@@ -51,7 +51,6 @@ fun LandingScreen() {
         pageCount = { 2 }
     )
     Column(
-        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
@@ -63,11 +62,12 @@ fun LandingScreen() {
                         Color(0xFF0e3c4c)
                     )
                 )
-            )
+            ),
+        verticalArrangement = Arrangement.SpaceBetween,
 
-    ) {
+        ) {
         Row(
-            modifier = Modifier.padding(top = 60.dp),
+            modifier = Modifier.weight(2f),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
@@ -86,7 +86,10 @@ fun LandingScreen() {
                 color = Color.White
             )
         }
-        HorizontalPager(state = pagerState) {
+        HorizontalPager(
+            modifier = Modifier.weight(7f),
+            state = pagerState
+        ) {
             if (it == 0) {
                 LandingPageViewItem(
                     title = "Discover the best products",
@@ -101,6 +104,22 @@ fun LandingScreen() {
                 )
             }
         }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 12.dp)
+                .weight(1f),
+            horizontalArrangement = Arrangement.End
+        ) {
+            Text(
+                modifier = Modifier.padding(horizontal = 12.dp),
+                text = "Skip",
+                fontWeight = FontWeight.Normal,
+                fontSize = 18.sp,
+                color = Color.White
+            )
+        }
+
     }
 }
 
@@ -108,7 +127,7 @@ fun LandingScreen() {
 @Composable
 fun LandingPageViewItem(title: String, desc: String, imageId: Int) {
     Column(
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
@@ -144,11 +163,9 @@ fun LandingPageViewItem(title: String, desc: String, imageId: Int) {
 }
 
 @Composable
-fun Theme2Navigator(){
-
+fun Theme2Navigator() {
     val navController = rememberNavController()
-
-    NavHost(navController = navController, startDestination = "landingPage" ){
+    NavHost(navController = navController, startDestination = "landingPage") {
         composable("landingPage") {
             LandingScreen()
         }
