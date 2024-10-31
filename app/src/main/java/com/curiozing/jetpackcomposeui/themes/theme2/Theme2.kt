@@ -159,7 +159,6 @@ fun LandingPageViewItem(title: String, desc: String, imageId: Int) {
             )
         }
     }
-
 }
 
 @Composable
