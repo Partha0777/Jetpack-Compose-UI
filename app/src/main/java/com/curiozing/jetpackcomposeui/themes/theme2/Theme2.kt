@@ -4,6 +4,7 @@ import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.*
@@ -45,7 +46,7 @@ fun Theme2() {
 }
 
 @Composable
-fun LandingScreen() {
+fun LandingScreen(navigateToHome: () -> Unit) {
     val pagerState = rememberPagerState(
         initialPage = 0,
         pageCount = { 2 }
@@ -111,7 +112,11 @@ fun LandingScreen() {
             horizontalArrangement = Arrangement.End
         ) {
             Text(
-                modifier = Modifier.padding(horizontal = 12.dp),
+                modifier = Modifier
+                    .padding(horizontal = 12.dp)
+                    .clickable {
+                        navigateToHome.invoke()
+                    },
                 text = "Skip",
                 fontWeight = FontWeight.Normal,
                 fontSize = 16.sp,
@@ -164,7 +169,9 @@ fun Theme2Navigator() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "landingPage") {
         composable("landingPage") {
-            LandingScreen()
+            LandingScreen{
+
+            }
         }
     }
 }
