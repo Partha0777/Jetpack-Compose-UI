@@ -170,8 +170,11 @@ fun Theme2Navigator() {
     NavHost(navController = navController, startDestination = "landingPage") {
         composable("landingPage") {
             LandingScreen{
-
+                navController.navigate("home")
             }
+        }
+        composable("home") {
+            Home()
         }
     }
 }
