@@ -169,7 +169,7 @@ fun Theme2Navigator() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "landingPage") {
         composable("landingPage") {
-            LandingScreen{
+            LandingScreen {
                 navController.navigate("home")
             }
         }
