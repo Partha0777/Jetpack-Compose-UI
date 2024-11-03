@@ -113,11 +113,13 @@ fun LandingScreen(navigateToHome: () -> Unit) {
         Spacer(modifier = Modifier.height(12.dp))
         Row(
             verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
+                .weight(2f)
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically,) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 repeat(2) {
                     if (pagerState.currentPage == it) {
                         Box(
