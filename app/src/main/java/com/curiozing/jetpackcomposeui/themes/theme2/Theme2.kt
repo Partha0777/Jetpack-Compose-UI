@@ -1,5 +1,6 @@
 package com.curiozing.jetpackcomposeui.themes.theme2
 
+import android.view.RoundedCorner
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.Image
@@ -10,12 +11,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -104,6 +109,28 @@ fun LandingScreen(navigateToHome: () -> Unit) {
                 )
             }
         }
+        Spacer(modifier = Modifier.height(12.dp))
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)) {
+            repeat(2){
+                if (pagerState.currentPage == it){
+                    Box(modifier = Modifier
+                        .width(32.dp)
+                        .height(6.dp)
+                        .clip(RoundedCornerShape(corner = CornerSize(80)))
+                        .background(color = Color.White)) {}
+                }else{
+                    Box(modifier = Modifier
+                        .width(10.dp)
+                        .height(10.dp)
+                        .clip(CircleShape)
+                        .background(color = Color.Gray)) {}
+                }
+                Spacer(modifier = Modifier.width(8.dp))
+            }
+        }
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
