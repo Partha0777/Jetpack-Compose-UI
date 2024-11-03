@@ -112,20 +112,27 @@ fun LandingScreen(navigateToHome: () -> Unit) {
         Spacer(modifier = Modifier.height(12.dp))
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)) {
-            repeat(2){
-                if (pagerState.currentPage == it){
-                    Box(modifier = Modifier
-                        .width(32.dp)
-                        .height(6.dp)
-                        .clip(RoundedCornerShape(corner = CornerSize(80)))
-                        .background(color = Color.White)) {}
-                }else{
-                    Box(modifier = Modifier
-                        .width(10.dp)
-                        .height(10.dp)
-                        .clip(CircleShape)
-                        .background(color = Color.Gray)) {}
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+        ) {
+            repeat(2) {
+                if (pagerState.currentPage == it) {
+                    Box(
+                        modifier = Modifier
+                            .width(32.dp)
+                            .height(6.dp)
+                            .clip(RoundedCornerShape(corner = CornerSize(80)))
+                            .background(color = Color.White)
+                    ) {}
+                } else {
+                    Box(
+                        modifier = Modifier
+                            .width(10.dp)
+                            .height(10.dp)
+                            .clip(CircleShape)
+                            .background(color = Color.Gray)
+                    ) {}
                 }
                 Spacer(modifier = Modifier.width(8.dp))
             }
