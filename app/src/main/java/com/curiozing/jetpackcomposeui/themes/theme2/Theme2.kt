@@ -141,18 +141,19 @@ fun LandingScreen(navigateToHome: () -> Unit) {
                     }
                     Spacer(modifier = Modifier.width(8.dp))
                 }
-
             }
 
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
-                .width(50.dp)
-                .height(50.dp)
+                .width(40.dp)
+                .height(40.dp)
                 .clip(CircleShape)
                 .background(Color(0xfff1c94b))
             ){
-                Icon(imageVector = Icons.Default.KeyboardArrowRight, tint = Color(0xFF0e3c4c), contentDescription ="")
+                Icon(
+                    modifier = Modifier.height(32.dp).width(32.dp),
+                    imageVector = Icons.Default.KeyboardArrowRight, tint = Color(0xFF0e3c4c), contentDescription = "")
             }
 
         }
