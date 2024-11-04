@@ -1,6 +1,5 @@
 package com.curiozing.jetpackcomposeui.themes.theme2
 
-import android.view.RoundedCorner
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.Image
