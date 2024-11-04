@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -142,17 +143,17 @@ fun LandingScreen(navigateToHome: () -> Unit) {
                 }
 
             }
-            Text(
+
+            Box(
+                contentAlignment = Alignment.Center,
                 modifier = Modifier
-                    .padding(horizontal = 12.dp)
-                    .clickable {
-                        navigateToHome.invoke()
-                    },
-                text = "Skip",
-                fontWeight = FontWeight.Normal,
-                fontSize = 16.sp,
-                color = Color(0xFFB1B1B1)
-            )
+                .width(50.dp)
+                .height(50.dp)
+                .clip(CircleShape)
+                .background(Color(0xfff1c94b))
+            ){
+                Icon(imageVector = Icons.Default.KeyboardArrowRight, tint = Color(0xFF0e3c4c), contentDescription ="")
+            }
 
         }
 
