@@ -127,7 +127,7 @@ fun LandingScreen(navigateToHome: () -> Unit) {
                                 .width(32.dp)
                                 .height(6.dp)
                                 .clip(RoundedCornerShape(corner = CornerSize(80)))
-                                .background(color = Color.White)
+                                .background(color = Color(0xfff1c94b))
                         ) {}
                     } else {
                         Box(
