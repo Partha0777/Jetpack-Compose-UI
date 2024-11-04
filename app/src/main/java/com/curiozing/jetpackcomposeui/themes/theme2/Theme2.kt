@@ -146,16 +146,22 @@ fun LandingScreen(navigateToHome: () -> Unit) {
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
-                .width(40.dp)
-                .height(40.dp)
-                .clip(CircleShape)
-                .background(Color(0xfff1c94b)).clickable {
-                    navigateToHome.invoke()
+                    .width(40.dp)
+                    .height(40.dp)
+                    .clip(CircleShape)
+                    .background(Color(0xfff1c94b))
+                    .clickable {
+                        navigateToHome.invoke()
                     }
-            ){
+            ) {
                 Icon(
-                    modifier = Modifier.height(32.dp).width(32.dp),
-                    imageVector = Icons.Default.KeyboardArrowRight, tint = Color(0xFF0e3c4c), contentDescription = "")
+                    modifier = Modifier
+                        .height(32.dp)
+                        .width(32.dp),
+                    imageVector = Icons.Default.KeyboardArrowRight,
+                    tint = Color(0xFF0e3c4c),
+                    contentDescription = ""
+                )
             }
 
         }
